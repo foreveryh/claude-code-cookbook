@@ -23,36 +23,36 @@
 - [x] fix-error.md - ✅ 已完成
 - [x] multi-role.md - ✅ 已完成
 - [x] plan.md - ✅ 已完成
-- [ ] pr-auto-update.md - ❌ 待翻译
+- [x] pr-auto-update.md - ✅ 已完成
 - [x] pr-create.md - ✅ 已完成
-- [ ] pr-feedback.md - ❌ 待翻译
-- [ ] pr-issue.md - ❌ 待翻译
-- [ ] pr-list.md - ❌ 待翻译
+- [x] pr-feedback.md - ✅ 已完成
+- [x] pr-issue.md - ✅ 已完成
+- [x] pr-list.md - ✅ 已完成
 - [x] pr-review.md - ✅ 已完成
 - [x] refactor.md - ✅ 已完成
-- [ ] role-debate.md - ❌ 待翻译
-- [ ] role-help.md - ❌ 待翻译
+- [x] role-debate.md - ✅ 已完成
+- [x] role-help.md - ✅ 已完成
 - [x] role.md - ✅ 已完成
-- [ ] screenshot.md - ❌ 待翻译
-- [ ] search-gemini.md - ❌ 待翻译
-- [ ] semantic-commit.md - ❌ 待翻译
-- [ ] sequential-thinking.md - ❌ 待翻译
-- [ ] show-plan.md - ❌ 待翻译
-- [ ] smart-review.md - ❌ 待翻译
-- [ ] spec.md - ❌ 待翻译
-- [ ] style-ai-writting.md - ❌ 待翻译
-- [ ] task.md - ❌ 待翻译
-- [ ] tech-debt.md - ❌ 待翻译
-- [ ] ultrathink.md - ❌ 待翻译
-- [ ] update-dart-doc.md - ❌ 待翻译
-- [ ] update-doc-string.md - ❌ 待翻译
-- [ ] update-flutter-deps.md - ❌ 待翻译
-- [ ] update-node-deps.md - ❌ 待翻译
-- [ ] update-rust-deps.md - ❌ 待翻译
+- [x] screenshot.md - ✅ 已完成
+- [x] search-gemini.md - ✅ 已完成
+- [x] semantic-commit.md - ✅ 已完成
+- [x] sequential-thinking.md - ✅ 已完成
+- [x] show-plan.md - ✅ 已完成
+- [x] smart-review.md - ✅ 已完成
+- [x] spec.md - ✅ 已完成
+- [x] style-ai-writting.md - ✅ 已完成
+- [x] task.md - ✅ 已完成
+- [x] tech-debt.md - ✅ 已完成
+- [x] ultrathink.md - ✅ 已完成
+- [x] update-dart-doc.md - ✅ 已完成
+- [x] update-doc-string.md - ✅ 已完成
+- [x] update-flutter-deps.md - ✅ 已完成
+- [x] update-node-deps.md - ✅ 已完成
+- [x] update-rust-deps.md - ✅ 已完成
 
 ## 进度统计
-- ✅ 已完成: 24/46 (52.2%)
-- ❌ 待翻译: 22/46 (47.8%)
+- ✅ 已完成: 46/46 (100%)
+- ❌ 待翻译: 0/46 (0%)
 
-## 当前工作
-- 正在翻译: check-prompt.md, context7.md, design-patterns.md
+## 完成状态
+- ✅ **全部完成！** 所有 46 个文件已成功翻译成中文。

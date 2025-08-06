@@ -1,96 +1,96 @@
-## Update Rust Deps
+## Rust Dependencies Update
 
-Update Rust dependencies and manage Cargo.toml.
+Update Rust project dependencies safely.
 
 ### Usage
 
 ```bash
-# dependencies 状態 確認して Claude  依頼
+# Check dependency status and request to Claude
 cargo tree
-"Cargo.toml  dependencies latestバージョン updateして"
+"Update the dependencies in Cargo.toml to the latest versions"
 ```
 
 ### Basic Examples
 
 ```bash
-# currentdependencies 確認
+# Check current dependencies
 cat Cargo.toml
-"この Rust project dependencies analyzeしてupdate可能なクレートを教えて"
+"Analyze this Rust project's dependencies and tell me which crates can be updated"
 
-# update可能なlist 確認
+# Check updatable list
 cargo update --dry-run
-"これら クレートのupdate おける危険度 analyzeして"
+"Analyze the risk level for updating these crates"
 ```
 
-### Claude Integration with Claude
+### Integration with Claude
 
 ```bash
-# 包括的なdependenciesupdate
+# Comprehensive dependency update
 cat Cargo.toml
-"Rust  dependencies analyzeし、以下を実行して：
-1. 各クレート latestバージョン 調査
-2. 破壊的changes 有無 確認
-3. 危険度 evaluate（安全・注意・危険）
-4. 必要なcodechanges suggest
-5. update版 Cargo.toml  generate"
+"Analyze Rust dependencies and perform the following:
+1. Investigate the latest version of each crate
+2. Check for breaking changes
+3. Evaluate risk level (safe/caution/danger)
+4. Suggest necessary code changes
+5. Generate updated Cargo.toml"
 
-# 安全なsequentialupdate
+# Safe incremental update
 cargo tree
-"メジャーバージョンアップ 避けて、safelyアップデート可能なクレート みupdateして"
+"Avoid major version upgrades and only update crates that can be safely updated"
 
-# identifyクレート update影響analyze
-"tokio  latestバージョン updateした場合 影響と必要なchangesを教えて"
+# Analyze specific crate update impact
+"Tell me the impact and necessary changes if I update tokio to the latest version"
 ```
 
 ### Detailed Examples
 
 ```bash
-# Release Notes  含む詳細analyze
+# Detailed analysis with Release Notes
 cat Cargo.toml && cargo tree
-"dependencies analyzeし、各クレート ついて：
-1. 現在 → latestバージョン
-2. 危険度evaluate（安全・注意・危険）
-3. 主なchanges点（CHANGELOG から）
-4. トレイト境界 changes
-5. 必要なcode修正
- テーブル形式 提示して"
+"Analyze dependencies and for each crate provide:
+1. Current → Latest version
+2. Risk evaluation (safe/caution/danger)
+3. Main changes (from CHANGELOG)
+4. Trait bounds changes
+5. Required code modifications
+in table format"
 
-# 非同期ランタイム 移行analyze
+# Async runtime migration analysis
 cat Cargo.toml src/main.rs
-"async-std から tokio へ 移行、または tokio  メジャーバージョンアップ 必要なchanges すべて提示して"
+"Show all necessary changes for migrating from async-std to tokio, or for a tokio major version upgrade"
 ```
 
-### 危険度 基準
+### Risk Level Criteria
 
 ```
-安全（🟢）：
-- パッチバージョンアップ（0.1.2 → 0.1.3）
-- バグ修正 み
-- 後方compatibility保証
+Safe (🟢):
+- Patch version upgrade (0.1.2 → 0.1.3)
+- Bug fixes only
+- Backward compatibility guaranteed
 
-注意（🟡）：
-- マイナーバージョンアップ（0.1.0 → 0.2.0）
-- 新Features追加
-- 非推奨警告あり
+Caution (🟡):
+- Minor version upgrade (0.1.0 → 0.2.0)
+- New features added
+- Deprecation warnings present
 
-危険（🔴）：
-- メジャーバージョンアップ（0.x.y → 1.0.0、1.x.y → 2.0.0）
-- 破壊的changes
-- API  削除・changes
-- トレイト境界 changes
+Danger (🔴):
+- Major version upgrade (0.x.y → 1.0.0, 1.x.y → 2.0.0)
+- Breaking changes
+- API deletions/changes
+- Trait bounds changes
 ```
 
-### update 実行
+### Executing Updates
 
 ```bash
-# バックアップ作成
+# Create backup
 cp Cargo.toml Cargo.toml.backup
 cp Cargo.lock Cargo.lock.backup
 
-# update実行
+# Execute update
 cargo update
 
-# update後 確認
+# Verify after update
 cargo check
 cargo test
 cargo clippy
@@ -98,7 +98,7 @@ cargo clippy
 
 ### Important Notes
 
-update後 必ず動作確認 実施please。problem 発生した場合 以下 復元：
+Always test functionality after updates. If problems occur, restore with:
 
 ```bash
 cp Cargo.toml.backup Cargo.toml

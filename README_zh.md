@@ -177,11 +177,16 @@ flowchart TB
 
 #### 选项 1：一键安装中文版（推荐）🚀
 ```bash
-curl -sSL https://raw.githubusercontent.com/mustvlad/claude-code-cookbook/main/install-zh.sh | bash
+# 克隆仓库
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+
+# 运行安装程序（中文版）
+./install.sh --lang zh
 ```
 
 #### 选项 2：手动安装中文版
-1. **克隆仓库**：`git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp`
+1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
 2. **复制中文版**：`cp -r ~/.claude-temp/versions/zh ~/.claude`
 3. **配置客户端**：在 Claude Desktop 中指定 `~/.claude` 目录路径
 4. **验证路径**：确认 `settings.json` 中的脚本路径与您的环境匹配
@@ -191,26 +196,30 @@ curl -sSL https://raw.githubusercontent.com/mustvlad/claude-code-cookbook/main/i
 
 **英文版**：
 ```bash
-git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
-cp -r ~/.claude-temp/versions/en ~/.claude
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang en
 ```
 
 **日文版**：
 ```bash
-git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
-cp -r ~/.claude-temp/versions/ja ~/.claude
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang ja
 ```
 
 **法文版**：
 ```bash
-git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
-cp -r ~/.claude-temp/versions/fr ~/.claude
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang fr
 ```
 
 **韩文版**：
 ```bash
-git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
-cp -r ~/.claude-temp/versions/ko ~/.claude
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang ko
 ```
 
 ### 自定义配置

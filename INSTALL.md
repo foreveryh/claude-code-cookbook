@@ -9,8 +9,12 @@
 git clone https://github.com/foreveryh/claude-code-cookbook.git
 cd claude-code-cookbook
 
-# Run installer
+# Run installer (interactive mode)
 ./install.sh
+
+# Or with flags (non-interactive)
+./install.sh --lang en  # English version
+./install.sh --lang zh  # Chinese version
 ```
 
 ## Manual Installation
@@ -22,7 +26,7 @@ If you prefer manual installation:
 Available versions are in the `versions/` directory:
 - `versions/en/` - English version
 - `versions/ja/` - Japanese version (日本語)
-- `versions/zh/` - Chinese version (中文) [Coming soon]
+- `versions/zh/` - Chinese version (中文版已发布)
 - `versions/fr/` - French version (Français) [Coming soon]
 - `versions/ko/` - Korean version (한국어) [Coming soon]
 
@@ -49,6 +53,45 @@ chmod +x ~/.claude/scripts/*.sh
 3. Set **Custom Instructions** path to: `~/.claude`
 4. Restart Claude if needed
 
+## Advanced Usage
+
+### Interactive Installation
+Run without flags to use the interactive installer:
+```bash
+./install.sh
+```
+The installer will:
+- Auto-detect your system language
+- Show a menu if detection fails
+- Guide you through the installation process
+
+### Non-Interactive Installation
+Use flags for scripted/automated installations:
+```bash
+# Install English version with PPINFRA model
+./install.sh --lang en --model ppinfra
+
+# Install Chinese version with Gemini model
+./install.sh --lang zh --model gemini
+
+# Custom target directory
+./install.sh --lang en --target ~/custom-claude
+
+# Dry run (preview without changes)
+./install.sh --lang en --dry-run
+
+# Skip verification step
+./install.sh --lang zh --no-verify
+```
+
+### Available Options
+- `--lang {en,zh}`: Installation language
+- `--model {ppinfra,gemini}`: AI model backend (default: ppinfra)
+- `--target <path>`: Target directory (default: ~/.claude)
+- `--dry-run`: Preview mode, no changes made
+- `--no-verify`: Skip post-installation verification
+- `--help`: Show help message
+
 ## Switching Languages
 
 To switch to a different language version:
@@ -58,9 +101,7 @@ To switch to a different language version:
 mv ~/.claude ~/.claude.backup
 
 # Install new version
-./install.sh
-# Or manually:
-cp -r versions/[language_code] ~/.claude
+./install.sh --lang [language_code]
 ```
 
 ## Directory Structure

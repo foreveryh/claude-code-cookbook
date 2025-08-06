@@ -172,6 +172,6 @@
       "配置 Claude Desktop",
       "验证安装"
     ],
-    "quickStart": "git clone https://github.com/mustvlad/claude-code-cookbook.git && cd claude-code-cookbook/versions/zh"
+    "quickStart": "git clone https://github.com/foreveryh/claude-code-cookbook.git && cd claude-code-cookbook/versions/zh"
   }
 }

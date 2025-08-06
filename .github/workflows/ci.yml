@@ -1,0 +1,413 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main, dev, develop ]
+    paths:
+      - '**.sh'
+      - '.github/workflows/**'
+      - 'versions/**'
+      - 'settings.json.template'
+  pull_request:
+    branches: [ main, dev, develop ]
+    paths:
+      - '**.sh'
+      - '.github/workflows/**'
+      - 'versions/**'
+      - 'settings.json.template'
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    name: Shell Script Linting
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Find shell scripts
+        id: find_scripts
+        run: |
+          echo "Finding all shell scripts..."
+          find . -name "*.sh" -type f | tee shell_scripts.txt
+          echo "script_count=$(cat shell_scripts.txt | wc -l)" >> $GITHUB_OUTPUT
+
+      - name: Run ShellCheck on critical scripts
+        run: |
+          echo "Running ShellCheck on critical scripts..."
+          
+          # ShellCheck configuration - more lenient for existing codebase
+          SHELLCHECK_OPTS="-e SC1091 -e SC2034 -e SC2046 -e SC2086 -e SC2162 -e SC2181 -e SC2155 -e SC2005 -e SC2207 -e SC2011 -e SC2199 -e SC2076"
+          
+          # Critical scripts that must pass (installer and new files)
+          critical_scripts=(
+            "install.sh"
+          )
+          
+          # Create results directory
+          mkdir -p shellcheck_results
+          
+          # Initialize counters
+          total_files=0
+          passed_files=0
+          failed_files=0
+          
+          # Process critical scripts first
+          echo "Checking critical scripts..."
+          for script in "${critical_scripts[@]}"; do
+            if [ -f "$script" ]; then
+              total_files=$((total_files + 1))
+              echo "Checking critical script: $script"
+              
+              if shellcheck $SHELLCHECK_OPTS "$script" > "shellcheck_results/$(basename "$script").txt" 2>&1; then
+                echo "✅ PASS: $script"
+                passed_files=$((passed_files + 1))
+              else
+                echo "❌ FAIL: $script (CRITICAL)"
+                echo "--- ShellCheck output for $script ---"
+                cat "shellcheck_results/$(basename "$script").txt"
+                echo "--- End output ---"
+                failed_files=$((failed_files + 1))
+              fi
+            fi
+          done
+          
+          # Process other scripts with warnings only
+          echo ""
+          echo "Checking other scripts (warnings only)..."
+          while IFS= read -r script; do
+            # Skip critical scripts already checked
+            skip=false
+            for critical in "${critical_scripts[@]}"; do
+              if [ "$script" = "./$critical" ]; then
+                skip=true
+                break
+              fi
+            done
+            
+            if [ "$skip" = true ]; then
+              continue
+            fi
+            
+            total_files=$((total_files + 1))
+            echo "Checking: $script"
+            
+            if shellcheck $SHELLCHECK_OPTS "$script" > "shellcheck_results/$(basename "$script").txt" 2>&1; then
+              echo "✅ PASS: $script"
+              passed_files=$((passed_files + 1))
+            else
+              echo "⚠️  WARN: $script (non-critical)"
+              # Don't fail the build for non-critical scripts
+            fi
+          done < shell_scripts.txt
+          
+          # Summary
+          echo ""
+          echo "==============================================="
+          echo "ShellCheck Summary:"
+          echo "  Total files: $total_files"
+          echo "  Passed: $passed_files"
+          echo "  Failed (critical): $failed_files"
+          echo "==============================================="
+          
+          # Only fail if critical scripts have issues
+          if [ $failed_files -gt 0 ]; then
+            echo "❌ ShellCheck found issues in $failed_files critical script(s)"
+            exit 1
+          else
+            echo "✅ All critical scripts passed ShellCheck"
+          fi
+
+  test-installer:
+    name: Test Install Script
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [en, zh]
+        container: [ubuntu:22.04, ubuntu:20.04, debian:bullseye]
+      fail-fast: false
+    
+    container:
+      image: ${{ matrix.container }}
+      options: --user root
+    
+    steps:
+      - name: Install system dependencies
+        run: |
+          apt-get update
+          apt-get install -y git curl wget bash coreutils findutils sed
+          
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify script permissions
+        run: |
+          echo "Checking install.sh permissions and structure..."
+          ls -la install.sh
+          file install.sh
+          head -5 install.sh
+
+      - name: Test install.sh dry-run with language ${{ matrix.language }}
+        run: |
+          echo "Testing install.sh --lang ${{ matrix.language }} --dry-run"
+          echo "Container: ${{ matrix.container }}"
+          echo "Working directory: $(pwd)"
+          echo "Home directory: $HOME"
+          
+          # Set locale for Chinese tests
+          if [ "${{ matrix.language }}" = "zh" ]; then
+            export LANG=zh_CN.UTF-8
+            export LC_ALL=C.UTF-8
+          else
+            export LANG=en_US.UTF-8
+            export LC_ALL=C.UTF-8
+          fi
+          
+          # Run the installer in dry-run mode
+          timeout 300 bash install.sh --lang ${{ matrix.language }} --dry-run --no-verify
+          
+          echo "✅ install.sh dry-run completed successfully for ${{ matrix.language }}"
+
+      - name: Test install.sh syntax validation
+        run: |
+          echo "Validating bash syntax for install.sh..."
+          bash -n install.sh
+          echo "✅ install.sh syntax is valid"
+
+      - name: Test all script files syntax
+        run: |
+          echo "Testing syntax of all shell scripts..."
+          find . -name "*.sh" -type f | while read -r script; do
+            echo "Checking syntax: $script"
+            if ! bash -n "$script"; then
+              echo "❌ Syntax error in: $script"
+              exit 1
+            fi
+          done
+          echo "✅ All shell scripts have valid syntax"
+
+  integration-test:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: [shellcheck, test-installer]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Test version directory structure
+        run: |
+          echo "Verifying project structure..."
+          
+          # Check required directories
+          if [ ! -d "versions" ]; then
+            echo "❌ Missing versions directory"
+            exit 1
+          fi
+          
+          # Check for language versions
+          versions_found=$(find versions -maxdepth 1 -type d ! -name versions | wc -l)
+          if [ $versions_found -eq 0 ]; then
+            echo "❌ No language versions found in versions/"
+            exit 1
+          fi
+          
+          echo "Found $versions_found language version(s):"
+          ls -la versions/
+          
+          # Check each version has required structure
+          for version_dir in versions/*/; do
+            version=$(basename "$version_dir")
+            echo "Checking version: $version"
+            
+            if [ ! -d "$version_dir/commands" ]; then
+              echo "❌ Missing commands directory in $version"
+              exit 1
+            fi
+            
+            if [ ! -d "$version_dir/agents" ]; then
+              echo "❌ Missing agents directory in $version"
+              exit 1
+            fi
+            
+            echo "✅ Version $version structure is valid"
+          done
+
+      - name: Test settings template
+        run: |
+          echo "Testing settings.json template..."
+          
+          if [ ! -f "settings.json.template" ]; then
+            echo "❌ Missing settings.json.template"
+            exit 1
+          fi
+          
+          # Verify it's valid JSON template
+          if ! grep -q "{{CLAUDE_LANGUAGE}}" settings.json.template; then
+            echo "❌ Template missing CLAUDE_LANGUAGE placeholder"
+            exit 1
+          fi
+          
+          echo "✅ Settings template is valid"
+
+      - name: Test complete workflow simulation
+        run: |
+          echo "Running complete workflow simulation..."
+          
+          # Create temporary directory for testing
+          temp_dir=$(mktemp -d)
+          echo "Using temp directory: $temp_dir"
+          
+          # Test both languages
+          for lang in en zh; do
+            echo "Testing complete workflow for language: $lang"
+            
+            # Run installer with custom target to avoid conflicts
+            target_dir="$temp_dir/.claude-$lang"
+            timeout 300 bash install.sh \
+              --lang $lang \
+              --target "$target_dir" \
+              --dry-run \
+              --no-verify
+            
+            echo "✅ Complete workflow test passed for $lang"
+          done
+          
+          # Cleanup
+          rm -rf "$temp_dir"
+          echo "✅ Workflow simulation completed successfully"
+
+  security-check:
+    name: Security Checks
+    runs-on: ubuntu-latest
+    needs: [shellcheck]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Check for potential security issues
+        run: |
+          echo "Running security checks on shell scripts..."
+          
+          # Check for highly dangerous patterns only
+          echo "Checking for critical security patterns..."
+          
+          found_critical_issues=false
+          
+          # Check for extremely dangerous literal patterns
+          if grep -r "rm -rf /" --include="*.sh" . 2>/dev/null; then
+            echo "❌ Found critical security issue: rm -rf /"
+            found_critical_issues=true
+          fi
+          
+          if grep -r "rm -rf \$HOME" --include="*.sh" . 2>/dev/null; then
+            echo "❌ Found critical security issue: rm -rf \$HOME"
+            found_critical_issues=true
+          fi
+          
+          # Skip other patterns that cause too many false positives
+          
+          # Check for common patterns but only warn
+          echo ""
+          echo "Checking for potentially risky patterns (warnings only)..."
+          warning_patterns=(
+            "eval.*\$"
+            "exec.*\$"
+            "\`.*\`"
+          )
+          
+          for pattern in "${warning_patterns[@]}"; do
+            echo "Checking for pattern: $pattern"
+            matches=$(grep -r -n "$pattern" --include="*.sh" . 2>/dev/null | wc -l)
+            if [ "$matches" -gt 0 ]; then
+              echo "⚠️  Found $matches instances of potentially risky pattern: $pattern"
+            fi
+          done
+          
+          if [ "$found_critical_issues" = true ]; then
+            echo ""
+            echo "❌ Critical security issues found - failing build"
+            exit 1
+          fi
+          
+          echo ""
+          echo "✅ No critical security issues found"
+
+      - name: Check file permissions
+        run: |
+          echo "Checking file permissions..."
+          
+          # Find scripts with overly permissive permissions
+          find . -name "*.sh" -perm /o+w -type f | while read -r script; do
+            echo "❌ World-writable script found: $script"
+            ls -la "$script"
+            exit 1
+          done
+          
+          echo "✅ File permissions look good"
+
+  summary:
+    name: CI Summary
+    runs-on: ubuntu-latest
+    needs: [shellcheck, test-installer, integration-test, security-check]
+    if: always()
+    
+    steps:
+      - name: Check all jobs status
+        run: |
+          echo "CI Pipeline Summary:"
+          echo "===================="
+          
+          if [ "${{ needs.shellcheck.result }}" = "success" ]; then
+            echo "✅ ShellCheck: PASSED"
+          else
+            echo "❌ ShellCheck: FAILED"
+          fi
+          
+          if [ "${{ needs.test-installer.result }}" = "success" ]; then
+            echo "✅ Installer Tests: PASSED"
+          else
+            echo "❌ Installer Tests: FAILED"
+          fi
+          
+          if [ "${{ needs.integration-test.result }}" = "success" ]; then
+            echo "✅ Integration Tests: PASSED"
+          else
+            echo "❌ Integration Tests: FAILED"
+          fi
+          
+          if [ "${{ needs.security-check.result }}" = "success" ]; then
+            echo "✅ Security Checks: PASSED"
+          else
+            echo "❌ Security Checks: FAILED"
+          fi
+          
+          # Check if any job failed
+          if [ "${{ needs.shellcheck.result }}" != "success" ] || \
+             [ "${{ needs.test-installer.result }}" != "success" ] || \
+             [ "${{ needs.integration-test.result }}" != "success" ] || \
+             [ "${{ needs.security-check.result }}" != "success" ]; then
+            echo ""
+            echo "❌ CI Pipeline FAILED - Please check the failed jobs above"
+            exit 1
+          else
+            echo ""
+            echo "✅ CI Pipeline PASSED - All checks successful!"
+          fi

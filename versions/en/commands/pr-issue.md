@@ -1,78 +1,78 @@
-## PR Issue
+## Issue List
 
-Link pull requests to issues and manage relationships.
+Display open issues list with priority ranking for the current repository.
 
 ### Usage
 
 ```bash
-# Claude  依頼
-"オープン Issue list 優先順位付き displayして"
+# Request to Claude
+"Display open issues list with priority ranking"
 ```
 
 ### Basic Examples
 
 ```bash
-# リポジトリinformation 取得
+# Get repository information
 gh repo view --json nameWithOwner | jq -r '.nameWithOwner'
 
-# オープン Issue information 取得して Claude  依頼
+# Get open issue information and request to Claude
 gh issue list --state open --json number,title,author,createdAt,updatedAt,labels,assignees,comments --limit 30
 
-"上記の Issue  優先度別 整理して、各 Issue の 2 行Overviewも含めてdisplayして。URL  上記 取得したリポジトリ名 usageしてgenerateして"
+"Organize the above issues by priority and include a 2-line summary for each issue. Generate URLs using the repository name obtained above"
 ```
 
-### display形式
+### Display Format
 
 ```
-オープン Issue list（優先順位順）
+Open Issues List (Sorted by Priority)
 
-### 高優先度
-#番号 タイトル [ラベル] | 作者 | オープンから経過時間 | コメント数 | 担当者
-      ├─ Overview 1 行目
-      └─ Overview 2 行目
-      https://github.com/owner/repo/issues/番号
+### High Priority
+#Number Title [Labels] | Author | Time Since Opened | Comments | Assignee
+      ├─ Summary line 1
+      └─ Summary line 2
+      https://github.com/owner/repo/issues/number
 
-### 中優先度
-（同様 形式）
+### Medium Priority
+(Same format)
 
-### 低優先度
-（同様 形式）
+### Low Priority
+(Same format)
 ```
 
-### 優先度 判定基準
+### Priority Criteria
 
-**高優先度**
+**High Priority**
 
-- `bug` ラベル 付いている Issue
-- `critical` や `urgent` ラベル 付いている Issue
-- `security` ラベル 付いている Issue
+- Issues with `bug` label
+- Issues with `critical` or `urgent` labels
+- Issues with `security` label
 
-**中優先度**
+**Medium Priority**
 
-- `enhancement` ラベル 付いている Issue
-- `feature` ラベル 付いている Issue
-- 担当者 configurationされている Issue
+- Issues with `enhancement` label
+- Issues with `feature` label
+- Issues with assignee set
 
-**低優先度**
+**Low Priority**
 
-- `documentation` ラベル 付いている Issue
-- `good first issue` ラベル 付いている Issue
-- `wontfix` や `duplicate` ラベル 付いている Issue
+- Issues with `documentation` label
+- Issues with `good first issue` label
+- Issues with `wontfix` or `duplicate` labels
 
-### ラベル よるフィルタリング
+### Filtering by Labels
 
 ```bash
-# identify ラベルの Issue  み取得
+# Get only issues with specific label
 gh issue list --state open --label "bug" --json number,title,author,createdAt,labels,comments --limit 30
 
-# 複数ラベル フィルタリング（AND 条件）
+# Filter by multiple labels (AND condition)
 gh issue list --state open --label "bug,high-priority" --json number,title,author,createdAt,labels,comments --limit 30
 ```
 
 ### Important Notes
 
-- GitHub CLI (`gh`)  required
-- オープン状態の Issue  みdisplay
-- 最大 30 件の Issue  display
-- 経過時間は Issue  オープンされてから 時間 す
-- Issue の URL  実際 リポジトリ名から自動generateされます
+- GitHub CLI (`gh`) is required
+- Only displays open issues
+- Displays maximum 30 issues
+- Elapsed time is from when the issue was opened
+- Issue URLs are automatically generated from the actual repository name
