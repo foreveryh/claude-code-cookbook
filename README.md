@@ -167,8 +167,23 @@ flowchart TB
 
 ### Installation Steps
 
-1. **Clone repository**: `git clone https://github.com/wasabeef/claude-code-cookbook.git ~/.claude`
-2. **Configure client**: Specify the above directory path in Claude client
+#### Option 1: Install English Version (Default)
+1. **Clone repository**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **Copy English version**: `cp -r ~/.claude-temp/versions/en ~/.claude`
+3. **Configure client**: Specify `~/.claude` directory path in Claude Code client
+4. **Verify paths**: Confirm script paths in `settings.json` match your environment
+5. **Clean up**: `rm -rf ~/.claude-temp`
+
+#### Option 2: Install Japanese Version
+1. **Clone repository**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **Copy Japanese version**: `cp -r ~/.claude-temp/versions/ja ~/.claude`
+3. **Configure client**: Specify `~/.claude` directory path in Claude Code client
+4. **Verify paths**: Confirm script paths in `settings.json` match your environment
+5. **Clean up**: `rm -rf ~/.claude-temp`
+
+#### Option 3: Install Original Mixed Version
+1. **Clone repository**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
+2. **Configure client**: Specify `~/.claude` directory path in Claude Code client
 3. **Verify paths**: Confirm script paths in `settings.json` match your environment
 
 ### Customization

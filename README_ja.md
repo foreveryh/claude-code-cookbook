@@ -167,9 +167,24 @@ flowchart TB
 
 ### 導入手順
 
-1. **リポジトリをクローン**: `git clone https://github.com/wasabeef/claude-code-cookbook.git ~/.claude`
-2. **クライアントでパスを設定**: Claude のクライアントで、上記ディレクトリのパスを指定します
-3. **パスの確認**: `settings.json` 内のスクリプトパスが環境と一致しているか確認します
+#### オプション 1：英語版をインストール（デフォルト）
+1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **英語版をコピー**: `cp -r ~/.claude-temp/versions/en ~/.claude`
+3. **クライアントでパスを設定**: Claude Code クライアントで `~/.claude` ディレクトリパスを指定
+4. **パスの確認**: `settings.json` 内のスクリプトパスが環境と一致しているか確認
+5. **一時ファイルを削除**: `rm -rf ~/.claude-temp`
+
+#### オプション 2：日本語版をインストール
+1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **日本語版をコピー**: `cp -r ~/.claude-temp/versions/ja ~/.claude`
+3. **クライアントでパスを設定**: Claude Code クライアントで `~/.claude` ディレクトリパスを指定
+4. **パスの確認**: `settings.json` 内のスクリプトパスが環境と一致しているか確認
+5. **一時ファイルを削除**: `rm -rf ~/.claude-temp`
+
+#### オプション 3：オリジナル混合版をインストール
+1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
+2. **クライアントでパスを設定**: Claude Code クライアントで `~/.claude` ディレクトリパスを指定
+3. **パスの確認**: `settings.json` 内のスクリプトパスが環境と一致しているか確認
 
 ### カスタマイズ
 

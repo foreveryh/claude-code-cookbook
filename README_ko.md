@@ -167,7 +167,7 @@ flowchart TB
 
 ### 설치 단계
 
-1. **저장소 복제**: `git clone https://github.com/wasabeef/claude-code-cookbook.git ~/.claude`
+1. **저장소 클론**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
 2. **클라이언트 구성**: Claude 클라이언트에서 위 디렉토리 경로 지정
 3. **경로 확인**: `settings.json`의 스크립트 경로가 환경과 일치하는지 확인
 

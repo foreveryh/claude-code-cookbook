@@ -167,8 +167,23 @@ flowchart TB
 
 ### 安装步骤
 
-1. **克隆仓库**：`git clone https://github.com/wasabeef/claude-code-cookbook.git ~/.claude`
-2. **配置客户端**：在 Claude 客户端中指定上述目录路径
+#### 选项 1：安装英文版（默认）
+1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **复制英文版**：`cp -r ~/.claude-temp/versions/en ~/.claude`
+3. **配置客户端**：在 Claude Code 客户端中指定 `~/.claude` 目录路径
+4. **验证路径**：确认 `settings.json` 中的脚本路径与您的环境匹配
+5. **清理临时文件**：`rm -rf ~/.claude-temp`
+
+#### 选项 2：安装日文版
+1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **复制日文版**：`cp -r ~/.claude-temp/versions/ja ~/.claude`
+3. **配置客户端**：在 Claude Code 客户端中指定 `~/.claude` 目录路径
+4. **验证路径**：确认 `settings.json` 中的脚本路径与您的环境匹配
+5. **清理临时文件**：`rm -rf ~/.claude-temp`
+
+#### 选项 3：安装原始混合版本
+1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
+2. **配置客户端**：在 Claude Code 客户端中指定 `~/.claude` 目录路径
 3. **验证路径**：确认 `settings.json` 中的脚本路径与您的环境匹配
 
 ### 自定义配置

@@ -167,7 +167,7 @@ flowchart TB
 
 ### Étapes d'Installation
 
-1. **Cloner le dépôt** : `git clone https://github.com/wasabeef/claude-code-cookbook.git ~/.claude`
+1. **Cloner le dépôt** : `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
 2. **Configurer le client** : Spécifier le chemin du répertoire ci-dessus dans le client Claude
 3. **Vérifier les chemins** : Confirmer que les chemins des scripts dans `settings.json` correspondent à votre environnement
 
