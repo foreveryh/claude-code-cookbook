@@ -1,0 +1,177 @@
+{
+  "name": "claude-code-cookbook-zh",
+  "version": "1.0.0",
+  "description": "Claude Code Cookbook 中文版 - AI 编程助手命令集",
+  "language": "zh-CN",
+  "commands": {
+    "commit-message": {
+      "description": "生成规范的 Git 提交消息",
+      "path": "commands/commit-message.md"
+    },
+    "analyze-dependencies": {
+      "description": "分析项目依赖关系",
+      "path": "commands/analyze-dependencies.md"
+    },
+    "analyze-performance": {
+      "description": "分析代码性能问题",
+      "path": "commands/analyze-performance.md"
+    },
+    "check-fact": {
+      "description": "事实检查和验证",
+      "path": "commands/check-fact.md"
+    },
+    "check-github-ci": {
+      "description": "检查 GitHub CI 配置",
+      "path": "commands/check-github-ci.md"
+    },
+    "check-prompt": {
+      "description": "优化提示词质量",
+      "path": "commands/check-prompt.md"
+    },
+    "context7": {
+      "description": "七步上下文分析法",
+      "path": "commands/context7.md"
+    },
+    "design-patterns": {
+      "description": "设计模式建议",
+      "path": "commands/design-patterns.md"
+    },
+    "explain-code": {
+      "description": "代码解释和文档生成",
+      "path": "commands/explain-code.md"
+    },
+    "fix-error": {
+      "description": "错误诊断和修复",
+      "path": "commands/fix-error.md"
+    },
+    "multi-role": {
+      "description": "多角色协作分析",
+      "path": "commands/multi-role.md"
+    },
+    "plan": {
+      "description": "项目计划生成",
+      "path": "commands/plan.md"
+    },
+    "pr-review": {
+      "description": "PR 代码审查",
+      "path": "commands/pr-review.md"
+    },
+    "refactor": {
+      "description": "代码重构建议",
+      "path": "commands/refactor.md"
+    },
+    "role": {
+      "description": "激活专家角色",
+      "path": "commands/role.md"
+    },
+    "semantic-commit": {
+      "description": "语义化提交消息",
+      "path": "commands/semantic-commit.md"
+    },
+    "smart-review": {
+      "description": "智能代码审查",
+      "path": "commands/smart-review.md"
+    },
+    "spec": {
+      "description": "生成技术规范",
+      "path": "commands/spec.md"
+    },
+    "task": {
+      "description": "任务分解和管理",
+      "path": "commands/task.md"
+    },
+    "tech-debt": {
+      "description": "技术债务评估",
+      "path": "commands/tech-debt.md"
+    },
+    "ultrathink": {
+      "description": "深度思考模式",
+      "path": "commands/ultrathink.md"
+    }
+  },
+  "roles": {
+    "architect": {
+      "description": "系统架构师",
+      "path": "agents/roles/architect.md"
+    },
+    "analyzer": {
+      "description": "根本原因分析专家",
+      "path": "agents/roles/analyzer.md"
+    },
+    "frontend": {
+      "description": "前端开发专家",
+      "path": "agents/roles/frontend.md"
+    },
+    "mobile": {
+      "description": "移动开发专家",
+      "path": "agents/roles/mobile.md"
+    },
+    "performance": {
+      "description": "性能优化专家",
+      "path": "agents/roles/performance.md"
+    },
+    "qa": {
+      "description": "质量保证专家",
+      "path": "agents/roles/qa.md"
+    },
+    "reviewer": {
+      "description": "代码审查专家",
+      "path": "agents/roles/reviewer.md"
+    },
+    "security": {
+      "description": "安全专家",
+      "path": "agents/roles/security.md"
+    }
+  },
+  "scripts": {
+    "auto-comment": {
+      "description": "自动添加代码注释",
+      "path": "scripts/auto-comment.sh"
+    },
+    "check-ai-commit": {
+      "description": "检查 AI 生成的提交",
+      "path": "scripts/check-ai-commit.sh"
+    },
+    "check-continue": {
+      "description": "检查持续集成状态",
+      "path": "scripts/check-continue.sh"
+    },
+    "check-project-plan": {
+      "description": "检查项目计划",
+      "path": "scripts/check-project-plan.sh"
+    },
+    "debug-hook": {
+      "description": "调试钩子脚本",
+      "path": "scripts/debug-hook.sh"
+    },
+    "deny-check": {
+      "description": "依赖安全检查",
+      "path": "scripts/deny-check.sh"
+    }
+  },
+  "settings": {
+    "defaultLanguage": "zh-CN",
+    "autoDetectLanguage": true,
+    "commitMessageFormat": "conventional",
+    "enableDebugMode": false,
+    "maxSuggestions": 3,
+    "clipboardIntegration": true,
+    "githubIntegration": true,
+    "smartContextAnalysis": true
+  },
+  "requirements": {
+    "claude": ">=3.5",
+    "git": ">=2.0",
+    "node": ">=14.0 (optional)",
+    "python": ">=3.7 (optional)"
+  },
+  "installation": {
+    "steps": [
+      "克隆仓库到本地",
+      "选择语言版本（中文）",
+      "配置 Claude Desktop",
+      "验证安装"
+    ],
+    "quickStart": "git clone https://github.com/mustvlad/claude-code-cookbook.git && cd claude-code-cookbook/versions/zh"
+  }
+}

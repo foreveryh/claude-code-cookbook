@@ -1,11 +1,19 @@
-# Claude Code Cookbook
+# Claude Code Cookbook 🎉 中文版
 
-[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md) | [Français](README_fr.md) | [한국어](README_ko.md)
+[English](README.md) | **[中文](README_zh.md)** ✅ | [日本語](README_ja.md) | [Français](README_fr.md) | [한국어](README_ko.md)
 
 让 Claude Code 使用更便捷的配置集合。
 
 通过自动化执行常规操作，让您专注于真正重要的工作。
 Claude Code 会智能判断并执行代码修改、测试运行、文档更新等常见任务。
+
+## 🎯 中文版特色
+
+- 📝 **完整本地化**: 所有命令、角色和文档均已中文化
+- 🤖 **智能语言识别**: 自动检测项目语言，生成对应语言的提交消息
+- 🌐 **中文优化**: 专为中文项目优化的提示词和输出格式
+- 🚀 **一键安装**: 简单的安装脚本，快速开始使用
+- 📚 **详尽文档**: 提供完整的中文使用说明和最佳实践
 
 ## 主要功能
 
@@ -167,24 +175,43 @@ flowchart TB
 
 ### 安装步骤
 
-#### 选项 1：安装英文版（默认）
-1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
-2. **复制英文版**：`cp -r ~/.claude-temp/versions/en ~/.claude`
-3. **配置客户端**：在 Claude Code 客户端中指定 `~/.claude` 目录路径
+#### 选项 1：一键安装中文版（推荐）🚀
+```bash
+curl -sSL https://raw.githubusercontent.com/mustvlad/claude-code-cookbook/main/install-zh.sh | bash
+```
+
+#### 选项 2：手动安装中文版
+1. **克隆仓库**：`git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp`
+2. **复制中文版**：`cp -r ~/.claude-temp/versions/zh ~/.claude`
+3. **配置客户端**：在 Claude Desktop 中指定 `~/.claude` 目录路径
 4. **验证路径**：确认 `settings.json` 中的脚本路径与您的环境匹配
 5. **清理临时文件**：`rm -rf ~/.claude-temp`
 
-#### 选项 2：安装日文版
-1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
-2. **复制日文版**：`cp -r ~/.claude-temp/versions/ja ~/.claude`
-3. **配置客户端**：在 Claude Code 客户端中指定 `~/.claude` 目录路径
-4. **验证路径**：确认 `settings.json` 中的脚本路径与您的环境匹配
-5. **清理临时文件**：`rm -rf ~/.claude-temp`
+#### 选项 3：安装其他语言版本
 
-#### 选项 3：安装原始混合版本
-1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
-2. **配置客户端**：在 Claude Code 客户端中指定 `~/.claude` 目录路径
-3. **验证路径**：确认 `settings.json` 中的脚本路径与您的环境匹配
+**英文版**：
+```bash
+git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
+cp -r ~/.claude-temp/versions/en ~/.claude
+```
+
+**日文版**：
+```bash
+git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
+cp -r ~/.claude-temp/versions/ja ~/.claude
+```
+
+**法文版**：
+```bash
+git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
+cp -r ~/.claude-temp/versions/fr ~/.claude
+```
+
+**韩文版**：
+```bash
+git clone https://github.com/mustvlad/claude-code-cookbook.git ~/.claude-temp
+cp -r ~/.claude-temp/versions/ko ~/.claude
+```
 
 ### 自定义配置
 
