@@ -5,6 +5,16 @@ All notable changes to Claude Code Cookbook will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+- Internationalized COMMAND_TEMPLATE with support for 5 languages (en, ja, zh, fr, ko)
+- Created language-specific command templates following Claude_xx.md pattern
+
+### Changed
+- COMMAND_TEMPLATE.md now defaults to English version
+- Renamed original Japanese template to COMMAND_TEMPLATE_ja.md
+
 ## [2.0.1] - 2025-01-07
 
 ### Fixed

@@ -12,3 +12,5 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.claude/*
+pm_docs/*
