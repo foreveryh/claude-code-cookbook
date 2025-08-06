@@ -19,20 +19,20 @@
 - [x] commit-message.md - ✅ 已完成
 - [x] context7.md - ✅ 已完成
 - [x] design-patterns.md - ✅ 已完成
-- [ ] explain-code.md - ❌ 待翻译
-- [ ] fix-error.md - ❌ 待翻译
-- [ ] multi-role.md - ❌ 待翻译
-- [ ] plan.md - ❌ 待翻译
+- [x] explain-code.md - ✅ 已完成
+- [x] fix-error.md - ✅ 已完成
+- [x] multi-role.md - ✅ 已完成
+- [x] plan.md - ✅ 已完成
 - [ ] pr-auto-update.md - ❌ 待翻译
-- [ ] pr-create.md - ❌ 待翻译
+- [x] pr-create.md - ✅ 已完成
 - [ ] pr-feedback.md - ❌ 待翻译
 - [ ] pr-issue.md - ❌ 待翻译
 - [ ] pr-list.md - ❌ 待翻译
-- [ ] pr-review.md - ❌ 待翻译
-- [ ] refactor.md - ❌ 待翻译
+- [x] pr-review.md - ✅ 已完成
+- [x] refactor.md - ✅ 已完成
 - [ ] role-debate.md - ❌ 待翻译
 - [ ] role-help.md - ❌ 待翻译
-- [ ] role.md - ❌ 待翻译
+- [x] role.md - ✅ 已完成
 - [ ] screenshot.md - ❌ 待翻译
 - [ ] search-gemini.md - ❌ 待翻译
 - [ ] semantic-commit.md - ❌ 待翻译
@@ -51,8 +51,8 @@
 - [ ] update-rust-deps.md - ❌ 待翻译
 
 ## 进度统计
-- ✅ 已完成: 16/46 (34.8%)
-- ❌ 待翻译: 30/46 (65.2%)
+- ✅ 已完成: 24/46 (52.2%)
+- ❌ 待翻译: 22/46 (47.8%)
 
 ## 当前工作
 - 正在翻译: check-prompt.md, context7.md, design-patterns.md
