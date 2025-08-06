@@ -1,5 +1,7 @@
 # Claude Code Cookbook
 
+[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md) | [Français](README_fr.md) | [한국어](README_ko.md)
+
 让 Claude Code 使用更便捷的配置集合。
 
 通过自动化执行常规操作，让您专注于真正重要的工作。
