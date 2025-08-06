@@ -175,13 +175,37 @@ flowchart TB
 
 ### 安装步骤
 
-#### 选项 1：一键安装中文版（推荐）🚀
+### 🚀 v2.0.0 新功能：统一安装程序
+
+**一个安装程序，支持所有语言！** 我们将所有安装选项统一到单个智能安装程序中。
+
+#### 快速开始（推荐）🚀
 ```bash
 # 克隆仓库
 git clone https://github.com/foreveryh/claude-code-cookbook.git
 cd claude-code-cookbook
 
-# 运行安装程序（中文版）
+# 自动安装（智能语言检测）
+./install.sh
+
+# 或者明确指定语言
+./install.sh --lang zh    # 中文版
+./install.sh --lang en    # 英文版
+```
+
+#### 安装步骤
+
+1. **克隆仓库**：`git clone https://github.com/foreveryh/claude-code-cookbook.git`
+2. **进入目录**：`cd claude-code-cookbook`
+3. **运行安装程序**：`./install.sh`（自动检测语言）或 `./install.sh --lang <语言>`
+4. **配置 Claude Desktop**：设置自定义指令路径为 `~/.claude`
+5. **开始使用**：所有命令和角色现在都可用了！
+
+#### 传统安装选项
+
+##### 选项 1：一键安装中文版
+```bash
+# 明确指定中文版
 ./install.sh --lang zh
 ```
 
