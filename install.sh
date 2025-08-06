@@ -382,6 +382,12 @@ install_version() {
     # Using find and cpio to handle potentially missing files/dirs gracefully
     (cd "$source_dir" && find . -name "settings.json" -prune -o -print | cpio -pdm "$CLAUDE_DIR")
 
+    # Copy assets directory from root if it exists
+    if [[ -d "$SCRIPT_DIR/assets" ]]; then
+        print_info "Copying assets..."
+        cp -r "$SCRIPT_DIR/assets" "$CLAUDE_DIR/"
+    fi
+
     # Generate settings.json from template
     generate_settings_json "$version"
     
