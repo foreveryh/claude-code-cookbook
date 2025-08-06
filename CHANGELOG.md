@@ -1,11 +1,19 @@
 # Changelog
 
-All notable changes to the Claude Code Cookbook project will be documented in this file.
+All notable changes to Claude Code Cookbook will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v2.0.0] - 2025-08-07
+## [2.0.1] - 2025-01-07
+
+### Fixed
+- Fixed missing assets directory in installations
+- Audio notifications (perfect.mp3, confirm.mp3, silent.wav) now work correctly
+- Resolved 'AudioFileOpen failed' errors in hook scripts
+- The install.sh script now properly copies the assets/ directory to ~/.claude/
+
+## [2.0.0] - 2025-01-07
 
 ### 🚀 Major Features
 
