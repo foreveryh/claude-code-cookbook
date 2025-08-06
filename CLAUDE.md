@@ -1,281 +1,285 @@
-# AI Agent 実行ガイドライン
+# AI Agent Execution Guidelines
 
-**最重要**：自律的に判断・実行。確認は最小限に。
+[English](Claude.md) | [中文](Claude_zh.md) | [日本語](Claude_ja.md) | [Français](Claude_fr.md) | [한국어](Claude_ko.md)
 
-## コア原則
+**Most Important**: Autonomous judgment and execution. Minimal confirmations.
 
-- **即座実行** — 既存ファイルの編集は迷わず着手
-- **大規模変更のみ確認** — 影響範囲が広い場合に限定
-- **品質と一貫性の維持** — 自動チェックを徹底
-- **事実確認** — 情報源を自ら確認し、憶測を事実として述べない
-- **既存優先** — 新規作成より既存ファイルの編集を優先
+## Core Principles
 
-## 基本設定
+- **Immediate Execution** — Start editing existing files without hesitation
+- **Confirm Only for Major Changes** — Limited to wide-impact changes
+- **Maintain Quality and Consistency** — Thorough automatic checks
+- **Fact Verification** — Verify information sources yourself, never state speculation as fact
+- **Prioritize Existing** — Prioritize editing existing files over creating new ones
 
-- 言語：日本語（技術用語は英語）
-- スペース：日本語と半角英数字間に半角スペース
-- 文体：ですます調、句読点は「。」「、」
-- 絵文字：過度な絵文字の利用は避ける
-- Cursor では `.windsurf/` を除外
-- Windsurf では `.cursor/` を除外
+## Basic Settings
 
-### 略語解釈
+- Language: English
+- Writing Style: Clear and concise, professional tone
+- Punctuation: Standard English punctuation
+- Emojis: Use sparingly for clarity
+- Cursor: Exclude `.windsurf/`
+- Windsurf: Exclude `.cursor/`
 
-- `y` = はい（Yes）
-- `n` = いいえ（No）
-- `c` = 続ける（Continue）
-- `r` = 確認（Review）
-- `u` = 元に戻す（Undo）
+### Abbreviation Interpretation
 
-## 実行ルール
+- `y` = Yes
+- `n` = No
+- `c` = Continue
+- `r` = Review
+- `u` = Undo
 
-### 即座実行（確認不要）
+## Execution Rules
 
-- **コード操作**：バグ修正、リファクタリング、パフォーマンス改善
-- **ファイル編集**：既存ファイルの修正・更新
-- **ドキュメント**：README、仕様書の更新（新規作成は要求時のみ）
-- **依存関係**：パッケージ追加・更新・削除
-- **テスト**：単体・統合テストの実装（TDD サイクルに従う）
-- **設定**：設定値変更、フォーマット適用
+### Immediate Execution (No Confirmation Required)
 
-### 確認必須
+- **Code Operations**: Bug fixes, refactoring, performance improvements
+- **File Editing**: Modifying and updating existing files
+- **Documentation**: Updating README, specifications (create new only when requested)
+- **Dependencies**: Adding, updating, removing packages
+- **Testing**: Implementing unit and integration tests (following TDD cycle)
+- **Configuration**: Changing settings, applying formatting
 
-- **新規ファイル作成**：必要性を説明して確認
-- **ファイル削除**：重要ファイルの削除
-- **構造変更**：アーキテクチャ、フォルダ構造の大規模変更
-- **外部連携**：新 API、外部ライブラリ導入
-- **セキュリティ**：認証・認可機能の実装
-- **データベース**：スキーマ変更、マイグレーション
-- **本番環境**：デプロイ設定、環境変数変更
+### Confirmation Required
 
-## 実行フロー
+- **New File Creation**: Explain necessity and confirm
+- **File Deletion**: Deleting important files
+- **Structural Changes**: Major changes to architecture or folder structure
+- **External Integration**: New APIs, external library introduction
+- **Security**: Implementing authentication/authorization features
+- **Database**: Schema changes, migrations
+- **Production Environment**: Deployment settings, environment variable changes
+
+## Execution Flow
 
 ```text
-1. タスク受信
+1. Task Received
    ↓
-2. 即座実行 or 確認要求を判定
+2. Determine Immediate Execution or Confirmation Required
    ↓
-3. 実行（既存パターン準拠）
+3. Execute (Following Existing Patterns)
    ↓
-4. 完了報告
+4. Completion Report
 ```
 
-## 作業完了報告のルール
+## Work Completion Reporting Rules
 
-### 完了報告の種類
+### Types of Completion Reports
 
-#### 1. 完全完了時の合い言葉
+#### 1. Complete Completion Catchphrase
 
-作業が完全に完了し、これ以上継続するタスクがない場合は一語一句違えずに以下を報告する：
+When work is completely finished with no further continuable tasks, report exactly as follows:
 
 ```text
 May the Force be with you.
 ```
 
-**使用条件（すべて満たす必要あり）**：
+**Usage Conditions (all must be met)**:
 
-- ✅ 全てのタスクが 100% 完了
-- ✅ TODO 項目が全て完了（TodoWrite ツールで管理している TODO リストが空であること）
-- ✅ エラーがゼロ
-- ✅ これ以上新しい指示がない限り続けられるタスクがない
+- ✅ All tasks 100% complete
+- ✅ All TODO items completed (TODO list managed by TodoWrite tool is empty)
+- ✅ Zero errors
+- ✅ No continuable tasks without new instructions
 
-**禁止事項**：
+**Prohibited**:
 
-- ❌ TODO リストに未完了タスクがある場合
-- ❌ 「次のステップ」「残っているタスク」「現在残っている主なタスクは：」など継続予定の記述をした場合
-- ❌ Phase や Step など段階的な作業で未完了の段階が残っている場合
-- ❌ 自分の回答に具体的な残作業リストを明記した場合
+- ❌ When TODO list has incomplete tasks
+- ❌ When mentioning "next steps", "remaining tasks", "main remaining tasks are:" etc.
+- ❌ When phases or steps in staged work remain incomplete
+- ❌ When specific remaining work list is explicitly stated in your response
 
-#### 2. 部分完了時の報告
+#### 2. Partial Completion Report
 
-作業が部分的に完了し、続きのタスクがある場合は以下のテンプレートを使用：
+When work is partially complete with remaining tasks, use the following template:
 
 ```markdown
-## 実行完了
+## Execution Complete
 
-### 変更内容
+### Changes Made
 
-- [具体的な変更点]
+- [Specific changes made]
 
-### 次のステップ
+### Next Steps
 
-- [推奨される次の作業]
+- [Recommended next actions]
 ```
 
-### 継続必要時の動作
+### Behavior When Continuation Required
 
-合い言葉の条件を満たさない場合：
+When catchphrase conditions are not met:
 
-- 合い言葉は使用しない
-- 進捗状況と次のアクションを明示
-- 残タスクがある場合は明確に伝える
+- Do not use the catchphrase
+- Clearly state progress and next actions
+- Clearly communicate if tasks remain
 
-## 開発手法
+## Development Methodology
 
-### TDD サイクル
+### TDD Cycle
 
-開発時は Test-Driven Development (TDD) のサイクルに従います：
+Follow Test-Driven Development (TDD) cycle during development:
 
-1. **Red（失敗）**
+1. **Red (Failure)**
 
-   - 最もシンプルな失敗するテストを書く
-   - テスト名は動作を明確に記述
-   - 失敗メッセージが分かりやすいことを確認
+   - Write the simplest failing test
+   - Test name clearly describes behavior
+   - Ensure failure message is understandable
 
-2. **Green（成功）**
+2. **Green (Success)**
 
-   - テストを通す最小限のコードを実装
-   - この段階では最適化や美しさは考慮しない
-   - とにかくテストを通すことに集中
+   - Implement minimal code to pass test
+   - Don't consider optimization or beauty at this stage
+   - Focus solely on passing the test
 
-3. **Refactor（改善）**
-   - テストが通った後でのみリファクタリング
-   - 重複を排除し、意図を明確に
-   - 各リファクタリング後にテスト実行
+3. **Refactor (Improvement)**
 
-### 変更管理
+   - Refactor only after tests pass
+   - Eliminate duplication, clarify intent
+   - Run tests after each refactoring
 
-変更は以下の 2 種類に明確に分離します：
+### Change Management
 
-- **構造変更（Structural Changes）**
+Clearly separate changes into two types:
 
-  - コードの配置・整理・フォーマット
-  - 動作は一切変更しない
-  - 例：メソッドの並び替え、インポート整理、変数名変更
+- **Structural Changes**
 
-- **動作変更（Behavioral Changes）**
-  - 機能の追加・修正・削除
-  - テスト結果が変わる変更
-  - 例：新機能追加、バグ修正、ロジック変更
+  - Code organization, arrangement, formatting
+  - No behavior changes whatsoever
+  - Examples: Method reordering, import organization, variable renaming
 
-**重要**：構造変更と動作変更を同一コミットに含めない
+- **Behavioral Changes**
 
-### コミット規律
+  - Adding, modifying, or removing functionality
+  - Changes that affect test results
+  - Examples: New features, bug fixes, logic changes
 
-コミットは以下の条件をすべて満たした時のみ実行：
+**Important**: Never mix structural and behavioral changes in the same commit
 
-- ✅ すべてのテストがパス
-- ✅ コンパイラ/リンターの警告がゼロ
-- ✅ 単一の論理的作業単位を表現
-- ✅ コミットメッセージが変更内容を明確に説明
+### Commit Discipline
 
-**推奨事項**：
+Execute commits only when all conditions are met:
 
-- 小さく頻繁なコミット
-- 各コミットは独立して意味を持つ
-- 後から履歴を追いやすい粒度
+- ✅ All tests pass
+- ✅ Zero compiler/linter warnings
+- ✅ Represents a single logical unit of work
+- ✅ Commit message clearly explains changes
 
-### リファクタリングルール
+**Recommendations**:
 
-リファクタリング時の厳格なルール：
+- Small, frequent commits
+- Each commit independently meaningful
+- Granularity that makes history easy to follow
 
-1. **前提条件**
+### Refactoring Rules
 
-   - すべてのテストが通っている状態でのみ開始
-   - 動作変更とリファクタリングを混在させない
+Strict rules during refactoring:
 
-2. **実行手順**
+1. **Prerequisites**
 
-   - 確立されたリファクタリングパターンを使用
-   - 一度に一つの変更のみ
-   - 各ステップ後に必ずテスト実行
-   - 失敗したら即座に元に戻す
+   - Start only when all tests pass
+   - Don't mix behavioral changes with refactoring
 
-3. **よく使うパターン**
-   - Extract Method（メソッド抽出）
-   - Rename（名前変更）
-   - Move Method（メソッド移動）
-   - Extract Variable（変数抽出）
+2. **Execution Steps**
 
-### 実装アプローチ
+   - Use established refactoring patterns
+   - One change at a time
+   - Run tests after each step
+   - Immediately revert if tests fail
 
-効率的な実装のための優先順位：
+3. **Common Patterns**
+   - Extract Method
+   - Rename
+   - Move Method
+   - Extract Variable
 
-1. **最初のステップ**
+### Implementation Approach
 
-   - 最もシンプルなケースから着手
-   - 「動くこと」を最優先
-   - 完璧さより進捗を重視
+Priorities for efficient implementation:
 
-2. **コード品質の原則**
+1. **First Steps**
 
-   - 重複を見つけたら即座に排除
-   - 意図が明確なコードを書く
-   - 依存関係を明示的に
-   - メソッドは小さく、単一責任に
+   - Start with simplest case
+   - Prioritize "working" over perfection
+   - Value progress over perfection
 
-3. **段階的な改善**
+2. **Code Quality Principles**
 
-   - まず動くものを作る
-   - テストでカバー
-   - その後で最適化
+   - Eliminate duplication immediately when found
+   - Write code with clear intent
+   - Make dependencies explicit
+   - Keep methods small with single responsibility
 
-4. **エッジケースの扱い**
-   - 基本ケースが動いてから考慮
-   - 各エッジケースに対応するテスト追加
-   - 段階的に堅牢性を向上
+3. **Incremental Improvement**
 
-## 品質保証
+   - First make it work
+   - Cover with tests
+   - Then optimize
 
-### 設計原則
+4. **Edge Case Handling**
+   - Consider after basic case works
+   - Add corresponding test for each edge case
+   - Incrementally improve robustness
 
-- 単一責任の原則を遵守
-- インターフェースによる疎結合
-- 早期リターンで可読性向上
-- 過度な抽象化は避ける
+## Quality Assurance
 
-### 効率性最適化
+### Design Principles
 
-- 重複作業の自動排除
-- バッチ処理の積極活用
-- コンテキストスイッチ最小化
+- Adhere to Single Responsibility Principle
+- Loose coupling through interfaces
+- Improve readability with early returns
+- Avoid excessive abstraction
 
-### 一貫性維持
+### Efficiency Optimization
 
-- 既存コードスタイルの自動継承
-- プロジェクト規約の自動適用
-- 命名規則統一の自動実行
+- Automatic elimination of duplicate work
+- Active use of batch processing
+- Minimize context switching
 
-### 自動品質管理
+### Consistency Maintenance
 
-- 変更前後の動作確認実行
-- エッジケース考慮の実装
-- ドキュメント同期更新
+- Automatic inheritance of existing code style
+- Automatic application of project conventions
+- Automatic execution of naming convention unification
 
-### 冗長性の排除
+### Automatic Quality Management
 
-- 繰り返し処理は必ず関数化
-- 共通エラーハンドリングの統一
-- ユーティリティ関数の積極活用
-- 重複ロジックの即座の抽象化
+- Execute before/after behavior verification
+- Implementation considering edge cases
+- Synchronized documentation updates
 
-### ハードコーディング禁止
+### Redundancy Elimination
 
-- マジックナンバーは定数化
-- URL、パスは設定ファイルへ
-- 環境依存値は環境変数で管理
-- ビジネスロジックと設定値の分離
+- Always functionalize repetitive processing
+- Unify common error handling
+- Active use of utility functions
+- Immediate abstraction of duplicate logic
 
-### エラーハンドリング
+### Hardcoding Prohibition
 
-- 実行不可能時：代替案 3 つ提示
-- 部分実行可能時：可能部分を先行実行、残課題を明示
+- Convert magic numbers to constants
+- Move URLs and paths to configuration files
+- Manage environment-dependent values with environment variables
+- Separate business logic from configuration values
 
-## 実行例
+### Error Handling
 
-- **バグ修正**：`TypeError` 発見 → 即座に型エラー修正
-- **リファクタリング**：重複コード検出 → 共通関数化
-- **DB 変更**：スキーマ更新が必要 → 確認要求「テーブル構造を変更しますか？」
+- When execution impossible: Present 3 alternatives
+- When partially executable: Execute possible parts first, clarify remaining issues
 
-## 継続改善
+## Execution Examples
 
-- 新パターン検出 → 即座に学習・適用
-- フィードバック → 次回実行に自動反映
-- ベストプラクティス → 随時更新
+- **Bug Fix**: `TypeError` discovered → Immediately fix type error
+- **Refactoring**: Duplicate code detected → Create common function
+- **DB Change**: Schema update needed → Request confirmation "Change table structure?"
 
-## 制約事項
+## Continuous Improvement
 
-### Web 検索の制約
+- New pattern detection → Immediately learn and apply
+- Feedback → Automatically reflect in next execution
+- Best practices → Update as needed
 
-- **WebSearch ツールは使用禁止** — 利用することは禁止です
-- **代替手段**：`gemini --prompt "WebSearch: <検索クエリ>` — Gemini 経由の検索
+## Constraints
+
+### Web Search Constraints
+
+- **WebSearch Tool Prohibited** — Usage is forbidden
+- **Alternative**: `gemini --prompt "WebSearch: <search query>` — Search via Gemini
