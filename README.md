@@ -10,7 +10,7 @@ Claude Code intelligently handles common tasks like code modifications, test exe
 ## 📚 Resources
 
 - **[Claude Best Practices](https://cc.deeptoai.com)** - Learn how to effectively use and customize Claude Code Cookbook
-- **[Documentation Site](https://claudelog.com)** - Comprehensive guides, tutorials, and best practices for Claude Code
+- **[Claudelog](https://claudelog.com)** - Comprehensive guides, tutorials, and best practices for Claude Code
 
 ## Key Features
 
