@@ -7,6 +7,11 @@ Claude Code를 더욱 편리하게 사용하기 위한 설정 모음입니다.
 루틴한 작업을 자동화하여 정말 중요한 일에 집중할 수 있게 해줍니다.
 Claude Code는 코드 수정, 테스트 실행, 문서 업데이트와 같은 일반적인 작업을 지능적으로 처리합니다.
 
+## 📚 리소스
+
+- **[Claude Best Practices](https://cc.deeptoai.com)** - Claude Code Cookbook을 효과적으로 사용하고 사용자 정의하는 방법 학습
+- **[Claudelog](https://claudelog.com)** - Claude Code를 위한 포괄적인 가이드, 튜토리얼 및 모범 사례
+
 ## 주요 기능
 
 세 가지 차원을 통해 Claude Code의 동작을 사용자 정의할 수 있습니다:
@@ -165,11 +170,51 @@ flowchart TB
 
 ## 설치 및 사용자 정의
 
-### 설치 단계
+> 💡 **Claude Code가 처음이신가요?** 이러한 도구를 사용, 사용자 정의 및 워크플로우에 적응하는 방법에 대한 자세한 가이드는 [Claude Best Practices](https://cc.deeptoai.com) 웹사이트를 방문하세요.
 
-1. **저장소 클론**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
-2. **클라이언트 구성**: Claude 클라이언트에서 위 디렉토리 경로 지정
-3. **경로 확인**: `settings.json`의 스크립트 경로가 환경과 일치하는지 확인
+### 🚀 v2.0.0의 새로운 기능: 통합 설치 프로그램
+
+**하나의 설치 프로그램으로 모든 언어 지원!** 모든 설치 옵션을 하나의 지능적인 설치 프로그램으로 통합했습니다.
+
+#### 빠른 시작 (권장)
+```bash
+# 저장소 클론
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+
+# 언어 자동 감지로 설치
+./install.sh
+
+# 또는 언어를 명시적으로 지정
+./install.sh --lang en    # English
+./install.sh --lang ko    # 한국어
+```
+
+#### 설치 단계
+
+1. **저장소 클론**: `git clone https://github.com/foreveryh/claude-code-cookbook.git`
+2. **디렉토리로 이동**: `cd claude-code-cookbook`
+3. **설치 프로그램 실행**: `./install.sh` (언어 자동 감지) 또는 `./install.sh --lang <언어>`
+4. **Claude Desktop 구성**: 사용자 정의 지침 경로를 `~/.claude`로 설정
+5. **사용 시작**: 모든 명령과 역할을 이제 사용할 수 있습니다!
+
+#### 레거시 설치 (수동)
+
+수동 설치를 선호하는 경우:
+
+##### 영어 버전
+1. **저장소 클론**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **영어 버전 복사**: `cp -r ~/.claude-temp/versions/en ~/.claude`
+3. **클라이언트 구성**: Claude Desktop에서 `~/.claude` 디렉토리 경로 지정
+4. **경로 확인**: `settings.json`의 스크립트 경로가 환경과 일치하는지 확인
+5. **정리**: `rm -rf ~/.claude-temp`
+
+##### 한국어 버전
+1. **저장소 클론**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **한국어 버전 복사**: `cp -r ~/.claude-temp/versions/ko ~/.claude`
+3. **클라이언트 구성**: Claude Desktop에서 `~/.claude` 디렉토리 경로 지정
+4. **경로 확인**: `settings.json`의 스크립트 경로가 환경과 일치하는지 확인
+5. **정리**: `rm -rf ~/.claude-temp`
 
 ### 사용자 정의
 

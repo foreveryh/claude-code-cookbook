@@ -209,11 +209,15 @@ If you prefer manual installation:
 4. **Verify paths**: Confirm script paths in `settings.json` match your environment
 5. **Clean up**: `rm -rf ~/.claude-temp`
 
-##### Japanese Version
+##### Other Languages
 1. **Clone repository**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
-2. **Copy Japanese version**: `cp -r ~/.claude-temp/versions/ja ~/.claude`
-3. **Configure client**: Specify `~/.claude` directory path in Claude Desktop
-4. **Verify paths**: Confirm script paths in `settings.json` match your environment
+2. **Copy language version**: 
+   - Japanese: `cp -r ~/.claude-temp/versions/ja ~/.claude`
+   - Chinese: `cp -r ~/.claude-temp/versions/zh ~/.claude`
+   - French: `cp -r ~/.claude-temp/versions/fr ~/.claude`
+   - Korean: `cp -r ~/.claude-temp/versions/ko ~/.claude`
+3. **Generate settings.json**: `cd ~/.claude-temp && ./install.sh --lang [language_code]`
+4. **Configure client**: Specify `~/.claude` directory path in Claude Desktop
 5. **Clean up**: `rm -rf ~/.claude-temp`
 
 ### Customization

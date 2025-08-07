@@ -1,0 +1,25 @@
+refactor: Improve settings configuration architecture and add UserPromptSubmit hook
+
+BREAKING CHANGE: settings.json is now git-ignored and should not be edited directly
+
+Changes:
+- Add UserPromptSubmit hook to settings.json.template for prompt enhancement
+- Remove settings.json from git tracking (now in .gitignore)
+- Add settings.json.example as reference documentation
+- Create SETTINGS_README.md to clarify configuration architecture
+- Create comprehensive documentation for hooks system
+
+New Features:
+- UserPromptSubmit hook supports -u (ultrathink), -q (quick), -d (debug) suffixes
+- Hook scripts in .claude/hooks/UserPromptSubmit/
+- Complete test suite for hook functionality
+
+Documentation:
+- docs/ARCHITECTURE.md - explains template → settings generation
+- docs/hooks/UserPromptSubmit.md - hook usage guide
+- SETTINGS_README.md - configuration file guide
+
+Users should now:
+1. Edit settings.json.template for default changes
+2. Run ./install.sh to regenerate settings
+3. Edit ~/.claude/settings.json for local customization

@@ -7,6 +7,11 @@ Claude Code をもっと便利に使うための設定集です。
 細かい確認を省いて自動的に作業を進めてくれるので、本来やりたいことに集中できます。
 コードの修正やテストの実行、ドキュメントの更新など、よくある作業は Claude Code が判断して実行します。
 
+## 📚 リソース
+
+- **[Claude Best Practices](https://cc.deeptoai.com)** - Claude Code Cookbook の効果的な使用方法とカスタマイズ方法を学ぶ
+- **[Claudelog](https://claudelog.com)** - Claude Code の包括的なガイド、チュートリアル、ベストプラクティス
+
 ## 主要機能
 
 3 つの機能で Claude Code の動作をカスタマイズできます。
@@ -165,26 +170,51 @@ flowchart TB
 
 ## 導入とカスタマイズ
 
-### 導入手順
+> 💡 **Claude Code が初めての方へ** 詳細なガイドと使用方法、カスタマイズ方法については [Claude Best Practices](https://cc.deeptoai.com) ウェブサイトをご覧ください。
 
-#### オプション 1：英語版をインストール（デフォルト）
+### 🚀 v2.0.0 の新機能：統一インストーラー
+
+**1 つのインストーラーで、すべての言語に対応！** すべてのインストールオプションを単一の賢いインストーラーに統一しました。
+
+#### クイックスタート（推奨）
+```bash
+# リポジトリをクローン
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+
+# 言語自動検出でインストール
+./install.sh
+
+# または言語を明示的に指定
+./install.sh --lang en    # English
+./install.sh --lang ja    # 日本語
+```
+
+#### インストール手順
+
+1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git`
+2. **ディレクトリに移動**: `cd claude-code-cookbook`
+3. **インストーラーを実行**: `./install.sh` （言語自動検出）または `./install.sh --lang <言語>`
+4. **Claude Desktop を設定**: Custom Instructions パスを `~/.claude` に設定
+5. **使用開始**: すべてのコマンドと役割が利用可能になります！
+
+#### レガシーインストール（手動）
+
+手動インストールをご希望の場合：
+
+##### 英語版
 1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
 2. **英語版をコピー**: `cp -r ~/.claude-temp/versions/en ~/.claude`
-3. **クライアントでパスを設定**: Claude Code クライアントで `~/.claude` ディレクトリパスを指定
-4. **パスの確認**: `settings.json` 内のスクリプトパスが環境と一致しているか確認
-5. **一時ファイルを削除**: `rm -rf ~/.claude-temp`
+3. **クライアントを設定**: Claude Desktop で `~/.claude` ディレクトリパスを指定
+4. **パスを確認**: `settings.json` 内のスクリプトパスが環境と一致することを確認
+5. **クリーンアップ**: `rm -rf ~/.claude-temp`
 
-#### オプション 2：日本語版をインストール
+##### 日本語版
 1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
 2. **日本語版をコピー**: `cp -r ~/.claude-temp/versions/ja ~/.claude`
-3. **クライアントでパスを設定**: Claude Code クライアントで `~/.claude` ディレクトリパスを指定
-4. **パスの確認**: `settings.json` 内のスクリプトパスが環境と一致しているか確認
-5. **一時ファイルを削除**: `rm -rf ~/.claude-temp`
-
-#### オプション 3：オリジナル混合版をインストール
-1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
-2. **クライアントでパスを設定**: Claude Code クライアントで `~/.claude` ディレクトリパスを指定
-3. **パスの確認**: `settings.json` 内のスクリプトパスが環境と一致しているか確認
+3. **クライアントを設定**: Claude Desktop で `~/.claude` ディレクトリパスを指定
+4. **パスを確認**: `settings.json` 内のスクリプトパスが環境と一致することを確認
+5. **クリーンアップ**: `rm -rf ~/.claude-temp`
 
 ### カスタマイズ
 

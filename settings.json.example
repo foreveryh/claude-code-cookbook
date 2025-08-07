@@ -1,0 +1,52 @@
+{
+  "// NOTE": "This is an EXAMPLE file. Do not edit this directly!",
+  "// IMPORTANT": [
+    "1. This file is auto-generated from settings.json.template during installation",
+    "2. To modify default settings, edit settings.json.template",
+    "3. To modify your local settings, edit ~/.claude/settings.json",
+    "4. Run ./install.sh to generate a new settings.json from template"
+  ],
+  
+  "cleanupPeriodDays": 30,
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "600000",
+    "BASH_MAX_TIMEOUT_MS": "600000",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "true",
+    "CLAUDE_LANGUAGE": "en",
+    "SHELL": "/opt/homebrew/bin/zsh"
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Edit(**)",
+      "// ... other permissions"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "// ... other dangerous commands"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      "// Security checks before tool execution"
+    ],
+    "PostToolUse": [
+      "// Formatting and cleanup after tool execution"
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [{
+          "type": "command",
+          "command": "python3 $CLAUDE_PROJECT_DIR/.claude/hooks/UserPromptSubmit/append_ultrathink.py"
+        }]
+      }
+    ],
+    "Notification": [
+      "// User notification hooks"
+    ],
+    "Stop": [
+      "// Task completion hooks"
+    ]
+  }
+}

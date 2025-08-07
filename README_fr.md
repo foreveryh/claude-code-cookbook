@@ -7,6 +7,11 @@ Une collection de configurations pour rendre Claude Code plus pratique à utilis
 En automatisant les opérations routinières, vous pouvez vous concentrer sur ce qui compte vraiment.
 Claude Code gère intelligemment les tâches courantes comme les modifications de code, l'exécution de tests et les mises à jour de documentation.
 
+## 📚 Ressources
+
+- **[Claude Best Practices](https://cc.deeptoai.com)** - Apprenez à utiliser et personnaliser efficacement Claude Code Cookbook
+- **[Claudelog](https://claudelog.com)** - Guides complets, tutoriels et meilleures pratiques pour Claude Code
+
 ## Fonctionnalités Principales
 
 Personnalisez le comportement de Claude Code à travers trois dimensions :
@@ -165,11 +170,51 @@ flowchart TB
 
 ## Installation et Personnalisation
 
-### Étapes d'Installation
+> 💡 **Nouveau avec Claude Code ?** Visitez notre site web [Claude Best Practices](https://cc.deeptoai.com) pour des guides détaillés sur l'utilisation, la personnalisation et l'adaptation de ces outils à votre flux de travail.
 
-1. **Cloner le dépôt** : `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude`
-2. **Configurer le client** : Spécifier le chemin du répertoire ci-dessus dans le client Claude
-3. **Vérifier les chemins** : Confirmer que les chemins des scripts dans `settings.json` correspondent à votre environnement
+### 🚀 Nouveau dans v2.0.0 : Installateur Unifié
+
+**Un seul installateur, toutes les langues !** Nous avons unifié toutes les options d'installation en un seul installateur intelligent.
+
+#### Démarrage Rapide (Recommandé)
+```bash
+# Cloner le dépôt
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+
+# Installation automatique avec détection de langue
+./install.sh
+
+# Ou spécifier la langue explicitement
+./install.sh --lang en    # English
+./install.sh --lang fr    # Français
+```
+
+#### Étapes d'Installation
+
+1. **Cloner le dépôt** : `git clone https://github.com/foreveryh/claude-code-cookbook.git`
+2. **Naviguer vers le répertoire** : `cd claude-code-cookbook`
+3. **Exécuter l'installateur** : `./install.sh` (détecte automatiquement la langue) ou `./install.sh --lang <langue>`
+4. **Configurer Claude Desktop** : Définir le chemin des Instructions Personnalisées vers `~/.claude`
+5. **Commencer à utiliser** : Toutes les commandes et rôles sont maintenant disponibles !
+
+#### Installation Héritée (Manuelle)
+
+Si vous préférez l'installation manuelle :
+
+##### Version Anglaise
+1. **Cloner le dépôt** : `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **Copier la version anglaise** : `cp -r ~/.claude-temp/versions/en ~/.claude`
+3. **Configurer le client** : Spécifier le chemin du répertoire `~/.claude` dans Claude Desktop
+4. **Vérifier les chemins** : Confirmer que les chemins des scripts dans `settings.json` correspondent à votre environnement
+5. **Nettoyer** : `rm -rf ~/.claude-temp`
+
+##### Version Française
+1. **Cloner le dépôt** : `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
+2. **Copier la version française** : `cp -r ~/.claude-temp/versions/fr ~/.claude`
+3. **Configurer le client** : Spécifier le chemin du répertoire `~/.claude` dans Claude Desktop
+4. **Vérifier les chemins** : Confirmer que les chemins des scripts dans `settings.json` correspondent à votre environnement
+5. **Nettoyer** : `rm -rf ~/.claude-temp`
 
 ### Personnalisation
 

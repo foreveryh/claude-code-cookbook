@@ -443,7 +443,7 @@ verify_installation() {
     local checks_passed=true
     
     # Check directory structure
-    local required_dirs=("commands" "agents")
+    local required_dirs=("commands" "agents" "hooks")
     for dir in "${required_dirs[@]}"; do
         if [[ ! -d "$CLAUDE_DIR/$dir" ]]; then
             print_error "Missing directory: $dir"
