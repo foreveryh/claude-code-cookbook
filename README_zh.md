@@ -7,6 +7,11 @@
 通过自动化执行常规操作，让您专注于真正重要的工作。
 Claude Code 会智能判断并执行代码修改、测试运行、文档更新等常见任务。
 
+## 📚 学习资源
+
+- **[Claude 最佳实践](https://cc.deeptoai.com)** - 学习如何高效使用和自定义 Claude Code Cookbook
+- **[文档站点](https://cc.deeptoai.com)** - Claude Code 的全面指南、教程和最佳实践
+
 ## 🎯 中文版特色
 
 - 📝 **完整本地化**: 所有命令、角色和文档均已中文化
@@ -172,6 +177,8 @@ flowchart TB
 ---
 
 ## 安装和自定义
+
+> 💡 **刚接触 Claude Code？** 访问我们的 [Claude 最佳实践](https://cc.deeptoai.com) 网站，了解如何使用、自定义以及将这些工具适配到您的工作流程中。
 
 ### 安装步骤
 

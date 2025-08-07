@@ -26,7 +26,7 @@ If you prefer manual installation:
 Available versions are in the `versions/` directory:
 - `versions/en/` - English version
 - `versions/ja/` - Japanese version (日本語)
-- `versions/zh/` - Chinese version (中文版已发布)
+- `versions/zh/` - Chinese version (中文版) ✅ Complete
 - `versions/fr/` - French version (Français) [Coming soon]
 - `versions/ko/` - Korean version (한국어) [Coming soon]
 
@@ -85,7 +85,7 @@ Use flags for scripted/automated installations:
 ```
 
 ### Available Options
-- `--lang {en,zh}`: Installation language
+- `--lang {en,ja,zh}`: Installation language
 - `--model {ppinfra,gemini}`: AI model backend (default: ppinfra)
 - `--target <path>`: Target directory (default: ~/.claude)
 - `--dry-run`: Preview mode, no changes made
@@ -182,8 +182,8 @@ mv ~/.claude.backup ~/.claude
 |----------|----------|-------|---------|--------|
 | English  | ✅ | ✅ | ✅ | Complete |
 | Japanese | ✅ | ✅ | ✅ | Complete |
-| Chinese  | 🚧 | 🚧 | ✅ | In Progress |
-| French   | 🚧 | 🚧 | ✅ | In Progress |
-| Korean   | 🚧 | 🚧 | ✅ | In Progress |
+| Chinese  | ✅ | ✅ | ✅ | Complete |
+| French   | 🚧 | 🚧 | ⏳ | Planned |
+| Korean   | 🚧 | 🚧 | ⏳ | Planned |
 
 ✅ Complete | 🚧 In Progress | ⏳ Planned

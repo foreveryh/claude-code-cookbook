@@ -234,7 +234,7 @@ ERRORS=0
 # 从现有注释自动判定语言
 # 检测中文字符（平假名、片假名、汉字）则为 ja，否则为 en
 DOC_LANGUAGE="en"  # 默认
-if grep -r '[ぁ-んァ-ヶー一-龠]' --include="*.py" --include="*.js" --include="*.ts" --include="*.dart" --include="*.go" --include="*.rs" . 2>/dev/null | head -n 1; then
+if grep -r '[一-龥]' --include="*.py" --include="*.js" --include="*.ts" --include="*.dart" --include="*.go" --include="*.rs" . 2>/dev/null | head -n 1; then
   DOC_LANGUAGE="ja"
 fi
 

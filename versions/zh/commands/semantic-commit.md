@@ -510,7 +510,7 @@ export default {
    ```bash
    # 分析最近 20 个提交的语言
    git log --oneline -20 --pretty=format:"%s" | \
-   grep -E '^[あ-ん]|[ア-ン]|[一-龯]' | wc -l
+   grep -E '[一-龥]' | wc -l
    # 50% 以上是中文则使用中文模式
    ```
 
@@ -518,17 +518,17 @@ export default {
 
    ```bash
    # 确认 README.md 的语言
-   head -10 README.md | grep -E '^[あ-ん]|[ア-ン]|[一-龯]' | wc -l
+   head -10 README.md | grep -E '[一-龥]' | wc -l
    
    # 确认 package.json 的 description
-   grep -E '"description".*[あ-ん]|[ア-ン]|[一-龯]' package.json
+   grep -E '"description".*[一-龥]' package.json
    ```
 
 4. **变更文件内**的注释·字符串分析
 
    ```bash
    # 确认变更文件的注释语言
-   git diff HEAD | grep -E '^[+-].*//.*[あ-ん]|[ア-ン]|[一-龯]' | wc -l
+   git diff HEAD | grep -E '^[+-].*//.*[一-龥]' | wc -l
    ```
 
 ### 设置文件自动加载

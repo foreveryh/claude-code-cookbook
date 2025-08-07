@@ -7,6 +7,11 @@ A configuration collection to make Claude Code more convenient to use.
 By automating routine operations, you can focus on what really matters.
 Claude Code intelligently handles common tasks like code modifications, test execution, and documentation updates.
 
+## 📚 Resources
+
+- **[Claude Best Practices](https://cc.deeptoai.com)** - Learn how to effectively use and customize Claude Code Cookbook
+- **[Documentation Site](https://cc.deeptoai.com)** - Comprehensive guides, tutorials, and best practices for Claude Code
+
 ## Key Features
 
 Customize Claude Code's behavior through three dimensions:
@@ -164,6 +169,8 @@ flowchart TB
 ---
 
 ## Installation and Customization
+
+> 💡 **New to Claude Code?** Visit our [Claude Best Practices](https://cc.deeptoai.com) website for detailed guides on how to use, customize, and adapt these tools to your workflow.
 
 ### 🚀 New in v2.0.0: Unified Installer
 

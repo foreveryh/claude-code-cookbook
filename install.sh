@@ -167,19 +167,20 @@ detect_language_from_env() {
 
 # Show language selection menu
 show_language_menu() {
-    echo ""
-    print_info "$(msg SELECT_LANG)"
-    echo "1) $(msg ENGLISH)"
-    echo "2) $(msg CHINESE)"
-    echo ""
+    echo "" >&2
+    print_info "$(msg SELECT_LANG)" >&2
+    echo "1) $(msg ENGLISH)" >&2
+    echo "2) $(msg CHINESE)" >&2
+    echo "" >&2
     
     while true; do
-        read -p "$(msg LANG_MENU_PROMPT) " choice
+        printf "%s " "$(msg LANG_MENU_PROMPT)" >&2
+        read choice
         
         case $choice in
             1) echo "en"; return ;;
             2) echo "zh"; return ;;
-            *) print_error "$(msg INVALID_CHOICE)" ;;
+            *) print_error "$(msg INVALID_CHOICE)" >&2 ;;
         esac
     done
 }
@@ -211,10 +212,13 @@ determine_language() {
 
 # Display installation banner
 show_banner() {
+    local title="$(msg BANNER_TITLE)"
+    local version_text="$(msg BANNER_VERSION) $SCRIPT_VERSION"
+    
     echo ""
     echo -e "${CYAN}╔════════════════════════════════════════════════╗${NC}"
-    echo -e "${CYAN}║         $(msg BANNER_TITLE)         ║${NC}"
-    echo -e "${CYAN}║              $(msg BANNER_VERSION) $SCRIPT_VERSION                    ║${NC}"
+    printf "${CYAN}║ %-46s ║${NC}\n" "$title"
+    printf "${CYAN}║ %-46s ║${NC}\n" "$version_text"
     echo -e "${CYAN}╚════════════════════════════════════════════════╝${NC}"
     echo ""
 }
@@ -624,6 +628,11 @@ main() {
     
     # Determine language (may show menu)
     determine_language
+    
+    # Ensure INSTALL_LANG is set before showing banner
+    if [[ -z "$INSTALL_LANG" ]]; then
+        INSTALL_LANG="en"
+    fi
     
     # Show banner with localized messages
     show_banner
