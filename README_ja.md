@@ -147,7 +147,7 @@ flowchart TB
 
     Implementation --> Check["/smart-review<br/>品質チェック"]
     Check --> Commit["/semantic-commit<br/>目的単位でコミット"]
-    Commit --> PR["/pr-create<br/>PR 自動作成"]
+    Commit --> PR["/pr-create-smart<br/>PR 説明ドラフト"]
     PR --> CI["/check-github-ci<br/>CI 状況確認"]
 
     CI --> Status{問題あり？}

@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - COMMAND_TEMPLATE.md now defaults to English version
 - Renamed original Japanese template to COMMAND_TEMPLATE_ja.md
+- Updated README flowcharts to reference `/pr-create-smart` instead of `/pr-create`
+
+### Deprecated
+- `/pr-create` is now formally deprecated. Use `/pr-create-smart` to generate PR description drafts. Perform the actual PR creation via `gh` CLI or your Git hosting UI. The old `/pr-create` remains for compatibility and may be removed in a future release.
 
 ## [2.0.1] - 2025-01-07
 

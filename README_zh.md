@@ -155,7 +155,7 @@ flowchart TB
 
     Implementation --> Check["/smart-review<br/>质量检查"]
     Check --> Commit["/semantic-commit<br/>按目的单位提交"]
-    Commit --> PR["/pr-create<br/>自动创建 PR"]
+    Commit --> PR["/pr-create-smart<br/>PR 描述草稿"]
     PR --> CI["/check-github-ci<br/>CI 状态确认"]
 
     CI --> Status{有问题？}
