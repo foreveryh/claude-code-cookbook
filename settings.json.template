@@ -85,15 +85,20 @@
   "hooks": {
     "PreToolUse": [
       {
+        "matcher": "Bash(git commit*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/check-ai-commit.sh"
+          }
+        ]
+      },
+      {
         "matcher": "Bash",
         "hooks": [
           {
             "type": "command",
             "command": "~/.claude/scripts/deny-check.sh"
-          },
-          {
-            "type": "command",
-            "command": "~/.claude/scripts/check-ai-commit.sh"
           }
         ]
       },
@@ -113,11 +118,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "~/.claude/scripts/ja-space-format.sh"
+            "command": "~/.claude/scripts/auto-comment.sh"
           },
           {
             "type": "command",
-            "command": "~/.claude/scripts/auto-comment.sh"
+            "command": "bash -lc 'if [ \"$CLAUDE_LANGUAGE\" = \"ja\" ]; then ~/.claude/scripts/ja-space-format.sh; fi'"
           }
         ]
       },
@@ -137,7 +142,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"{{NOTIFICATION_WAITING}}\" with title \"Claude Code\"' && afplay -v 0.3 ~/.claude/assets/confirm.mp3"
+            "command": "bash -lc 'nohup sh -c "osascript -e \''display notification \"{{NOTIFICATION_WAITING}}\" with title \"Claude Code\"\'' && afplay -v 0.3 ~/.claude/assets/confirm.mp3" >/dev/null 2>&1 &'"]
           }
         ]
       }
@@ -152,7 +157,7 @@
           },
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"{{NOTIFICATION_COMPLETED}}\" with title \"Claude Code\"' && afplay -v 0.3 ~/.claude/assets/perfect.mp3"
+            "command": "bash -lc 'nohup sh -c "osascript -e \''display notification \"{{NOTIFICATION_COMPLETED}}\" with title \"Claude Code\"\'' && afplay -v 0.3 ~/.claude/assets/perfect.mp3" >/dev/null 2>&1 &'"
           }
         ]
       }

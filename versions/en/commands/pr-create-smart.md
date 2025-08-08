@@ -2,6 +2,19 @@
 
 Draft a high-quality PR description from your commit history and diff, including goals, changes, tests, and links to issues.
 
+### Repository Guard (Recommended)
+
+Before running any git commands, check that you're inside a Git repository. If not, skip PR steps and instruct the user instead of trying to auto-initialize a repo.
+
+```bash
+# Guard: skip when not inside a Git repository
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "Not a Git repository. Skipping PR creation steps."
+  echo "Initialize Git (git init) in the correct project, add a remote, and commit changes before running /pr-create-smart."
+  exit 0
+fi
+```
+
 ### Usage
 
 ```bash

@@ -2,6 +2,19 @@
 
 从提交历史与 diff 自动拟写高质量 PR 描述，包含目标、改动、测试与相关 Issue。
 
+### 仓库守卫（推荐）
+
+在执行任何 git 命令之前，先检查当前是否为 Git 仓库。如果不是，请跳过 PR 流程并提示用户，而不是尝试自动初始化仓库。
+
+```bash
+# 守卫：不在 Git 仓库时直接跳过
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "当前目录不是 Git 仓库，跳过 PR 创建步骤。"
+  echo "请在正确的项目目录执行 git init、添加远程并完成提交后，再运行 /pr-create-smart。"
+  exit 0
+fi
+```
+
 ### Usage
 
 ```bash
