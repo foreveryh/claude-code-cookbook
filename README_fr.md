@@ -44,7 +44,7 @@ Les commandes sont stockées sous forme de fichiers Markdown dans le répertoire
 | `/multi-role` | Combiner plusieurs rôles pour analyser la même cible en parallèle et générer des rapports intégrés. |
 | `/plan` | Activer le mode de planification pré-implémentation pour développer des stratégies d'implémentation détaillées. |
 | `/pr-auto-update` | Mettre à jour automatiquement les descriptions et étiquettes des Pull Requests. |
-| `/pr-create` | Créer automatiquement des PR basées sur l'analyse des changements Git pour un workflow efficace. |
+| `/pr-create-smart` | Générer un brouillon de description PR de haute qualité à partir des changements; compléter votre flux de création de PR. |
 | `/pr-feedback` | Gérer efficacement les commentaires de révision des Pull Requests, résoudre les causes profondes grâce à une approche d'analyse d'erreur en trois phases. |
 | `/pr-issue` | Afficher les Issues ouvertes dans le dépôt actuel avec priorisation. |
 | `/pr-list` | Afficher les PR ouvertes dans le dépôt actuel avec priorisation. |

@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deprecated
 - `/pr-create` is now formally deprecated. Use `/pr-create-smart` to generate PR description drafts. Perform the actual PR creation via `gh` CLI or your Git hosting UI. The old `/pr-create` remains for compatibility and may be removed in a future release.
+  See INSTALL.md and INSTALL_zh.md for migration details and rationale.
 
 ## [2.0.1] - 2025-01-07
 
