@@ -1,6 +1,6 @@
 # AI 에이전트 실행 가이드라인
 
-[English](Claude.md) | [中文](Claude_zh.md) | [日本語](Claude_ja.md) | [Français](Claude_fr.md) | [한국어](Claude_ko.md)
+[English](../en/Claude.md) | [中文](../zh/Claude.md) | [日本語](../ja/Claude.md) | [Français](../fr/Claude.md) | [한국어](Claude.md)
 
 **가장 중요**: 자율적 판단과 실행. 최소한의 확인.
 

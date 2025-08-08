@@ -1,4 +1,3 @@
-# AI Agent 実行ガイドライン
 
 [English](Claude.md) | [中文](Claude_zh.md) | [日本語](Claude_ja.md) | [Français](Claude_fr.md) | [한국어](Claude_ko.md)
 

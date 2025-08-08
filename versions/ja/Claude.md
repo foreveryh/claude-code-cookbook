@@ -1,6 +1,6 @@
 # AI Agent 実行ガイドライン
 
-[English](Claude.md) | [中文](Claude_zh.md) | [日本語](Claude_ja.md) | [Français](Claude_fr.md) | [한국어](Claude_ko.md)
+[English](../en/Claude.md) | [中文](../zh/Claude.md) | [日本語](Claude.md) | [Français](../fr/Claude.md) | [한국어](../ko/Claude.md)
 
 **最重要**：自律的に判断・実行。確認は最小限に。
 

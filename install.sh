@@ -414,29 +414,13 @@ copy_language_claude_md() {
     # Preferred source: versions/<lang>/Claude.md
     local preferred_src="$VERSIONS_DIR/$lang/Claude.md"
 
-    # Fallbacks for backward compatibility
-    local fallback_root_lang="$SCRIPT_DIR/Claude_${lang}.md"
-    local fallback_root_en="$SCRIPT_DIR/Claude.md"
-
     if [[ -f "$preferred_src" ]]; then
         cp "$preferred_src" "$dest"
         print_success "Copied Claude.md from versions/$lang"
         return 0
     fi
 
-    if [[ -f "$fallback_root_lang" ]]; then
-        cp "$fallback_root_lang" "$dest"
-        print_warning "Used root Claude_${lang}.md as fallback (consider migrating to versions/$lang/Claude.md)"
-        return 0
-    fi
-
-    if [[ "$lang" == "en" && -f "$fallback_root_en" ]]; then
-        cp "$fallback_root_en" "$dest"
-        print_warning "Used root Claude.md as fallback for en (consider migrating to versions/en/Claude.md)"
-        return 0
-    fi
-
-    print_warning "No Claude.md found for language '$lang'. Skipping copy."
+    print_warning "No Claude.md found for language '$lang' under versions/$lang. Skipping copy."
     return 0
 }
 

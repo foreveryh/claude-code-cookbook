@@ -1,6 +1,6 @@
 # AI Agent Execution Guidelines
 
-[English](Claude.md) | [中文](Claude_zh.md) | [日本語](Claude_ja.md) | [Français](Claude_fr.md) | [한국어](Claude_ko.md)
+[English](Claude.md) | [中文](../zh/Claude.md) | [日本語](../ja/Claude.md) | [Français](../fr/Claude.md) | [한국어](../ko/Claude.md)
 
 **Most Important**: Autonomous judgment and execution. Minimal confirmations.
 
