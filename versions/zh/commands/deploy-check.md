@@ -14,6 +14,7 @@
 - `--smoke-url <url>` : 部署后的健康/冒烟检查地址（如有）
 - `--migrations` : 包含数据库迁移就绪性检查（dry-run/plan）
 - `--strict` : 更严格门禁（0 漏洞、无 TODO/FIXME、覆盖率阈值等）
+- `--template` : 输出标准 Markdown 检查清单模板（便于 CI 产物或人工审核）
 
 ### Basic Examples
 

@@ -14,6 +14,7 @@
 - `--smoke-url <url>` : デプロイ後のヘルス/スモーク確認エンドポイント（ある場合）
 - `--migrations` : DB マイグレーションの準備状況確認（dry-run/plan）を含める
 - `--strict` : より厳格なゲート（脆弱性 0、TODO/FIXME なし、カバレッジ閾値など）
+- `--template` : 標準的な Markdown チェックリストのテンプレートを出力（CI 産物や手動レビュー用）
 
 ### Basic Examples
 

@@ -14,6 +14,7 @@ A pre-deployment intent to verify that a release candidate is safe and ready for
 - `--smoke-url <url>` : Health/smoke endpoint to verify after deploy (if available)
 - `--migrations` : Include DB migration readiness checks (dry-run/plans)
 - `--strict` : Enforce stricter gates (0 vulnerabilities, no TODO/FIXME, coverage threshold, etc.)
+- `--template` : Output a standard Markdown checklist template for CI artifacts or manual review
 
 ### Basic Examples
 

@@ -11,6 +11,7 @@ Claude Code gère intelligemment les tâches courantes comme les modifications d
 
 - **[Claude Best Practices](https://cc.deeptoai.com)** - Apprenez à utiliser et personnaliser efficacement Claude Code Cookbook
 - **[Claudelog](https://claudelog.com)** - Guides complets, tutoriels et meilleures pratiques pour Claude Code
+- **Guide de Workflow d’Équipe (EN)** : Voir docs/TEAM_WORKFLOW_GUIDE_en.md pour un processus d’équipe de bout en bout
 
 ## Fonctionnalités Principales
 
@@ -144,7 +145,7 @@ flowchart TB
 
     Implementation --> Check["/smart-review<br/>Vérification de Qualité"]
     Check --> Commit["/semantic-commit<br/>Commit par Objectif"]
-    Commit --> PR["/pr-create<br/>Création Auto de PR"]
+    Commit --> PR["/pr-create-smart<br/>Brouillon description PR"]
     PR --> CI["/check-github-ci<br/>Vérification du Statut CI"]
 
     CI --> Status{Problèmes?}
