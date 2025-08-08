@@ -394,6 +394,9 @@ install_version() {
 
     # Generate settings.json from template
     generate_settings_json "$version"
+
+    # Copy language-specific Claude.md into ~/.claude/Claude.md
+    copy_language_claude_md "$version"
     
     # Make scripts executable
     if [[ -d "$CLAUDE_DIR/scripts" ]]; then
@@ -401,6 +404,40 @@ install_version() {
     fi
     
     print_success "Installation completed!"
+}
+
+# Copy the appropriate Claude.md into ~/.claude
+copy_language_claude_md() {
+    local lang="$1"
+    local dest="$CLAUDE_DIR/Claude.md"
+
+    # Preferred source: versions/<lang>/Claude.md
+    local preferred_src="$VERSIONS_DIR/$lang/Claude.md"
+
+    # Fallbacks for backward compatibility
+    local fallback_root_lang="$SCRIPT_DIR/Claude_${lang}.md"
+    local fallback_root_en="$SCRIPT_DIR/Claude.md"
+
+    if [[ -f "$preferred_src" ]]; then
+        cp "$preferred_src" "$dest"
+        print_success "Copied Claude.md from versions/$lang"
+        return 0
+    fi
+
+    if [[ -f "$fallback_root_lang" ]]; then
+        cp "$fallback_root_lang" "$dest"
+        print_warning "Used root Claude_${lang}.md as fallback (consider migrating to versions/$lang/Claude.md)"
+        return 0
+    fi
+
+    if [[ "$lang" == "en" && -f "$fallback_root_en" ]]; then
+        cp "$fallback_root_en" "$dest"
+        print_warning "Used root Claude.md as fallback for en (consider migrating to versions/en/Claude.md)"
+        return 0
+    fi
+
+    print_warning "No Claude.md found for language '$lang'. Skipping copy."
+    return 0
 }
 
 # Configure model backend (PPINFRA by default per user rules)
@@ -499,7 +536,7 @@ $(msg HELP_USAGE):
     $0 [OPTIONS]
 
 $(msg HELP_OPTIONS):
-    --lang {en,ja,zh}        Installation language
+    --lang {en,ja,zh,fr,ko}  Installation language
     --model {ppinfra,gemini} AI model backend (default: ppinfra)
     --target <path>          Target directory (default: $HOME/.claude)
     --dry-run               Preview mode, no changes made
@@ -541,11 +578,11 @@ parse_arguments() {
     while [[ $# -gt 0 ]]; do
         case $1 in
             --lang)
-                if [[ "$2" =~ ^(en|ja|zh)$ ]]; then
+                if [[ "$2" =~ ^(en|ja|zh|fr|ko)$ ]]; then
                     DEFAULT_LANG="$2"
                     shift 2
                 else
-                    print_error "Invalid language: $2. Supported: en, ja, zh"
+                    print_error "Invalid language: $2. Supported: en, ja, zh, fr, ko"
                     exit 1
                 fi
                 ;;
