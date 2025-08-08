@@ -146,6 +146,10 @@ chmod +x ~/.claude/scripts/*.sh
 - Run `./utils/validate.sh` to check version integrity
 - Use `./utils/sync-versions.sh` to sync common files
 
+## Deprecations
+
+- `/pr-create` is deprecated in favor of `/pr-create-smart`. The new command focuses on drafting a high-quality PR description while you continue to create the PR via gh/GUI. The legacy `/pr-create` attempted end-to-end PR automation and is kept only for backward compatibility.
+
 ## Updating
 
 To update to the latest version:

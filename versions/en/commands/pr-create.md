@@ -1,4 +1,6 @@
-## PR Create
+## PR Create (Deprecated)
+
+> Deprecated: Prefer `/pr-create-smart` which focuses on drafting a high-quality PR description. Use your normal tool (gh/GUI) to create the PR. This legacy command attempted to automate PR creation end-to-end (template preservation, label selection, Draft creation). Keep for backward compatibility.
 
 Achieve efficient Pull Request workflow with automatic PR creation based on Git change analysis.
 

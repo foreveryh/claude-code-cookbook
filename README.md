@@ -43,8 +43,11 @@ Commands are stored as Markdown files in the `/commands` directory. Execute them
 | `/multi-role` | Combine multiple roles to analyze the same target in parallel and generate integrated reports. |
 | `/plan` | Activate pre-implementation planning mode to develop detailed implementation strategies. |
 | `/pr-auto-update` | Automatically update Pull Request descriptions and labels. |
-| `/pr-create` | Achieve efficient Pull Request workflow through automatic PR creation based on Git change analysis. |
+|| `/pr-create-smart` | Draft a high-quality PR description from changes; complements your PR creation flow. |
 | `/pr-feedback` | Efficiently handle Pull Request review comments, solve root causes through three-phase error analysis approach. |
+| `/pr-check` | Pre-PR quality and safety checklist. |
+| `/test-e2e-local` | Spin up local E2E validation of critical flows. |
+| `/deploy-check` | Pre-deployment readiness and safety checklist (intent). |
 | `/pr-issue` | Display open Issues in the current repository with prioritization. |
 | `/pr-list` | Display open PRs in the current repository with prioritization. |
 | `/pr-review` | Systematic Pull Request review to ensure code quality and architectural health. |
