@@ -5,8 +5,7 @@
 ### Usage
 
 ```bash
-/deploy-check [--env 
-	<staging|production|custom>] [--smoke-url <url>] [--migrations] [--strict]
+/deploy-check [--env <staging|production|custom>] [--smoke-url <url>] [--migrations] [--strict]
 ```
 
 ### Options
