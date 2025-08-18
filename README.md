@@ -6,6 +6,18 @@ A collection of settings to make Claude Code more useful.
 
 It automatically proceeds with work without unnecessary confirmations, allowing you to focus on what you really want to do. Claude Code judges and executes common tasks like code fixes, test runs, and documentation updates.
 
+## 📚 Documentation
+
+**New to Claude Code Cookbook?** Start with our comprehensive documentation:
+
+👉 **[Complete Documentation](docs/README.md)** - Full documentation index
+
+### Quick Links
+- 🚀 **[Getting Started](docs/01-getting-started.md)** - 5-minute quick start
+- 📦 **[Installation Guide](docs/02-installation-guide.md)** - Complete setup instructions  
+- 🔧 **[Basic Usage](docs/03-basic-usage.md)** - Essential commands and workflows
+- 🛠️ **[Maintenance Tools](docs/05-maintenance-tools.md)** - Automated maintenance system
+
 ## Key Features
 
 You can customize Claude Code's behavior with three features:
