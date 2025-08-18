@@ -1,13 +1,13 @@
 ## Flutter Dependencies Update
 
-Update Flutter project dependencies safely.
+Safely update dependencies in your Flutter project.
 
 ### Usage
 
 ```bash
-# Check dependency status and request to Claude
+# Check dependency status and request Claude's help
 flutter pub deps --style=compact
-"Update the dependencies in pubspec.yaml to the latest versions"
+"Please update the dependencies in pubspec.yaml to their latest versions"
 ```
 
 ### Basic Examples
@@ -17,9 +17,9 @@ flutter pub deps --style=compact
 cat pubspec.yaml
 "Analyze this Flutter project's dependencies and tell me which packages can be updated"
 
-# Check after upgrade
+# Check before upgrading
 flutter pub upgrade --dry-run
-"Check if there are any breaking changes in this upgrade plan"
+"Check if there are any breaking changes in this planned upgrade"
 ```
 
 ### Integration with Claude
@@ -28,38 +28,37 @@ flutter pub upgrade --dry-run
 # Comprehensive dependency update
 cat pubspec.yaml
 "Analyze Flutter dependencies and perform the following:
-1. Investigate the latest version of each package
+1. Research the latest version of each package
 2. Check for breaking changes
-3. Evaluate risk level (safe/caution/danger)
+3. Evaluate risk level (safe, caution, dangerous)
 4. Suggest necessary code changes
 5. Generate updated pubspec.yaml"
 
-# Safe incremental update
+# Safe, gradual update
 flutter pub outdated
-"Avoid major version upgrades and only update packages that can be safely updated"
+"Update only packages that can be safely updated, avoiding major version upgrades"
 
-# Analyze specific package update impact
-"Tell me the impact and necessary changes if I update provider to the latest version"
+# Impact analysis for specific package update
+"Tell me the impact and necessary changes when updating provider to the latest version"
 ```
 
 ### Detailed Examples
 
 ```bash
-# Detailed analysis with Release Notes
+# Detailed analysis including release notes
 cat pubspec.yaml && flutter pub outdated
-"Analyze dependencies and for each package provide:
+"Analyze dependencies and provide the following for each package in table format:
 1. Current → Latest version
-2. Risk evaluation (safe/caution/danger)
+2. Risk evaluation (safe, caution, dangerous)
 3. Main changes (from CHANGELOG)
-4. Required code modifications
-in table format"
+4. Required code fixes"
 
 # Null Safety migration analysis
 cat pubspec.yaml
-"Identify packages that don't support Null Safety and create a migration plan"
+"Identify packages not compatible with Null Safety and create a migration plan"
 ```
 
-### Risk Level Criteria
+### Risk Criteria
 
 ```
 Safe (🟢):
@@ -70,18 +69,18 @@ Safe (🟢):
 Caution (🟡):
 - Minor version upgrade (1.2.3 → 1.3.0)
 - New features added
-- Deprecation warnings present
+- Deprecation warnings
 
-Danger (🔴):
+Dangerous (🔴):
 - Major version upgrade (1.2.3 → 2.0.0)
 - Breaking changes
-- API deletions/changes
+- API removals or modifications
 ```
 
-### Executing Updates
+### Execution of Update
 
 ```bash
-# Create backup
+# Create backups
 cp pubspec.yaml pubspec.yaml.backup
 cp pubspec.lock pubspec.lock.backup
 
@@ -94,9 +93,9 @@ flutter test
 flutter pub deps --style=compact
 ```
 
-### Important Notes
+### Notes
 
-Always test functionality after updates. If problems occur, restore with:
+Always verify functionality after updates. If issues occur, restore with:
 
 ```bash
 cp pubspec.yaml.backup pubspec.yaml

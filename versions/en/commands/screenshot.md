@@ -1,50 +1,50 @@
 ## Screenshot
 
-Analyze and describe screenshot content.
+Capture screenshots on macOS and analyze the images.
 
 ### Usage
 
 ```bash
-/screenshot [Options]
+/screenshot [options]
 ```
 
 ### Options
 
-- None: Window selection (Claude confirms options)
-- `--window`: Capture specific window
-- `--full`: Capture entire screen
-- `--crop`: Capture selected area
+- None: Select window (Claude will confirm options)
+- `--window`: Capture a specific window
+- `--full`: Capture the entire screen
+- `--crop`: Select a region to capture
 
 ### Basic Examples
 
 ```bash
-# Capture and analyze window
+# Capture and analyze a window
 /screenshot --window
 "Analyze the captured screen"
 
-# Analyze selected area
+# Select a region and analyze
 /screenshot --crop
-"Describe the content of the selected area"
+"Explain the content of the selected region"
 
-# Capture and analyze full screen
+# Capture full screen and analyze
 /screenshot --full
 "Analyze the overall screen composition"
 ```
 
-### Claude Integration
+### Collaboration with Claude
 
 ```bash
-# Analyze without specific issue - situation analysis
+# No specific problem - situation analysis
 /screenshot --crop
-(Claude automatically analyzes screen content and describes elements and composition)
+(Claude will automatically analyze screen content, explaining elements and composition)
 
-# UI/UX issue analysis
+# UI/UX problem analysis
 /screenshot --window
-"Identify UI issues and suggest improvements"
+"Propose problems and improvements for this UI"
 
 # Error analysis
 /screenshot --window
-"Explain the cause of this error message and how to solve it"
+"Tell me the cause and solution for this error message"
 
 # Design review
 /screenshot --full
@@ -52,52 +52,52 @@ Analyze and describe screenshot content.
 
 # Code analysis
 /screenshot --crop
-"Point out issues in this code"
+"Point out problems in this code"
 
 # Data visualization analysis
 /screenshot --crop
-"Analyze the trends visible in this graph"
+"Analyze trends visible in this graph"
 ```
 
 ### Detailed Examples
 
 ```bash
-# Analyze from multiple perspectives
+# Analysis from multiple perspectives
 /screenshot --window
-"Analyze this screen for:
+"Analyze this screen regarding:
 1. UI consistency
 2. Accessibility issues
-3. Improvement suggestions"
+3. Improvement proposals"
 
-# Multiple captures for comparison
+# Multiple captures for comparative analysis
 /screenshot --window
 # (Save before image)
 # Make changes
 /screenshot --window
 # (Save after image)
-"Compare before and after images, analyze changes and improvement effects"
+"Compare before and after images, analyzing changes and improvement effects"
 
 # Focus on specific elements
 /screenshot --crop
 "Evaluate whether the selected button design harmonizes with other elements"
 ```
 
-### Prohibited Actions
+### Prohibited Items
 
-- **Do not claim to have "taken a screenshot" when none was taken**
-- **Do not attempt to analyze non-existent image files**
+- **Prohibited to say "captured" when no screenshot was taken**
+- **Prohibited to attempt analysis of non-existent image files**
 - **The `/screenshot` command does not actually capture screenshots**
 
-### Important Notes
+### Notes
 
-- When no options are specified, present the following choices:
+- If no option is specified, please present the following choices:
 
   ```
-  "Which screenshot method?
-  1. Window selection (--window) → screencapture -W
+  "How would you like to capture the screenshot?
+  1. Select window (--window) → screencapture -W
   2. Full screen (--full) → screencapture -x
-  3. Select area (--crop) → screencapture -i"
+  3. Select region (--crop) → screencapture -i"
   ```
 
-- Begin image analysis after user executes the screencapture command
-- Specifying concrete issues or perspectives enables more focused analysis
+- Start image analysis after the user has executed the screencapture command
+- Specifying specific problems or perspectives enables more focused analysis

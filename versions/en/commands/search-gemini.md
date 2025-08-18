@@ -1,12 +1,12 @@
 ## Gemini Web Search
 
-Execute web searches using Gemini CLI to retrieve the latest information.
+Execute web searches via Gemini CLI to obtain the latest information.
 
 ### Usage
 
 ```bash
 # Web search via Gemini CLI (required)
-gemini --prompt "WebSearch: <search query>"
+gemini --prompt "WebSearch: <search_query>"
 ```
 
 ### Basic Examples
@@ -17,7 +17,7 @@ gemini --prompt "WebSearch: React 19 new features"
 gemini --prompt "WebSearch: TypeError Cannot read property of undefined solution"
 ```
 
-### Integration with Claude
+### Collaboration with Claude
 
 ```bash
 # Document search and summarization
@@ -26,8 +26,8 @@ gemini --prompt "WebSearch: Next.js 14 App Router official documentation"
 
 # Error investigation
 cat error.log
-gemini --prompt "WebSearch: [error message] solution"
-"Suggest the most appropriate solution from the search results"
+gemini --prompt "WebSearch: [error_message] solution"
+"Propose the most appropriate solution from the search results"
 
 # Technology comparison
 gemini --prompt "WebSearch: Rust vs Go performance benchmark 2024"
@@ -37,30 +37,30 @@ gemini --prompt "WebSearch: Rust vs Go performance benchmark 2024"
 ### Detailed Examples
 
 ```bash
-# Gathering information from multiple sources
+# Information gathering from multiple sources
 gemini --prompt "WebSearch: GraphQL best practices 2024 multiple sources"
-"Compile information from multiple reliable sources in the search results"
+"Summarize information from multiple reliable sources in the search results"
 
 # Investigating changes over time
 gemini --prompt "WebSearch: JavaScript ES2015 ES2016 ES2017 ES2018 ES2019 ES2020 ES2021 ES2022 ES2023 ES2024 features"
-"Summarize the major changes for each version chronologically"
+"Summarize the main changes in each version in chronological order"
 
-# Domain-specific search
+# Search limited to specific domain
 gemini --prompt "WebSearch: site:github.com Rust WebAssembly projects stars:>1000"
-"List 10 projects sorted by star count"
+"List the top 10 projects by number of stars"
 
 # Latest security information
 gemini --prompt "WebSearch: CVE-2024 Node.js vulnerabilities"
-"Summarize the impacts and countermeasures for the vulnerabilities found"
+"Summarize the impact and countermeasures of found vulnerabilities"
 ```
 
-### Restrictions
+### Prohibited Items
 
-- **Use of Claude's built-in WebSearch tool is prohibited**
+- **Prohibited to use Claude's built-in WebSearch tool**
 - When web search is needed, always use `gemini --prompt "WebSearch: ..."`
 
 ### Important Notes
 
 - **When Gemini CLI is available, always use `gemini --prompt "WebSearch: ..."`**
-- Web search results may not always be up-to-date
-- It's recommended to verify important information with official documentation or reliable sources
+- Web search results are not always the latest
+- It is recommended to verify important information with official documentation or reliable sources

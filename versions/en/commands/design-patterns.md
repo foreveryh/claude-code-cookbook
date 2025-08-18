@@ -1,25 +1,25 @@
 ## Design Patterns
 
-Apply and suggest appropriate design patterns for better code organization and maintainability.
+Suggests design patterns for your code and checks if it follows SOLID principles.
 
 ### Usage
 
 ```bash
-/design-patterns [target] [Options]
+/design-patterns [analysis_target] [options]
 ```
 
 ### Options
 
-- `--suggest` : Suggest applicable patterns (default)
-- `--analyze` : Analyze existing pattern usage
-- `--refactor` : Generate refactoring suggestions
-- `--solid` : Check SOLID principle compliance
-- `--anti-patterns` : Detect anti-patterns
+- `--suggest`: Suggest applicable patterns (default)
+- `--analyze`: Analyze existing pattern usage
+- `--refactor`: Generate refactoring proposals
+- `--solid`: Check compliance with SOLID principles
+- `--anti-patterns`: Detect anti-patterns
 
 ### Basic Examples
 
 ```bash
-# Analyze patterns across entire project
+# Analyze patterns for entire project
 /design-patterns
 
 # Suggest patterns for specific file
@@ -32,55 +32,55 @@ Apply and suggest appropriate design patterns for better code organization and m
 /design-patterns --anti-patterns
 ```
 
-### Analysis Categories
+### Pattern Categories
 
 #### 1. Creational Patterns
 
-- **Factory Pattern**: Abstract object creation
-- **Builder Pattern**: Sequential construction of complex objects
-- **Singleton Pattern**: Ensure instance uniqueness
-- **Prototype Pattern**: Clone-based object creation
+- **Factory Pattern**: Abstracts object creation
+- **Builder Pattern**: Step-by-step construction of complex objects
+- **Singleton Pattern**: Ensures only one instance exists
+- **Prototype Pattern**: Creates object clones
 
 #### 2. Structural Patterns
 
-- **Adapter Pattern**: Interface conversion
-- **Decorator Pattern**: Dynamic feature addition
-- **Facade Pattern**: Simplify complex subsystems
-- **Proxy Pattern**: Control access to objects
+- **Adapter Pattern**: Converts interfaces
+- **Decorator Pattern**: Dynamically adds functionality
+- **Facade Pattern**: Simplifies complex subsystems
+- **Proxy Pattern**: Controls access to objects
 
 #### 3. Behavioral Patterns
 
-- **Observer Pattern**: Event notification implementation
-- **Strategy Pattern**: Algorithm switching
-- **Command Pattern**: Operation encapsulation
-- **Iterator Pattern**: Collection traversal
+- **Observer Pattern**: Implements event notifications
+- **Strategy Pattern**: Switches algorithms
+- **Command Pattern**: Encapsulates operations
+- **Iterator Pattern**: Traverses collections
 
-### SOLID Principles Checklist
-
-```
-S - Single Responsibility Principle
-O - Open/Closed Principle
-L - Liskov Substitution Principle
-I - Interface Segregation Principle
-D - Dependency Inversion Principle
-```
-
-### Output Examples
+### SOLID Principles We Check
 
 ```
-Design Patterns Analysis Report
+S - Single Responsibility (one class, one job)
+O - Open/Closed (open for extension, closed for modification)
+L - Liskov Substitution (subtypes should be replaceable)
+I - Interface Segregation (don't force unused methods)
+D - Dependency Inversion (depend on abstractions, not details)
+```
+
+### Output Example
+
+```
+Design Pattern Analysis Report
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Currently Used Patterns
-├─ Observer Pattern: EventEmitter (12 locations)
-├─ Factory Pattern: UserFactory (3 locations)
-├─ Singleton Pattern: DatabaseConnection (1 location)
-└─ Strategy Pattern: PaymentProcessor (5 locations)
+├─ Observer Pattern: EventEmitter (12 instances)
+├─ Factory Pattern: UserFactory (3 instances)
+├─ Singleton Pattern: DatabaseConnection (1 instance)
+└─ Strategy Pattern: PaymentProcessor (5 instances)
 
 Recommended Patterns
 ├─ [HIGH] Repository Pattern
-│  └─ Target: src/models/*.js
-│  └─ Reason: Separate data access logic
+│  └─ Where: src/models/*.js
+│  └─ Why: Separate data access from business logic
 │  └─ Example:
 │      class UserRepository {
 │        async findById(id) { ... }
@@ -88,45 +88,45 @@ Recommended Patterns
 │      }
 │
 ├─ [MED] Command Pattern
-│  └─ Target: src/api/handlers/*.js
-│  └─ Reason: Unify request processing
+│  └─ Where: src/api/handlers/*.js
+│  └─ Why: Standardize how requests are handled
 │
 └─ [LOW] Decorator Pattern
-   └─ Target: src/middleware/*.js
-   └─ Reason: Improve feature composition
+   └─ Where: src/middleware/*.js
+   └─ Why: Better way to combine features
 
-SOLID Principle Violations
-├─ [S] UserService: Handles both authentication and authorization
-├─ [O] PaymentGateway: Requires modification for new payment methods
-├─ [D] EmailService: Direct dependency on concrete class
-└─ [I] IDataStore: Contains unused methods
+SOLID Violations Found
+├─ [S] UserService: Does too much (auth AND authorization)
+├─ [O] PaymentGateway: Must change code to add payment types
+├─ [D] EmailService: Depends on specific classes, not interfaces
+└─ [I] IDataStore: Has methods nobody uses
 
-Refactoring Suggestions
-1. Split UserService into authentication and authorization
-2. Introduce PaymentStrategy interface
-3. Define EmailService interface
-4. Separate IDataStore by usage
+How to Fix
+1. Split UserService into AuthService and AuthorizationService
+2. Add a PaymentStrategy interface for new payment types
+3. Create an EmailService interface
+4. Break up IDataStore into smaller interfaces
 ```
 
 ### Advanced Usage Examples
 
 ```bash
-# Analyze impact of pattern application
+# See what happens if you use a pattern
 /design-patterns --impact-analysis Repository
 
-# Generate implementation example for specific pattern
+# Get example code for a pattern
 /design-patterns --generate Factory --for src/models/Product.js
 
-# Suggest pattern combinations
+# Find patterns that work well together
 /design-patterns --combine --context "API with caching"
 
-# Evaluate architectural patterns
+# Check your architecture
 /design-patterns --architecture MVC
 ```
 
-### Pattern Application Examples
+### Example: Before and After
 
-#### Before (Problematic Code)
+#### Before (Problem Code)
 
 ```javascript
 class OrderService {
@@ -141,7 +141,7 @@ class OrderService {
 }
 ```
 
-#### After (Strategy Pattern Applied)
+#### After (Applying Strategy Pattern)
 
 ```javascript
 // Strategy interface
@@ -154,7 +154,7 @@ class PaymentStrategy {
 // Concrete strategies
 class CreditCardPayment extends PaymentStrategy {
   process(amount) {
-    /* implementation */
+    /* Implementation */
   }
 }
 
@@ -170,17 +170,17 @@ class OrderService {
 }
 ```
 
-### Anti-Pattern Detection
+### Anti-Patterns We Find
 
-- **God Object**: Classes with too many responsibilities
-- **Spaghetti Code**: Complex intertwined control flow
-- **Copy-Paste Programming**: Excessive code duplication
-- **Magic Numbers**: Hard-coded constants
-- **Callback Hell**: Deeply nested callbacks
+- **God Object**: Classes that do everything
+- **Spaghetti Code**: Tangled mess of control flow
+- **Copy-Paste Programming**: Same code everywhere
+- **Magic Numbers**: Random numbers with no explanation
+- **Callback Hell**: Callbacks inside callbacks inside callbacks
 
 ### Best Practices
 
-1. **Gradual application**: Don't apply too many patterns at once
-2. **Verify necessity**: Patterns are problem-solving tools, not goals
-3. **Team consensus**: Discuss with team before applying patterns
-4. **Documentation**: Record the intent of applied patterns
+1. **Go slow**: Add patterns one at a time
+2. **Need first**: Only use patterns to solve real problems
+3. **Talk it out**: Get team buy-in before big changes
+4. **Write it down**: Document why you chose each pattern

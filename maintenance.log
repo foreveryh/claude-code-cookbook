@@ -1,0 +1,13 @@
+=== Auto Maintenance Started at Mon Aug 18 15:02:07 CEST 2025 ===
+[0;35m[AUTO][0m Starting automatic maintenance...
+[0;36m[STEP][0m Analyzing upstream changes...
+[0;34m[INFO][0m Found 49 new commits from upstream
+[1;33m[WARNING][0m High-risk changes detected (refactor/restructure/breaking)
+[1;33m[WARNING][0m Too many commits (49 > 10) for auto-sync
+[1;33m[WARNING][0m Critical files changed (install.sh or settings template)
+[0;34m[INFO][0m Recent upstream changes:
+[0;34m[INFO][0m   e262f0b docs(i18n): improve navigation with folder icon for locales directory
+[0;34m[INFO][0m   fdee363 docs: add reference to locales directory in language selector
+[0;34m[INFO][0m   26c3482 Update README.md
+[0;34m[INFO][0m   b11c9ac refactor(docs): reorganize CLAUDE.md structure and remove constraints
+[0;34m[INFO][0m   7079111 docs: add reference to locales directory in language selector

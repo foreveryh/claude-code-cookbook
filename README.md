@@ -1,130 +1,121 @@
 # Claude Code Cookbook
 
-[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md) | [Français](README_fr.md) | [한국어](README_ko.md)
+[English](README_en.md) | [中文](README_zh.md) | [한국어](README_ko.md) | [Português](README_pt.md) | [Español](README_es.md) | [日本語](README.md) | [locales/](locales/)
 
-A configuration collection to make Claude Code more convenient to use.
+A collection of settings to make Claude Code more useful.
 
-By automating routine operations, you can focus on what really matters.
-Claude Code intelligently handles common tasks like code modifications, test execution, and documentation updates.
-
-## 📚 Resources
-
-- **[Claude Best Practices](https://cc.deeptoai.com)** - Learn how to effectively use and customize Claude Code Cookbook
-- **[Claudelog](https://claudelog.com)** - Comprehensive guides, tutorials, and best practices for Claude Code
+It automatically proceeds with work without unnecessary confirmations, allowing you to focus on what you really want to do. Claude Code judges and executes common tasks like code fixes, test runs, and documentation updates.
 
 ## Key Features
 
-Customize Claude Code's behavior through three dimensions:
+You can customize Claude Code's behavior with three features:
 
 - **Commands**: Custom commands starting with `/`
-- **Roles**: Expert perspectives for specialized answers
-- **Hooks**: Automatic script execution at specific timings
+- **Roles**: Role settings to answer from an expert's perspective
+- **Hooks**: Automatically execute scripts at specific times
 
 ---
 
 ## Feature List
 
-### Commands (Custom Commands)
+### Commands
 
-Commands are stored as Markdown files in the `/commands` directory. Execute them by typing `/` followed by the filename.
+Stored as Markdown files in the `/commands` directory. Execute by entering the filename after `/`.
 
 | Command | Description |
 | :--- | :--- |
-| `/analyze-dependencies` | Analyze project dependencies, visualize circular dependencies and structural issues. |
+| `/analyze-dependencies` | Analyze project dependencies and visualize circular dependencies and structural issues. |
 | `/analyze-performance` | Analyze application performance issues and propose improvements from a technical debt perspective. |
-| `/check-fact` | Verify information accuracy by referencing the project codebase and documentation. |
+| `/check-fact` | Check the accuracy of given information by referring to the project's codebase and documentation. |
 | `/check-github-ci` | Monitor GitHub Actions CI status and track until completion. |
-| `/check-prompt` | Review current prompt content and provide improvement suggestions. |
-| `/commit-message` | Generate commit messages based on changes. |
-| `/context7` | Use Context7 MCP for context management. |
-| `/design-patterns` | Propose implementations or review code based on design patterns. |
+| `/check-prompt` | Review the current prompt content and suggest improvements. |
+| `/commit-message` | Generate only commit messages based on changes. |
+| `/context7` | Perform context management using Context7 MCP. |
+| `/design-patterns` | Propose and review implementations based on design patterns. |
 | `/explain-code` | Clearly explain the functionality and logic of selected code. |
-| `/fix-error` | Provide code fixes based on error messages. |
-| `/multi-role` | Combine multiple roles to analyze the same target in parallel and generate integrated reports. |
-| `/plan` | Activate pre-implementation planning mode to develop detailed implementation strategies. |
-| `/pr-auto-update` | Automatically update Pull Request descriptions and labels. |
-| `/pr-create-smart` | Draft a high-quality PR description from changes; complements your PR creation flow. Note: actual PR creation is done via `gh` CLI or your hosting UI. |
-| `/pr-feedback` | Efficiently handle Pull Request review comments, solve root causes through three-phase error analysis approach. |
-| `/pr-check` | Pre-PR quality and safety checklist. |
-| `/test-e2e-local` | Spin up local E2E validation of critical flows. |
-| `/deploy-check` | Pre-deployment readiness and safety checklist (intent). |
-| `/pr-issue` | Display open Issues in the current repository with prioritization. |
-| `/pr-list` | Display open PRs in the current repository with prioritization. |
-| `/pr-review` | Systematic Pull Request review to ensure code quality and architectural health. |
-| `/refactor` | Perform safe, incremental code refactoring and evaluate SOLID principle compliance. |
-| `/role-debate` | Have multiple roles debate on specific topics. |
-| `/role-help` | Display list and descriptions of available roles. |
-| `/role` | Switch to a specified role. |
-| `/screenshot` | Capture and analyze screenshots |
+| `/fix-error` | Suggest code fixes based on error messages. |
+| `/multi-role` | Combine multiple roles to analyze the same target in parallel and generate an integrated report. |
+| `/plan` | Activate implementation planning mode before implementation and formulate detailed implementation strategies. |
+| `/pr-auto-update` | Automatically update Pull Request content (description, labels). |
+| `/pr-create` | Enable efficient Pull Request workflows with automatic PR creation based on Git change analysis. |
+| `/pr-feedback` | Efficiently respond to Pull Request review comments and aim for root solutions with a 3-stage error analysis approach. |
+| `/pr-issue` | Display a prioritized list of open Issues in the current repository. |
+| `/pr-list` | Display a prioritized list of open PRs in the current repository. |
+| `/pr-review` | Ensure code quality and architectural soundness through systematic review of Pull Requests. |
+| `/refactor` | Perform safe, step-by-step code refactoring and evaluate adherence to SOLID principles. |
+| `/role-debate` | Have multiple roles debate specific topics. |
+| `/role-help` | Display a list and description of available Roles. |
+| `/role` | Act as the specified role. |
+| `/screenshot` | Capture and analyze screen screenshots |
 | `/search-gemini` | Perform web searches using Gemini. |
-| `/semantic-commit` | Split large changes into meaningful minimal units and commit sequentially with semantic commit messages. |
-| `/sequential-thinking` | Use Sequential Thinking MCP to analyze complex problems step by step and reach conclusions. |
+| `/semantic-commit` | Divide large changes into meaningful minimum units and commit sequentially with semantic commit messages. |
+| `/sequential-thinking` | Use Sequential Thinking MCP to think through complex problems step by step and reach conclusions. |
 | `/show-plan` | Display the current execution plan. |
-| `/smart-review` | Perform advanced code review to improve code quality. |
-| `/spec` | Create detailed specification documents step by step according to Kiro's spec-driven development from requirements. |
-| `/style-ai-writting` | Detect and fix unnatural AI-generated text. |
-| `/task` | Launch a dedicated agent to autonomously execute complex search, research, and analysis tasks. |
-| `/tech-debt` | Analyze project technical debt and create a prioritized improvement plan. |
-| `/ultrathink` | Execute phased, structured thinking processes for complex issues or important decisions. |
-| `/update-dart-doc` | Systematically manage DartDoc comments in Dart files, maintaining high-quality Japanese documentation. |
-| `/update-doc-string` | Uniformly manage and update multi-language documentation strings. |
-| `/update-flutter-deps` | Safely update Flutter project dependencies. |
-| `/update-node-deps` | Safely update Node.js project dependencies. |
-| `/update-rust-deps` | Safely update Rust project dependencies. |
+| `/smart-review` | Perform advanced reviews to improve code quality. |
+| `/spec` | Create detailed specifications step by step from requirements, following Kiro's spec-driven development. |
+| `/style-ai-writing` | Detect and correct unnatural AI-generated text. |
+| `/task` |启动 dedicated agents to autonomously execute complex search, research, and analysis tasks. |
+| `/tech-debt` | Analyze project technical debt and create prioritized improvement plans. |
+| `/ultrathink` | Perform step-by-step structured thinking processes for complex issues and important decisions. |
+| `/update-dart-doc` | Systematically manage DartDoc comments in Dart files and maintain high-quality Japanese documentation. |
+| `/update-doc-string` | Uniquely manage and update documentation strings supporting multiple languages. |
+| `/update-flutter-deps` | Safely update dependencies in Flutter projects. |
+| `/update-node-deps` | Safely update dependencies in Node.js projects. |
+| `/update-rust-deps` | Safely update dependencies in Rust projects. |
 
-### Roles (Role Settings)
+### Roles
 
-Roles are defined in Markdown files in the `agents/roles/` directory. Give Claude expert perspectives for more accurate answers.
+Defined in Markdown files in the `agents/roles/` directory. Give Claude an expert perspective for more accurate answers.
 
-Each role can **run independently as a sub-agent**. Using the `--agent` option allows parallel execution of large-scale analysis or specialized processing without interfering with the main conversation context.
+Each role can also be executed **independently as a sub-agent**. Using the `--agent` option allows parallel execution of large-scale analysis and specialized processing without interfering with the main conversation context.
 
 | Role | Description |
 | :--- | :--- |
-| `/role analyzer` | Act as a systems analysis expert to analyze code and architecture. |
-| `/role architect` | Act as a software architect to provide design reviews and suggestions. |
-| `/role frontend` | Act as a frontend expert to provide UI/UX and performance advice. |
-| `/role mobile` | Act as a mobile app development expert, answering based on iOS/Android best practices. |
-| `/role performance` | Act as a performance optimization expert to suggest speed and memory usage improvements. |
-| `/role qa` | Act as a QA engineer to review from testing plans and quality assurance perspectives. |
-| `/role reviewer` | Act as a code reviewer to evaluate code from readability and maintainability perspectives. |
-| `/role security` | Act as a security expert to identify vulnerabilities and security risks. |
+| `/role analyzer` | Analyze code and architecture as a system analysis expert. |
+| `/role architect` | Review and propose designs as a software architect. |
+| `/role frontend` | Advise on UI/UX and performance as a frontend expert. |
+| `/role mobile` | Answer based on iOS/Android best practices as a mobile app development expert. |
+| `/role performance` | Suggest improvements to speed and memory usage as a performance optimization expert. |
+| `/role qa` | Review from a test planning and quality assurance perspective as a QA engineer. |
+| `/role reviewer` | Evaluate code from readability and maintainability perspectives as a code reviewer. |
+| `/role security` | Point out vulnerabilities and security risks as a security expert. |
 
 #### Sub-agent Execution Examples
 
 ```bash
-# Regular mode (execute in main context)
+# Normal mode (execute in main context)
 /role security
-"Check the security of this project"
+"Security check for this project"
 
 # Sub-agent mode (execute in independent context)
 /role security --agent
-"Perform a security audit of the entire project"
+"Perform a comprehensive security audit of the project"
 
-# Multi-role parallel analysis
+# Parallel analysis with multiple roles
 /multi-role security,performance --agent
-"Comprehensively analyze system security and performance"
+"Comprehensively analyze the system's security and performance"
 ```
 
-### Hooks (Automation Scripts)
+### Hooks
 
-Configure in `settings.json` to automate development workflows.
+Configure in `settings.json` to automate development work.
 
-| Script | Event | Description |
+| Execution Script | Event | Description |
 | :--- | :--- | :--- |
 | `deny-check.sh` | `PreToolUse` | Prevent execution of dangerous commands like `rm -rf /`. |
-| `check-ai-commit.sh` | `PreToolUse` | Error if `git commit` message contains AI signature. |
-| `preserve-file-permissions.sh` | `PreToolUse` / `PostToolUse` | Save original permissions before editing, restore after. Prevents Claude Code from changing permissions. |
+| `check-ai-commit.sh` | `PreToolUse` | Error when commit messages include AI signatures in `git commit`. |
+| `preserve-file-permissions.sh` | `PreToolUse` / `PostToolUse` | Save original permissions before file editing and restore after editing. Prevent Claude Code from changing permissions. |
 | `ja-space-format.sh` | `PostToolUse` | Automatically format spaces between Japanese and alphanumeric characters when saving files. |
-| `auto-comment.sh` | `PostToolUse` | Prompt to add docstrings or API documentation when creating new files or making major edits. |
-| `notify-waiting` | `Notification` | Notify through macOS notification center when Claude is waiting for user confirmation. |
-| `check-continue.sh` | `Stop` | Check for continuable tasks when a task completes. |
-| `(osascript)` | `Stop` | Notify completion through macOS notification center when all tasks complete. |
+| `auto-comment.sh` | `PostToolUse` | Prompt for addition of docstrings and API documentation when creating new files or making major edits. |
+| `notify-waiting` | `Notification` | Notify via macOS Notification Center when Claude is waiting for user confirmation. |
+| `check-continue.sh` | `Stop` | Check for continuable tasks when tasks are completed. |
+| `(osascript)` | `Stop` | Notify completion via macOS Notification Center when all tasks are completed. |
 
 ---
 
 ## Development Flow and Command Usage Guide
 
-### Command Application in Typical Development Flow
+### Example of Command Utilization in General Development Flow
 
 ```mermaid
 flowchart TB
@@ -134,7 +125,7 @@ flowchart TB
     PRList --> TaskType{Type?}
     PRIssue --> TaskType
 
-    TaskType -->|New Feature| Plan["/spec<br/>Requirements & Design"]
+    TaskType -->|New Feature| Plan["/spec<br/>Requirements Definition & Design"]
     TaskType -->|Bug Fix| Fix["/fix-error<br/>Error Analysis"]
     TaskType -->|Refactoring| Refactor["/refactor<br/>Improvement"]
     TaskType -->|Review| Review["/pr-review<br/>Review"]
@@ -147,12 +138,12 @@ flowchart TB
 
     Implementation --> Check["/smart-review<br/>Quality Check"]
     Check --> Commit["/semantic-commit<br/>Commit by Purpose"]
-    Commit --> PR["/pr-create-smart<br/>Draft PR Description"]
+    Commit --> PR["/pr-create<br/>Automatic PR Creation"]
     PR --> CI["/check-github-ci<br/>CI Status Check"]
 
-    CI --> Status{Issues?}
-    Status -->|Yes| Feedback["Fix Handling<br/>/pr-feedback<br/>/fix-error"]
-    Status -->|No| End([Complete])
+    CI --> Status{Any Issues?}
+    Status -->|Yes| Feedback["Fix Response<br/>/pr-feedback<br/>/fix-error"]
+    Status -->|No| End([Completion])
 
     Feedback --> Implementation
 
@@ -171,60 +162,26 @@ flowchart TB
 
 ---
 
-## Installation and Customization
+## Installation
 
-> 💡 **New to Claude Code?** Visit our [Claude Best Practices](https://cc.deeptoai.com) website for detailed guides on how to use, customize, and adapt these tools to your workflow.
-
-### 🚀 New in v2.0.0: Unified Installer
-
-**One installer, all languages!** We've unified all installation options into a single, intelligent installer.
-
-#### Quick Start (Recommended)
 ```bash
 # Clone repository
-git clone https://github.com/foreveryh/claude-code-cookbook.git
+git clone https://github.com/wasabeef/claude-code-cookbook.git
 cd claude-code-cookbook
 
-# Auto-install with language detection
-./install.sh
-
-# Or specify language explicitly
-./install.sh --lang en    # English
-./install.sh --lang zh    # Chinese
+# Install with language specification
+./scripts/install.sh en    # English
+./scripts/install.sh ja    # Japanese (default)
+./scripts/install.sh ko    # Korean
+./scripts/install.sh pt    # Portuguese
+./scripts/install.sh zh    # Chinese
+./scripts/install.sh es    # Spanish
 ```
 
-#### Installation Steps
-
-1. **Clone repository**: `git clone https://github.com/foreveryh/claude-code-cookbook.git`
-2. **Navigate to directory**: `cd claude-code-cookbook`
-3. **Run installer**: `./install.sh` (auto-detects language) or `./install.sh --lang <language>`
-4. **Configure Claude Desktop**: Set Custom Instructions path to `~/.claude`
-5. **Start using**: All commands and roles are now available!
-
-#### Legacy Installation (Manual)
-
-If you prefer manual installation:
-
-##### English Version
-1. **Clone repository**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
-2. **Copy English version**: `cp -r ~/.claude-temp/versions/en ~/.claude`
-3. **Configure client**: Specify `~/.claude` directory path in Claude Desktop
-4. **Verify paths**: Confirm script paths in `settings.json` match your environment
-5. **Clean up**: `rm -rf ~/.claude-temp`
-
-##### Other Languages
-1. **Clone repository**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
-2. **Copy language version**: 
-   - Japanese: `cp -r ~/.claude-temp/versions/ja ~/.claude`
-   - Chinese: `cp -r ~/.claude-temp/versions/zh ~/.claude`
-   - French: `cp -r ~/.claude-temp/versions/fr ~/.claude`
-   - Korean: `cp -r ~/.claude-temp/versions/ko ~/.claude`
-3. **Generate settings.json**: `cd ~/.claude-temp && ./install.sh --lang [language_code]`
-4. **Configure client**: Specify `~/.claude` directory path in Claude Desktop
-5. **Clean up**: `rm -rf ~/.claude-temp`
+Set Custom Instructions path to `~/.claude` in Claude Desktop and you're done.
 
 ### Customization
 
 - **Add commands**: Simply add `.md` files to `commands/`
 - **Add roles**: Simply add `.md` files to `agents/roles/`
-- **Edit hooks**: Modify `settings.json` to change automation processes
+- **Edit hooks**: Edit `settings.json` to change automation processes

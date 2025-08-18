@@ -1,36 +1,36 @@
 ## PR Review
 
-Ensure code quality and architecture health through systematic Pull Request reviews.
+Ensure code quality and architectural soundness through systematic Pull Request reviews.
 
 ### Usage
 
 ```bash
 # Comprehensive PR review
 gh pr view 123 --comments
-"Please systematically review this PR from code quality, security, and architecture perspectives"
+"Systematically review this PR and provide feedback from code quality, security, and architecture perspectives"
 
 # Security-focused review
 gh pr diff 123
-"Please review focusing on security risks and vulnerabilities"
+"Focus on reviewing security risks and vulnerabilities"
 
 # Architecture perspective review
 gh pr checkout 123 && find . -name "*.js" | head -10
-"Please evaluate architecture from layer separation, dependencies, and SOLID principles perspectives"
+"Evaluate the architecture from the perspectives of layer separation, dependencies, and SOLID principles"
 ```
 
 ### Basic Examples
 
 ```bash
-# Numerical code quality evaluation
+# Quantitative code quality assessment
 find . -name "*.js" -exec wc -l {} + | sort -rn | head -5
-"Evaluate code complexity, function size, and duplication to identify improvements"
+"Evaluate code complexity, function size, and duplication, and point out improvements"
 
 # Security vulnerability check
 grep -r "password\|secret\|token" . --include="*.js" | head -10
 "Check for risks of sensitive information leakage, hardcoding, and authentication bypass"
 
 # Architecture violation detection
-grep -r "import.*from.*\\.\\./\\.\\." . --include="*.js"
+grep -r "import.*from.*\.\./\.\." . --include="*.js"
 "Evaluate layer violations, circular dependencies, and coupling issues"
 ```
 
@@ -39,28 +39,28 @@ grep -r "import.*from.*\\.\\./\\.\\." . --include="*.js"
 ```
 🔴 critical.must: Critical issues
 ├─ Security vulnerabilities
-├─ Data integrity issues
+├─ Data integrity problems
 └─ System failure risks
 
-🟡 high.imo: High priority improvements
-├─ Malfunction risks
+🟡 high.imo: High-priority improvements
+├─ Risk of malfunction
 ├─ Performance issues
-└─ Significant maintainability decrease
+└─ Significant decrease in maintainability
 
-🟢 medium.imo: Medium priority improvements
-├─ Readability improvements
-├─ Code structure improvements
-└─ Test quality improvements
+🟢 medium.imo: Medium-priority improvements
+├─ Readability enhancement
+├─ Code structure improvement
+└─ Test quality improvement
 
-🟢 low.nits: Minor suggestions
-├─ Style consistency
+🟢 low.nits: Minor points
+├─ Style unification
 ├─ Typo fixes
 └─ Comment additions
 
-🔵 info.q: Questions/Information
+🔵 info.q: Questions/information
 ├─ Implementation intent confirmation
 ├─ Design decision background
-└─ Best practice sharing
+└─ Best practices sharing
 ```
 
 ### Review Perspectives
@@ -69,13 +69,13 @@ grep -r "import.*from.*\\.\\./\\.\\." . --include="*.js"
 
 - **Logic errors**: Boundary values, null checks, exception handling
 - **Data integrity**: Type safety, validation
-- **Error handling**: Comprehensiveness, appropriate handling
+- **Error handling**: Completeness, appropriate processing
 
 #### 2. Security
 
-- **Authentication/Authorization**: Proper checks, permission management
-- **Input validation**: SQL injection, XSS protection
-- **Sensitive information**: No logging, encryption
+- **Authentication/authorization**: Appropriate checks, permission management
+- **Input validation**: SQL injection, XSS countermeasures
+- **Sensitive information**: Logging restrictions, encryption
 
 #### 3. Performance
 
@@ -86,25 +86,25 @@ grep -r "import.*from.*\\.\\./\\.\\." . --include="*.js"
 #### 4. Architecture
 
 - **Layer separation**: Dependency direction, appropriate separation
-- **Coupling**: Loose coupling, interface utilization
+- **Coupling**: Tight coupling, interface utilization
 - **SOLID principles**: Single responsibility, open-closed, dependency inversion
 
 ### Review Flow
 
 1. **Pre-check**: PR information, change diff, related issues
-2. **Systematic check**: Security → Correctness → Performance → Architecture
-3. **Constructive feedback**: Specific improvement suggestions with code examples
-4. **Follow-up**: Fix verification, CI status, final approval
+2. **Systematic checks**: Security → Correctness → Performance → Architecture
+3. **Constructive feedback**: Specific improvement suggestions and code examples
+4. **Follow-up**: Fix confirmation, CI status, final approval
 
 ### Effective Comment Examples
 
-**Security Issue**
+**Security Issues**
 
 ```markdown
-**critical.must.** Password is stored in plain text
+**critical.must.** Password is stored in plaintext
 
 ```javascript
-// Fix suggestion
+// Proposed fix
 const bcrypt = require('bcrypt');
 const hashedPassword = await bcrypt.hash(password, 12);
 ```
@@ -115,28 +115,28 @@ Hashing is required to prevent security risks.
 
 **Performance Improvement**
 ```markdown
-**high.imo.** N+1 query problem will occur
+**high.imo.** N+1 query problem occurs
 
 ```javascript
 // Improvement: Eager Loading
 const users = await User.findAll({ include: [Post] });
 ```
 
-This significantly reduces the number of queries.
+This can significantly reduce the number of queries.
 
 ```
 
 **Architecture Violation**
 ```markdown
-**high.must.** Layer violation detected
+**high.must.** Layer violation occurred
 
-Domain layer directly depends on infrastructure layer.
-Please introduce interfaces following the dependency inversion principle.
+The domain layer directly depends on the infrastructure layer.
+Please introduce an interface following the dependency inversion principle.
 ```
 
-### Important Notes
+### Notes
 
 - **Constructive tone**: Collaborative rather than aggressive communication
-- **Specific suggestions**: Provide solutions, not just problem identification
-- **Prioritization**: Address in order Critical → High → Medium → Low
-- **Continuous improvement**: Convert review results to knowledge base
+- **Specific suggestions**: Provide solutions along with pointing out problems
+- **Prioritization**: Address in order of Critical → High → Medium → Low
+- **Continuous improvement**: Document review results in a knowledge base

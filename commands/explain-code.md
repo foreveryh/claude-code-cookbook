@@ -1,75 +1,79 @@
 ## Code Explain
 
-コードの動作を詳しく解説します。
+Explains how code works in detail.
 
-### 使い方
+### Usage
 
 ```bash
-# ファイル内容を表示して Claude に依頼
+# Show a file and ask for explanation
 cat <file>
-「このコードの動作を解説して」
+"Explain how this code works"
 ```
 
-### 基本例
+### Basic Examples
 
 ```bash
-# Rust の所有権を理解
+# Understand Rust ownership
 cat main.rs
-「Rust の所有権とライフタイムの観点から解説して」
+"Explain the ownership and lifetimes in this Rust code"
 
-# アルゴリズムの解説
+# Explain an algorithm
 grep -A 50 "quicksort" sort.rs
-「このソートアルゴリズムの仕組みと計算量を解説して」
+"How does this sorting work? What's its time complexity?"
 
-# デザインパターンの説明
+# Explain design patterns
 cat factory.rs
-「使用されているデザインパターンとその利点を説明して」
+"What design pattern is this? What are the benefits?"
 ```
 
-### Claude との連携
+### Collaboration with Claude
 
 ```bash
-# 初心者向け解説
+# Beginner-friendly explanation
 cat complex_function.py
-「このコードを初心者にもわかりやすく 1 行ずつ解説して」
+"Explain this code line by line for someone new to programming"
 
-# パフォーマンス分析
+# Performance check
 cat algorithm.rs
-「このコードのパフォーマンス上の問題点と改善案を提示して」
+"Find performance problems and how to fix them"
 
-# 図解付き説明
+# Visual explanation
 cat state_machine.js
-「このコードの処理の流れを ASCII アートの図解付きで説明して」
+"Show me the flow with ASCII diagrams"
 
-# セキュリティレビュー
+# Security check
 cat auth_handler.go
-「このコードのセキュリティ上の懸念点を指摘して」
+"What security issues do you see?"
 ```
 
-### 詳細例
+### Detailed Examples
 
 ```bash
-# 複雑なロジックの解説
+# Complex logic breakdown
 cat recursive_parser.rs
-「この再帰パーサーの動作を以下の観点で解説して：
-1. 全体的な処理フロー
-2. 各関数の役割と責任
-3. エッジケースの処理
-4. 改善可能な点」
+"Break down this recursive parser:
+1. How does it flow?
+2. What does each function do?
+3. How are edge cases handled?
+4. What could be better?"
 
-# 非同期処理の解説
+# Async code explanation
 cat async_handler.ts
-「この非同期処理について以下を解説して：
-1. Promise チェーンの流れ
-2. エラーハンドリングの仕組み
-3. 並行処理の有無
-4. デッドロックの可能性」
+"Explain this async code:
+1. How do the Promises flow?
+2. How are errors handled?
+3. What runs in parallel?
+4. Could this deadlock?"
 
-# アーキテクチャの説明
+# Architecture overview
 ls -la src/ && cat src/main.rs src/lib.rs
-「このプロジェクトのアーキテクチャとモジュール構成を解説して」
+"Explain how this project is structured"
 ```
 
-### 注意事項
+### What You'll Get
 
-コード解説では、単に動作を説明するだけでなく、なぜそのような実装になっているか、どのような利点があるか、潜在的な問題点は何かといった深い洞察も提供します。
+Not just what the code does, but also:
+
+- Why it's written that way
+- What benefits it provides
+- What problems might come up

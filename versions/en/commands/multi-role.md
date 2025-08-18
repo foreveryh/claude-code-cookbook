@@ -1,6 +1,6 @@
 ## Multi Role
 
-Command to analyze the same target in parallel with multiple roles and generate an integrated report.
+A command that analyzes the same target in parallel with multiple roles and generates an integrated report.
 
 ### Usage
 
@@ -11,34 +11,34 @@ Command to analyze the same target in parallel with multiple roles and generate 
 
 **Important**:
 
-- Place the `--agent` option immediately after the role specification
-- Write messages after `--agent`
+- Place the `--agent` option immediately after specifying roles
+- Write your message after `--agent`
 - Correct example: `/multi-role qa,architect --agent Evaluate the plan`
-- Wrong example: `/multi-role qa,architect Evaluate the plan --agent`
+- Incorrect example: `/multi-role qa,architect Evaluate the plan --agent`
 
 ### Options
 
-- `--agent` or `-a` : Execute each role in parallel as sub-agents (recommended for large-scale analysis)
-  - When using this option, if each role's description contains automatic delegation promotion phrases (like "use PROACTIVELY"), more aggressive automatic delegation will be enabled
+- `--agent` or `-a`: Execute each role as a sub-agent in parallel (recommended for large-scale analysis)
+  - When using this option, if role descriptions include proactive delegation phrases (like "use PROACTIVELY"), more aggressive automatic delegation becomes enabled
 
 ### Basic Examples
 
 ```bash
-# Security and performance dual analysis (normal)
+# Dual analysis of security and performance (normal)
 /multi-role security,performance
 "Evaluate this API endpoint"
 
-# Parallel analysis of large-scale system (sub-agent)
+# Parallel analysis of large-scale system (sub-agents)
 /multi-role security,performance --agent
-"Comprehensively analyze system-wide security and performance"
+"Comprehensively analyze system security and performance"
 
 # Integrated analysis of frontend, mobile, and performance
 /multi-role frontend,mobile,performance
 "Consider optimization proposals for this screen"
 
-# Multi-perspective evaluation of architecture design (sub-agent)
+# Multifaceted evaluation of architecture design (sub-agents)
 /multi-role architect,security,performance --agent
-"Evaluate the microservices design"
+"Evaluate microservices design"
 ```
 
 ### Analysis Process
@@ -47,11 +47,11 @@ Command to analyze the same target in parallel with multiple roles and generate 
 
 Each role independently analyzes the same target
 
-- Execute evaluation from specialized perspectives
-- Judge based on role-specific criteria
+- Perform evaluation from specialized perspective
+- Make judgments based on role-specific criteria
 - Generate independent recommendations
 
-### Phase 2: Integration Analysis
+### Phase 2: Integrated Analysis
 
 Structure and integrate results
 
@@ -63,62 +63,62 @@ Structure and integrate results
 
 Generate final recommendations
 
-- Priority-based action plan
+- Prioritized action plan
 - Explicit trade-offs
-- Implementation roadmap presentation
+- Implementation roadmap
 
 ### Output Format Examples
 
-### For 2-Role Analysis
+### For 2-role Analysis
 
 ```
-Multi-Role Analysis: Security + Performance
+Multi-role Analysis: Security + Performance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Analysis Target: API endpoint /api/users
 
 Security Analysis Results:
-Authentication: JWT validation properly implemented
+Authentication: JWT verification properly implemented
 Authorization: Role-based access control incomplete
-Encryption: API keys logged in plaintext
+Encryption: API keys logged in plain text
 
 Evaluation Score: 65/100
 Importance: High (due to sensitive data access)
 
 Performance Analysis Results:
-Response Time: Average 180ms (target within 200ms)
+Response Time: Average 180ms (within target of 200ms)
 Database Queries: N+1 problem detected
-Cache: Redis cache not implemented
+Caching: Redis cache not implemented
 
 Evaluation Score: 70/100
 Importance: Medium (currently within acceptable range)
 
-Cross-Correlation Analysis:
-Synergy Opportunities:
+Interrelated Analysis:
+Synergistic Opportunities:
 - Consider encryption when implementing Redis cache
-- Improve security + performance by improving log output
+- Improve logging for both security and performance gains
 
 Trade-off Points:
-- Enhanced authorization checks ↔ Impact on response time
+- Authorization check strengthening ↔ Impact on response time
 - Log encryption ↔ Reduced debugging efficiency
 
-Integrated Priority:
-Critical: Fix API key plaintext output
+Integrated Priorities:
+Critical: Fix API key plain text output
 High: Resolve N+1 queries
 Medium: Implement Redis cache + encryption
 Low: Refine authorization control
 
 Implementation Roadmap:
 Week 1: Implement API key masking
-Week 2: Optimize database queries
-Week 3-4: Design and implement cache layer
-Month 2: Gradually strengthen authorization control
+Week 2: Database query optimization
+Weeks 3-4: Cache layer design and implementation
+Month 2: Progressive strengthening of authorization control
 ```
 
-### For 3-Role Analysis
+### For 3-role Analysis
 
 ```
-Multi-Role Analysis: Frontend + Mobile + Performance
+Multi-role Analysis: Frontend + Mobile + Performance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Analysis Target: User Profile Screen
@@ -129,19 +129,19 @@ Accessibility: 85% WCAG 2.1 compliance
 Responsive: Issues with tablet display
 
 Mobile Analysis Results:
-Touch Targets: 44pt minimum ensured
+Touch Targets: 44pt+ ensured
 One-handed Operation: Important buttons placed at top
 Offline Support: Not implemented
 
 Performance Analysis Results:
-Initial Display: LCP 2.1 seconds (good)
+Initial Display: LCP 2.1s (good)
 Image Optimization: WebP not supported
 Lazy Loading: Not implemented
 
 Integrated Recommendations:
 1. Mobile optimization (one-handed operation + offline support)
 2. Image optimization (WebP + lazy loading)
-3. Improve tablet UI
+3. Tablet UI improvements
 
 Priority: Mobile > Performance > Frontend
 Implementation Period: 3-4 weeks
@@ -149,33 +149,33 @@ Implementation Period: 3-4 weeks
 
 ### Effective Combination Patterns
 
-### Security Focus
+### Security-focused
 
 ```bash
 /multi-role security,architect
 "Authentication system design"
 
-/multi-role security,frontend  
+/multi-role security,frontend
 "Login screen security"
 
 /multi-role security,mobile
 "Mobile app data protection"
 ```
 
-### Performance Focus
+### Performance-focused
 
 ```bash
 /multi-role performance,architect
 "Scalability design"
 
 /multi-role performance,frontend
-"Web page optimization"
+"Web page speed optimization"
 
 /multi-role performance,mobile
 "App performance optimization"
 ```
 
-### User Experience Focus
+### User Experience-focused
 
 ```bash
 /multi-role frontend,mobile
@@ -192,7 +192,7 @@ Implementation Period: 3-4 weeks
 
 ```bash
 /multi-role architect,security,performance
-"System-wide evaluation"
+"Overall system evaluation"
 
 /multi-role frontend,mobile,performance
 "Comprehensive user experience evaluation"
@@ -201,18 +201,18 @@ Implementation Period: 3-4 weeks
 "Comprehensive mobile app diagnosis"
 ```
 
-### Integration with Claude
+### Collaboration with Claude
 
 ```bash
-# Combined with file analysis
+# Combine with file analysis
 cat src/components/UserProfile.tsx
 /multi-role frontend,mobile
 "Evaluate this component from multiple perspectives"
 
-# Design document evaluation
+# Evaluate design documents
 cat architecture-design.md
 /multi-role architect,security,performance
-"Evaluate this design from multiple specialties"
+"Evaluate this design across multiple specialties"
 
 # Error analysis
 cat performance-issues.log
@@ -220,29 +220,29 @@ cat performance-issues.log
 "Analyze performance issues from multiple angles"
 ```
 
-### When to Use multi-role vs role-debate
+### Choosing between multi-role and role-debate
 
-### When to Use multi-role
+### When to use multi-role
 
-- Want independent evaluation from each specialty
-- Want to create an integrated improvement plan
-- Want to organize contradictions and overlaps
-- Want to determine implementation priorities
+- You want independent evaluations from each specialty
+- You want to create an integrated improvement plan
+- You want to organize contradictions and overlaps
+- You want to determine implementation priorities
 
-### When to Use role-debate
+### When to use role-debate
 
 - There are trade-offs between specialties
 - Opinions might differ on technology selection
-- Want to decide design policy through discussion
-- Want to hear discussions from different perspectives
+- You want to decide design policies through discussion
+- You want to hear debates from different perspectives
 
-### Sub-Agent Parallel Execution (--agent)
+### Sub-agent Parallel Execution (--agent)
 
-When using the `--agent` option, each role is executed in parallel as an independent sub-agent.
+Using the `--agent` option executes each role as an independent sub-agent in parallel.
 
-#### Promotion of Automatic Delegation
+#### Promoting Automatic Delegation
 
-When the role file's description field contains phrases like the following, more aggressive automatic delegation is enabled when using `--agent`:
+If role file descriptions include phrases like these, more proactive automatic delegation is enabled when using `--agent`:
 
 - "use PROACTIVELY"
 - "MUST BE USED"
@@ -251,15 +251,15 @@ When the role file's description field contains phrases like the following, more
 #### Execution Flow
 
 ```
-Normal Execution:
+Normal execution:
 Role 1 → Role 2 → Role 3 → Integration
-(Sequential execution, about 3-5 minutes)
+(Sequential execution, approx. 3-5 minutes)
 
---agent Execution:
+--agent execution:
 Role 1 ─┐
 Role 2 ─┼→ Integration
 Role 3 ─┘
-(Parallel execution, about 1-2 minutes)
+(Parallel execution, approx. 1-2 minutes)
 ```
 
 #### Effective Usage Examples
@@ -271,21 +271,21 @@ Role 3 ─┘
 
 # Detailed analysis from multiple perspectives
 /multi-role frontend,mobile,performance --agent
-"UX optimization analysis for all screens"
+"Full screen UX optimization analysis"
 ```
 
 #### Performance Comparison
 
 | Number of Roles | Normal Execution | --agent Execution | Reduction Rate |
-|-----------------|------------------|-------------------|----------------|
-| 2 Roles | 2-3 min | 1 min | 50% |
-| 3 Roles | 3-5 min | 1-2 min | 60% |
-| 4 Roles | 5-8 min | 2-3 min | 65% |
+|----------------|-----------------|------------------|---------------|
+| 2 roles        | 2-3 minutes     | 1 minute         | 50%           |
+| 3 roles        | 3-5 minutes     | 1-2 minutes      | 60%           |
+| 4 roles        | 5-8 minutes     | 2-3 minutes      | 65%           |
 
-### Important Notes
+### Notes
 
-- Output becomes longer when executing 3 or more roles simultaneously
-- More complex analysis may take longer execution time
-- If contradictory recommendations appear, consider role-debate as well
-- Final decisions should be made by users referring to integrated results
-- **When using --agent**: Uses more resources but is efficient for large-scale analysis
+- Executing 3 or more roles simultaneously results in longer output
+- Complex analyses may take longer to execute
+- If conflicting recommendations arise, consider using role-debate
+- Final judgments should be made by the user with reference to integrated results
+- **When using --agent**: Consumes more resources but is efficient for large-scale analyses

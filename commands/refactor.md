@@ -1,50 +1,50 @@
 ## Refactor
 
-安全で段階的なコードリファクタリングを実施し、SOLID 原則の遵守状況を評価します。
+Cleans up code safely step-by-step and checks SOLID principles.
 
-### 使い方
+### Usage
 
 ```bash
-# 複雑なコードの特定とリファクタリング計画
+# Find complex code to refactor
 find . -name "*.js" -exec wc -l {} + | sort -rn | head -10
-「大きなファイルをリファクタリングして複雑度を削減してください」
+"Make these big files simpler"
 
-# 重複コードの検出と統合
+# Find duplicate code
 grep -r "function processUser" . --include="*.js"
-「重複した関数を Extract Method で共通化してください」
+"Combine these duplicate functions"
 
-# SOLID 原則違反の検出
+# Check SOLID principles
 grep -r "class.*Service" . --include="*.js" | head -10
-「これらのクラスが単一責任の原則に従っているか評価してください」
+"Do these classes have just one job?"
 ```
 
-### 基本例
+### Basic Examples
 
 ```bash
-# 長いメソッドの検出
+# Find long methods
 grep -A 50 "function" src/*.js | grep -B 50 -A 50 "return" | wc -l
-"50 行以上のメソッドを Extract Method で分割してください"
+"Break up methods over 50 lines"
 
-# 条件分岐の複雑度
+# Find complex conditions
 grep -r "if.*if.*if" . --include="*.js"
-"ネストした条件文を Strategy パターンで改善してください"
+"Simplify these nested ifs"
 
-# コードの臭いの検出
+# Find code smells
 grep -r "TODO\|FIXME\|HACK" . --exclude-dir=node_modules
-"技術的負債となっているコメントを解決してください"
+"Fix these TODO comments"
 ```
 
-### リファクタリング技法
+### Refactoring Techniques
 
-#### Extract Method（メソッド抽出）
+#### Extract Method (Split Big Functions)
 
 ```javascript
-// Before: 長大なメソッド
+// Before: Long method
 function processOrder(order) {
-  // 50 行の複雑な処理
+  // 50 lines of complex processing
 }
 
-// After: 責任分離
+// After: Separation of responsibilities
 function processOrder(order) {
   validateOrder(order);
   calculateTotal(order);
@@ -52,96 +52,96 @@ function processOrder(order) {
 }
 ```
 
-#### Replace Conditional with Polymorphism
+#### Replace Conditional with Polymorphism (Remove Switch/If Chains)
 
 ```javascript
-// Before: switch 文
+// Before: switch statement
 function getPrice(user) {
   switch (user.type) {
-    case 'premium': return basPrice * 0.8;
+    case 'premium': return basePrice * 0.8;
     case 'regular': return basePrice;
   }
 }
 
-// After: Strategy パターン
+// After: Strategy pattern
 class PremiumPricing {
   calculate(basePrice) { return basePrice * 0.8; }
 }
 ```
 
-### SOLID 原則チェック
+### SOLID Principles We Check
 
 ```
 S - Single Responsibility
-├─ 各クラスが単一の責任を持つ
-├─ 変更理由が 1 つに限定される
-└─ 責任の境界が明確
+├─ One class = one job
+├─ Only one reason to change
+└─ Clear boundaries
 
 O - Open/Closed
-├─ 拡張に対して開かれている
-├─ 修正に対して閉じている
-└─ 新機能追加時の既存コード保護
+├─ Easy to extend
+├─ Don't modify existing code
+└─ Add features without breaking things
 
 L - Liskov Substitution
-├─ 派生クラスの置換可能性
-├─ 契約の遵守
-└─ 期待される動作の維持
+├─ Child classes can replace parents
+├─ Keep the same behavior
+└─ Don't break expectations
 
 I - Interface Segregation
-├─ 適切な粒度のインターフェース
-├─ 使用しないメソッドへの依存回避
-└─ 役割別インターフェース定義
+├─ Small, focused interfaces
+├─ No unused methods
+└─ Each interface for a specific role
 
 D - Dependency Inversion
-├─ 抽象への依存
-├─ 具象実装からの分離
-└─ 依存性注入の活用
+├─ Depend on interfaces, not classes
+├─ Keep implementations separate
+└─ Use dependency injection
 ```
 
-### リファクタリング手順
+### How to Refactor Safely
 
-1. **現状分析**
-   - 複雑度測定（循環的複雑度）
-   - 重複コード検出
-   - 依存関係の分析
+1. **Check the current state**
+   - Measure complexity
+   - Find duplicate code
+   - Map dependencies
 
-2. **段階的実行**
-   - 小さなステップ（15-30 分単位）
-   - 各変更後のテスト実行
-   - 頻繁なコミット
+2. **Make small changes**
+   - 15-30 minute chunks
+   - Test after each change
+   - Commit often
 
-3. **品質確認**
-   - テストカバレッジ維持
-   - パフォーマンス測定
-   - コードレビュー
+3. **Verify quality**
+   - Keep tests passing
+   - Check performance
+   - Get code reviewed
 
-### よくあるコードの臭い
+### Code Smells to Fix
 
-- **God Object**: 過度に多くの責務を持つクラス
-- **Long Method**: 50 行を超える長いメソッド
-- **Duplicate Code**: 同じロジックの重複
-- **Large Class**: 300 行を超える大きなクラス
-- **Long Parameter List**: 4 個以上のパラメータ
+- **God Object**: Classes that do everything
+- **Long Method**: Functions over 50 lines
+- **Duplicate Code**: Same logic in multiple places
+- **Large Class**: Classes over 300 lines
+- **Long Parameter List**: More than 3 parameters
 
-### 自動化支援
+### Automation Support
 
 ```bash
-# 静的解析
+# Static analysis
 npx complexity-report src/
 sonar-scanner
 
-# コードフォーマット
+# Code formatting
 npm run lint:fix
 prettier --write src/
 
-# テスト実行
+# Test execution
 npm test
 npm run test:coverage
 ```
 
-### 注意事項
+### Important Rules
 
-- **機能変更の禁止**: 外部動作を変えない
-- **テストファースト**: リファクタリング前にテスト追加
-- **段階的アプローチ**: 一度に大きな変更をしない
-- **継続的検証**: 各ステップでのテスト実行
+- **Don't break things**: Keep the same behavior
+- **Test first**: Write tests before changing code
+- **Small steps**: No huge changes all at once
+- **Test often**: Run tests after every change

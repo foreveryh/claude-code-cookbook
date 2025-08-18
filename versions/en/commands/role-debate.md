@@ -1,91 +1,91 @@
 ## Role Debate
 
-Command for roles with different expertise to debate, consider trade-offs, and derive optimal solutions.
+A command that allows roles with different expertise to discuss and examine trade-offs to derive optimal solutions.
 
 ### Usage
 
 ```bash
-/role-debate <role1>,<role2> [topic]
-/role-debate <role1>,<role2>,<role3> [topic]
+/role-debate <Role 1>,<Role 2> [Topic]
+/role-debate <Role 1>,<Role 2>,<Role 3> [Topic]
 ```
 
 ### Basic Examples
 
 ```bash
-# Security vs Performance trade-offs
+# Security vs Performance trade-off
 /role-debate security,performance
-"About JWT token expiration settings"
+"JWT Token Expiry Setting"
 
 # Usability vs Security balance
 /role-debate frontend,security
-"About 2FA UX optimization"
+"2-Factor Authentication UX Optimization"
 
-# Technology selection debate
+# Technology selection discussion
 /role-debate architect,mobile
-"About choosing React Native vs Flutter"
+"React Native vs Flutter Selection"
 
 # Three-party debate
 /role-debate architect,security,performance
-"About microservices adoption"
+"Pros and Cons of Microservices"
 ```
 
 ### Basic Principles of Debate
 
 #### Constructive Debate Guidelines
 
-- **Mutual Respect**: Respect other roles' expertise and perspectives
-- **Fact-Based**: Data and evidence-based arguments, not emotional responses
-- **Solution-Oriented**: Aim for better solutions, not criticism for its own sake
-- **Implementation-Focused**: Consider feasibility, not just ideals
+- **Mutual Respect**: Respect the expertise and perspectives of other roles
+- **Fact-Based**: Debate based on data and evidence, not emotional reactions
+- **Solution-Oriented**: Aim for better solutions rather than criticizing for criticism's sake
+- **Implementation-Focused**: Consider feasibility rather than idealism
 
 #### Quality Requirements for Arguments
 
-- **Official Documentation**: Reference to standards, guidelines, and official docs
-- **Proven Cases**: Specific citations of success and failure cases
-- **Quantitative Evaluation**: Comparison with metrics and indicators when possible
-- **Time Consideration**: Short-term, medium-term, and long-term impact evaluation
+- **Official Documentation**: Reference standards, guidelines, and official documentation
+- **Empirical Cases**: Specific citations of success or failure cases
+- **Quantitative Evaluation**: Comparisons using numbers and metrics whenever possible
+- **Time-Series Consideration**: Evaluation of short-term, medium-term, and long-term impacts
 
 #### Debate Ethics
 
-- **Integrity**: Acknowledge limitations of own expertise
+- **Honesty**: Acknowledge the limits of your expertise
 - **Openness**: Flexibility toward new information and perspectives
-- **Transparency**: Clear statement of judgment basis and assumptions
-- **Responsibility**: Include implementation risks in proposals
+- **Transparency**: Explicitly state judgment grounds and assumptions
+- **Accountability**: Mention implementation risks of proposals
 
 ### Debate Process
 
 ### Phase 1: Initial Position Statement
 
-Each role independently states opinions from their expertise
+Each role independently expresses opinions from their professional perspective
 
-- Present recommendations
-- Specify standards and documentation as basis
-- Explain expected risks and challenges
-- Define success metrics
+- Presentation of recommendations
+- Explicit citation of standards and documents as grounds
+- Explanation of anticipated risks and issues
+- Definition of success metrics
 
-### Phase 2: Cross-Debate and Rebuttal
+### Phase 2: Mutual Discussion & Rebuttal
 
 Cross-discussion between roles
 
-- Constructive counter-arguments to other roles' proposals
-- Point out overlooked perspectives
-- Clarify trade-offs
-- Present alternatives
+- Constructive rebuttal of other roles' proposals
+- Identification of overlooked perspectives
+- Clarification of trade-offs
+- Presentation of alternatives
 
-### Phase 3: Compromise Exploration
+### Phase 3: Search for Compromises
 
-Seek implementable solutions
+Exploration of implementable solutions
 
-- Evaluate importance of each perspective
-- Consider win-win solutions
-- Phased implementation approach
-- Risk mitigation strategies
+- Evaluation of the importance of each perspective
+- Consideration of win-win solutions
+- Step-by-step implementation approach
+- Consideration of risk mitigation measures
 
 ### Phase 4: Integrated Conclusion
 
-Determine final recommendations
+Determining final recommendations
 
-- Agreed solution
+- Agreed-upon solution
 - Implementation roadmap
 - Success metrics and measurement methods
 - Future review points
@@ -98,78 +98,78 @@ Determine final recommendations
 Role Debate: Security vs Performance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Topic: JWT Token Expiration Settings
+Topic: JWT Token Expiry Setting
 
-Security Role's Position:
-"Recommend 15-minute short expiration"
+Security Role's Argument:
+"15-minute short expiry recommended"
 
-Rationale:
-- OWASP JWT Security Cheat Sheet compliance
-- Minimize damage window on token leak
-- Limit attacker's usable time
+Grounds:
+- Compliance with OWASP JWT Security Cheat Sheet
+- Minimizing damage window in case of token leakage
+- Limiting attacker available time
 
 Concerns:
-- Long expiration exponentially increases attack risk
-- Short-term required for compliance (financial)
+- Long expiry exponentially increases attack risk
+- Short expiry mandatory for financial compliance
 
 Success Metrics:
 - Security incident rate < 0.1%
 - Average attack detection time < 5 minutes
 
-Performance Role's Counter:
-"Recommend 2-hour expiration"
+Performance Role's Rebuttal:
+"2-hour expiry recommended"
 
-Rationale:
-- Reference Google OAuth 2.0 Best Practices
-- Avoid server load increase from frequent re-auth
-- Minimize user experience interruption
+Grounds:
+- Reference to Google OAuth 2.0 Best Practices
+- Avoiding increased server load from frequent reauthentication
+- Minimizing user experience disruption
 
 Concerns:
-- 15-minute intervals = 8x API load increase
+- 15-minute reauthentication increases API load by 8x
 - Frequent disconnections in mobile environments
 
 Success Metrics:
-- API response time < 200ms maintained
+- Maintain API response time < 200ms
 - Server CPU usage < 60%
 
-Cross-Discussion:
+Mutual Discussion:
 Security → Performance:
-"Business loss from security breach far exceeds server load.
-Example: Equifax incident resulted in $700M loss"
+"Business losses from security breaches are greater than server load.
+Example: Equifax breach cost $700 million"
 
 Performance → Security:
-"Refresh token mechanism enables both.
-Background updates ensure security without harming UX"
+"Both can be achieved with refresh token mechanism.
+Background updates ensure security without compromising UX"
 
 Security → Performance:
-"Refresh tokens are also attack targets. Proper implementation required"
+"Refresh tokens are also attack targets. Proper implementation is prerequisite"
 
 Performance → Security:
-"Propose phased approach. 30 min for normal ops, 15 min for sensitive"
+"Propose phased approach. 30 minutes for normal operations, 15 minutes for sensitive operations"
 
-Compromise Exploration:
+Compromise Search:
 Common Understanding:
-- Need both user experience and security
+- Need to balance user experience and security
 - Flexible response based on risk level
-- Realistic consideration of implementation/operation costs
+- Practical consideration of implementation and operational costs
 
 Win-Win Elements:
-- Utilize refresh token mechanism
-- Phased introduction of risk-based auth
-- Complement with auto-logout functionality
+- Utilization of refresh token mechanism
+- Phased introduction of risk-based authentication
+- Complementation with auto-logout function
 
 Integrated Conclusion:
-"30-minute expiration + refresh tokens + risk-based auth"
+"30-minute expiry + refresh token + risk-based authentication"
 
 Implementation Details:
-1. Access token: 30-minute expiration
-2. Refresh token: 7-day expiration
-3. High-risk operations: Force re-auth at 15 minutes
+1. Access token: 30-minute expiry
+2. Refresh token: 7-day expiry
+3. High-risk operations: Enforce reauthentication every 15 minutes
 4. Auto-logout after 30 minutes of inactivity
 
 Phased Implementation:
-Week 1-2: Basic 30-minute token implementation
-Week 3-4: Add refresh token mechanism
+Weeks 1-2: Basic 30-minute token implementation
+Weeks 3-4: Add refresh token mechanism
 Month 2: Introduce risk-based authentication
 
 Success Metrics:
@@ -178,8 +178,8 @@ Success Metrics:
 - UX: User satisfaction > 85%
 
 Future Review:
-- 3 months: Evaluate actual attack patterns and load
-- 6 months: Consider migration to more sophisticated risk-based auth
+- After 3 months: Evaluate actual attack patterns and load conditions
+- After 6 months: Consider migration to more sophisticated risk-based authentication
 ```
 
 ### For 3-Role Debate
@@ -188,28 +188,28 @@ Future Review:
 Role Debate: Architect vs Security vs Performance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Topic: Microservices Adoption
+Topic: Pros and Cons of Microservices
 
-Architect Role's Position:
-"Recommend phased microservices migration"
-Rationale: Clear domain boundaries, independent deployment, technology flexibility
+Architect Role's Argument:
+"Phased microservices recommended"
+Grounds: Clear domain boundaries, independent deployment, freedom in technology selection
 
-Security Role's Concern:
-"Service communication security complexity"
-Rationale: API Gateway, mTLS, distributed auth management costs
+Security Role's Concerns:
+"Security complexity of inter-service communication"
+Grounds: Management costs of API Gateway, mTLS, distributed authentication
 
-Performance Role's Concern:
-"Network communication latency increase"
-Rationale: Internal API calls causing N+1 problems, distributed transactions
+Performance Role's Concerns:
+"Latency increase due to network communication"
+Grounds: N+1 problem from internal API calls, distributed transactions
 
 Three-Party Discussion:
-Architect → Security: "Centralized management via API Gateway enables control"
+Architect → Security: "Can be controlled through centralized API Gateway management"
 Security → Architect: "Risk of single point of failure"
-Performance → Architect: "Service granularity is critical"
+Performance → Architect: "Service division granularity is important"
 ...(discussion continues)
 
 Integrated Conclusion:
-"Domain-driven phased splitting + security-first design"
+"Domain-driven design for phased division + security-first design"
 ```
 
 ### Effective Debate Patterns
@@ -218,39 +218,39 @@ Integrated Conclusion:
 
 ```bash
 /role-debate architect,performance
-"Database choice: PostgreSQL vs MongoDB"
+"Database Selection: PostgreSQL vs MongoDB"
 
 /role-debate frontend,mobile
-"UI framework: React vs Vue"
+"UI Framework: React vs Vue"
 
 /role-debate security,architect
-"Authentication: JWT vs Session Cookie"
+"Authentication Method: JWT vs Session Cookie"
 ```
 
 ### Design Decisions
 
 ```bash
 /role-debate security,frontend
-"User authentication UX design"
+"User Authentication UX Design"
 
 /role-debate performance,mobile
-"Data sync strategy optimization"
+"Data Synchronization Strategy Optimization"
 
 /role-debate architect,qa
-"Test strategy and architecture design"
+"Test Strategy and Architecture Design"
 ```
 
-### Trade-off Problems
+### Trade-off Issues
 
 ```bash
 /role-debate security,performance
-"Encryption level vs processing speed"
+"Encryption Level vs Processing Speed"
 
 /role-debate frontend,performance
-"Rich UI vs page load speed"
+"Rich UI vs Page Loading Speed"
 
 /role-debate mobile,security
-"Convenience vs data protection level"
+"Convenience vs Data Protection Level"
 ```
 
 ### Role-Specific Debate Characteristics
@@ -258,63 +258,63 @@ Integrated Conclusion:
 #### 🔒 Security Role
 
 ```yaml
-Debate Stance:
+debate_stance:
   - Conservative approach (risk minimization)
-  - Rule compliance focus (cautious about deviation)
-  - Worst-case assumption (attacker perspective)
+  - Compliance-focused (cautious about deviations from standards)
+  - Worst-case scenario assumption (attacker perspective)
   - Long-term impact focus (security as technical debt)
 
-Typical Arguments:
-  - "Security vs convenience" trade-offs
-  - "Compliance requirements are mandatory"
-  - "Attack cost vs defense cost comparison"
-  - "Privacy protection thoroughness"
+typical_issues:
+  - "Security vs Convenience" trade-offs
+  - "Mandatory compliance requirements"
+  - "Attack cost vs Defense cost comparison"
+  - "Thorough privacy protection"
 
-Evidence Sources:
+evidence_sources:
   - OWASP guidelines
-  - NIST framework
+  - NIST frameworks
   - Industry standards (ISO 27001, SOC 2)
   - Actual attack cases and statistics
 
-Debate Strengths:
-  - Risk assessment accuracy
-  - Regulatory knowledge
-  - Attack method understanding
+debate_strengths:
+  - Precision in risk assessment
+  - Knowledge of regulatory requirements
+  - Understanding of attack methods
 
-Potential Biases:
-  - Excessive conservatism (innovation hindrance)
-  - Lack of UX consideration
-  - Underestimating implementation costs
+potential_biases:
+  - Excessive conservatism (inhibiting innovation)
+  - Insufficient UX consideration
+  - Downplaying implementation costs
 ```
 
 #### ⚡ Performance Role
 
 ```yaml
-Debate Stance:
+debate_stance:
   - Data-driven decisions (measurement-based)
-  - Efficiency focus (cost-effectiveness optimization)
+  - Efficiency-focused (optimizing cost-effectiveness)
   - User experience priority (perceived speed focus)
   - Continuous improvement (phased optimization)
 
-Typical Arguments:
-  - "Performance vs security"
-  - "Optimization cost vs effect ROI"
+typical_issues:
+  - "Performance vs Security"
+  - "Optimization cost vs effectiveness ROI"
   - "Current vs future scalability"
   - "User experience vs system efficiency"
 
-Evidence Sources:
+evidence_sources:
   - Core Web Vitals metrics
   - Benchmark results and statistics
-  - User behavior impact data
+  - Impact data on user behavior
   - Industry performance standards
 
-Debate Strengths:
+debate_strengths:
   - Quantitative evaluation ability
   - Bottleneck identification
-  - Optimization technique knowledge
+  - Knowledge of optimization techniques
 
-Potential Biases:
-  - Undervaluing security
+potential_biases:
+  - Downplaying security
   - Insufficient maintainability consideration
   - Premature optimization
 ```
@@ -322,132 +322,132 @@ Potential Biases:
 #### 🏗️ Architect Role
 
 ```yaml
-Debate Stance:
-  - Long-term perspective (system evolution consideration)
+debate_stance:
+  - Long-term perspective (consideration for system evolution)
   - Balance pursuit (overall optimization)
   - Phased changes (risk management)
-  - Standards compliance (proven patterns priority)
+  - Standard compliance (preference for proven patterns)
 
-Typical Arguments:
+typical_issues:
   - "Short-term efficiency vs long-term maintainability"
   - "Technical debt vs development speed"
   - "Microservices vs monolith"
   - "New technology adoption vs stability"
 
-Evidence Sources:
-  - Architecture pattern catalogs
+evidence_sources:
+  - Architecture pattern collections
   - Design principles (SOLID, DDD)
   - Large-scale system cases
   - Technology evolution trends
 
-Debate Strengths:
-  - Holistic view ability
-  - Design pattern knowledge
-  - Long-term impact prediction
+debate_strengths:
+  - Overall perspective ability
+  - Knowledge of design patterns
+  - Prediction of long-term impacts
 
-Potential Biases:
+potential_biases:
   - Excessive generalization
-  - Conservative toward new tech
-  - Insufficient implementation detail understanding
+  - Conservatism toward new technologies
+  - Insufficient understanding of implementation details
 ```
 
 #### 🎨 Frontend Role
 
 ```yaml
-Debate Stance:
-  - User-centered design (UX priority)
+debate_stance:
+  - User-centered design (UX first priority)
   - Inclusive approach (diversity consideration)
-  - Intuitiveness focus (minimize learning cost)
+  - Intuitiveness focus (minimizing learning costs)
   - Accessibility standards (WCAG compliance)
 
-Typical Arguments:
-  - "Usability vs security"
+typical_issues:
+  - "Usability vs Security"
   - "Design consistency vs platform optimization"
   - "Functionality vs simplicity"
   - "Performance vs rich experience"
 
-Evidence Sources:
+evidence_sources:
   - UX research and usability test results
   - Accessibility guidelines
   - Design system standards
   - User behavior data
 
-Debate Strengths:
-  - User perspective advocacy
-  - Design principle knowledge
+debate_strengths:
+  - Representation of user perspective
+  - Knowledge of design principles
   - Accessibility requirements
 
-Potential Biases:
-  - Insufficient technical constraint understanding
-  - Undervaluing security requirements
-  - Underestimating performance impact
+potential_biases:
+  - Insufficient understanding of technical constraints
+  - Downplaying security requirements
+  - Underestimation of performance impact
 ```
 
 #### 📱 Mobile Role
 
 ```yaml
-Debate Stance:
-  - Platform specialization (iOS/Android differences)
-  - Context adaptation (on-the-go, one-handed use)
-  - Resource constraints (battery, memory, network)
+debate_stance:
+  - Platform specialization (considering iOS/Android differences)
+  - Context adaptation (on-the-go, one-handed operation)
+  - Resource constraints (battery, memory, communication)
   - Store compliance (review guidelines)
 
-Typical Arguments:
+typical_issues:
   - "Native vs cross-platform"
-  - "Offline support vs real-time sync"
+  - "Offline support vs real-time synchronization"
   - "Battery efficiency vs functionality"
-  - "Platform unity vs optimization"
+  - "Platform unification vs optimization"
 
-Evidence Sources:
+evidence_sources:
   - iOS HIG / Android Material Design
   - App Store / Google Play guidelines
   - Mobile UX research
   - Device performance statistics
 
-Debate Strengths:
-  - Mobile-specific constraint understanding
-  - Platform difference knowledge
+debate_strengths:
+  - Understanding of mobile-specific constraints
+  - Knowledge of platform differences
   - Touch interface design
 
-Potential Biases:
-  - Insufficient web platform understanding
-  - Undervaluing server-side constraints
-  - Lack of desktop environment consideration
+potential_biases:
+  - Insufficient understanding of web platform
+  - Downplaying server-side constraints
+  - Insufficient consideration for desktop environment
 ```
 
 #### 🔍 Analyzer Role
 
 ```yaml
-Debate Stance:
-  - Evidence focus (data-first)
+debate_stance:
+  - Evidence-focused (data-first)
   - Hypothesis verification (scientific approach)
-  - Structural thinking (systems thinking)
-  - Bias removal (objectivity pursuit)
+  - Structural thinking (system thinking)
+  - Bias elimination (objectivity pursuit)
 
-Typical Arguments:
+typical_issues:
   - "Correlation vs causation"
   - "Symptomatic treatment vs root solution"
-  - "Hypothesis vs fact distinction"
+  - "Distinction between hypothesis and fact"
   - "Short-term symptoms vs structural problems"
 
-Evidence Sources:
+evidence_sources:
   - Measured data and log analysis
-  - Statistical methods and results
-  - Systems thinking theory
+  - Statistical methods and analysis results
+  - System thinking theory
   - Cognitive bias research
 
-Debate Strengths:
+debate_strengths:
   - Logical analysis ability
-  - Objective evidence evaluation
-  - Structural problem discovery
+  - Objectivity in evidence evaluation
+  - Discovery of structural problems
 
-Potential Biases:
-  - Analysis paralysis (lack of action)
-  - Perfectionism (undervaluing practicality)
-  - Data omnipotence belief
+potential_biases:
+  - Analysis paralysis (insufficient action)
+  - Perfectionism (downplaying practicality)
+  - Data absolutism
 ```
 
-### Debate Progress Templates
+### Debate Progression Templates
 
 #### Phase 1: Position Statement Template
 
@@ -455,19 +455,19 @@ Potential Biases:
 [Role Name]'s Recommendation:
 "[Specific proposal]"
 
-Rationale:
-- [Reference to official docs/standards]
-- [Proven cases/data]
-- [Domain principles]
+Grounds:
+- [Reference to official documents/standards]
+- [Empirical cases/data]
+- [Professional field principles]
 
 Expected Effects:
 - [Short-term effects]
-- [Medium/long-term effects]
+- [Medium to long-term effects]
 
 Concerns/Risks:
 - [Implementation risks]
 - [Operational risks]
-- [Impact on other domains]
+- [Impacts on other fields]
 
 Success Metrics:
 - [Measurable metric 1]
@@ -477,95 +477,95 @@ Success Metrics:
 #### Phase 2: Rebuttal Template
 
 ```
-Counter to [Target Role]:
-"[Specific counter-argument to target proposal]"
+Rebuttal to [Target Role]:
+"[Specific rebuttal to target proposal]"
 
-Counter Rationale:
+Rebuttal Grounds:
 - [Overlooked perspectives]
-- [Conflicting evidence/cases]
-- [Domain-specific concerns]
+- [Contradictory evidence/cases]
+- [Concerns from professional field]
 
-Alternative:
+Alternative Proposal:
 "[Improved proposal]"
 
 Compromise Points:
 - [Acceptable conditions]
-- [Phased implementation possibility]
+- [Possibility of phased implementation]
 ```
 
 #### Phase 3: Integrated Solution Template
 
 ```
 Integrated Solution:
-"[Final proposal considering all role concerns]"
+"[Final proposal considering all roles' concerns]"
 
-Consideration for Each Role:
-- [Security]: [How security requirements are satisfied]
-- [Performance]: [How performance requirements are satisfied]
-- [Other]: [How other requirements are satisfied]
+Considerations for Each Role:
+- [Security]: [How security requirements are met]
+- [Performance]: [How performance requirements are met]
+- [Others]: [How other requirements are met]
 
 Implementation Roadmap:
-- Phase 1 (Immediate): [Emergency items]
+- Phase 1 (Immediate): [Urgent response items]
 - Phase 2 (Short-term): [Basic implementation]
 - Phase 3 (Medium-term): [Complete implementation]
 
-Success Metrics & Measurement:
+Success Metrics & Measurement Methods:
 - [Integrated success metrics]
-- [Measurement methods and frequency]
+- [Measurement methods/frequency]
 - [Review timing]
 ```
 
 ### Debate Quality Checklist
 
-#### Argument Quality
+#### Evidence Quality
 
-- [ ] References to official docs/standards
+- [ ] References to official documents/standards
 - [ ] Specific cases/data presented
-- [ ] Clear distinction between speculation and fact
-- [ ] Information sources specified
+- [ ] Distinction between speculation and fact
+- [ ] Sources explicitly stated
 
 #### Debate Constructiveness
 
-- [ ] Accurate understanding of others' proposals
-- [ ] Logical rather than emotional counter-arguments
+- [ ] Accurate understanding of opponent's proposals
+- [ ] Logical rather than emotional rebuttal
 - [ ] Alternatives also presented
-- [ ] Exploring win-win possibilities
+- [ ] Exploration of win-win possibilities
 
 #### Implementation Feasibility
 
 - [ ] Technical feasibility considered
-- [ ] Implementation cost/timeline estimated
-- [ ] Phased implementation possibilities examined
-- [ ] Risk mitigation strategies presented
+- [ ] Implementation costs/duration estimated
+- [ ] Phased implementation possibility considered
+- [ ] Risk mitigation measures presented
 
 #### Integration
 
-- [ ] Impact on other domains considered
-- [ ] Overall optimization pursued
+- [ ] Impacts on other fields considered
+- [ ] Pursuit of overall optimization
 - [ ] Long-term perspective included
 - [ ] Measurable success metrics set
 
-### Integration with Claude
+### Collaboration with Claude
 
 ```bash
-# Debate based on design document
+# Debate based on design documents
 cat system-design.md
 /role-debate architect,security
-"Debate security challenges of this design"
+"Discuss security issues in this design"
 
-# Solution debate based on problem
+# Solution debate based on problems
 cat performance-issues.md
 /role-debate performance,architect
-"Debate fundamental solutions to performance problems"
+"Discuss fundamental solutions to performance issues"
 
 # Technology selection debate based on requirements
 /role-debate mobile,frontend
-"Debate unified UI strategy for iOS, Android, and Web"
+"Discuss unified UI strategy for iOS, Android, and Web"
 ```
 
-### Important Notes
+### Notes
 
-- Debates may take time (more complex topics take longer)
-- Debates with 3+ roles may diverge
-- Final decisions should be made by users referring to debate results
-- For urgent problems, consider single role or multi-role first
+- Debates may take time (longer for complex topics)
+- With 3+ roles, discussions may diverge
+- Final decisions should be made by users referencing debate results
+- For urgent issues, consider single role or multi-role first

@@ -1,30 +1,30 @@
 ## Smart Review
 
-Analyze the current situation and automatically suggest optimal roles and approaches.
+A command that analyzes the current situation and automatically suggests the optimal role and approach.
 
 ### Usage
 
 ```bash
 /smart-review                    # Analyze current directory
-/smart-review <file/directory>  # Analyze specific target
+/smart-review <file/directory>   # Analyze specific target
 ```
 
-### Automatic Detection Logic
+### Automatic Analysis Logic
 
-### Detection by File Extension
+### Analysis by File Extension
 
 - `package.json`, `*.tsx`, `*.jsx`, `*.css`, `*.scss` → **frontend**
 - `Dockerfile`, `docker-compose.yml`, `*.yaml` → **architect**
 - `*.test.js`, `*.spec.ts`, `test/`, `__tests__/` → **qa**
 - `*.rs`, `Cargo.toml`, `performance/` → **performance**
 
-### Security-Related File Detection
+### Security-related File Detection
 
 - `auth.js`, `security.yml`, `.env`, `config/auth/` → **security**
 - `login.tsx`, `signup.js`, `jwt.js` → **security + frontend**
 - `api/auth/`, `middleware/auth/` → **security + architect**
 
-### Combined Detection Patterns
+### Complex Analysis Patterns
 
 - `mobile/` + `*.swift`, `*.kt`, `react-native/` → **mobile**
 - `webpack.config.js`, `vite.config.js`, `large-dataset/` → **performance**
@@ -44,7 +44,7 @@ Analyze the current situation and automatically suggest optimal roles and approa
 ```bash
 $ /smart-review src/auth/login.js
 → "Authentication file detected"
-→ "Recommending security role analysis"
+→ "Analysis with security role recommended"
 → "Execute? [y]es / [n]o / [m]ore options"
 ```
 
@@ -54,59 +54,59 @@ $ /smart-review src/auth/login.js
 $ /smart-review src/mobile/components/
 → "📱🎨 Mobile + Frontend elements detected"
 → "Recommended approaches:"
-→ "[1] mobile role only"
-→ "[2] frontend role only"  
+→ "[1] mobile role alone"
+→ "[2] frontend role alone"
 → "[3] multi-role mobile,frontend"
 → "[4] role-debate mobile,frontend"
 ```
 
-### Problem Analysis Suggestions
+### Suggestions for Problem Analysis
 
 ```bash
 $ /smart-review error.log
 → "⚠️ Error log detected"
 → "Starting root cause analysis with analyzer role"
-→ "[Auto-executing] /role analyzer"
+→ "[Auto-execute] /role analyzer"
 
 $ /smart-review slow-api.log
 → "🐌 Performance issue detected"
 → "Recommended: [1]/role performance [2]/role-debate performance,analyzer"
 ```
 
-### Complex Design Decision Suggestions
+### Suggestions for Complex Design Decisions
 
 ```bash
 $ /smart-review architecture-design.md
 → "🏗️🔒⚡ Architecture + Security + Performance elements detected"
-→ "Complex design decision, recommending discussion format"
+→ "For complex design decisions, debate format recommended"
 → "[Recommended] /role-debate architect,security,performance"
 → "[Alternative] /multi-role architect,security,performance"
 ```
 
-### Detailed Suggestion Logic
+### Suggestion Logic Details
 
-### Priority Determination
+### Priority Assessment
 
-1. **Security** - Authentication/authorization/encryption takes priority
-2. **Critical Errors** - System crashes/data loss are urgent
-3. **Architecture** - Large-scale changes/tech selection needs careful consideration
+1. **Security** - Authentication, authorization, and encryption are top priorities
+2. **Critical Errors** - System outages and data loss are urgent
+3. **Architecture** - Large-scale changes and technology selection require careful consideration
 4. **Performance** - Directly impacts user experience
 5. **Frontend/Mobile** - UI/UX improvements
-6. **QA** - Quality assurance/testing related
+6. **QA** - Quality assurance and testing
 
-### Discussion Recommendation Conditions
+### Conditions for Recommending Debate
 
-- When 3+ roles are involved
-- When there's a security vs performance tradeoff
-- When major architecture changes are involved
-- When both mobile + web are affected
+- When 3 or more roles are involved
+- When there's a trade-off between security and performance
+- When significant architectural changes are involved
+- When both mobile and web are affected
 
 ### Basic Examples
 
 ```bash
 # Analyze current directory
 /smart-review
-"Suggest optimal roles and approaches"
+"Suggest the optimal role and approach"
 
 # Analyze specific file
 /smart-review src/auth/login.js
@@ -119,19 +119,19 @@ $ /smart-review architecture-design.md
 
 ### Practical Examples
 
-### Full Project Analysis
+### Project-wide Analysis
 
 ```bash
 $ /smart-review
 → "📊 Analyzing project..."
 → "React + TypeScript project detected"
-→ "Authentication + API + Mobile support confirmed"
+→ "Authentication functionality + API + mobile support confirmed"
 → ""
 → "💡 Recommended workflow:"
-→ "1. security for auth system check"
-→ "2. frontend for UI/UX evaluation"
-→ "3. mobile for mobile optimization"
-→ "4. architect for overall design review"
+→ "1. Check authentication with security"
+→ "2. Evaluate UI/UX with frontend"
+→ "3. Confirm mobile optimization with mobile"
+→ "4. Review overall design with architect"
 → ""
 → "Auto-execute? [y]es / [s]elect role / [c]ustom"
 ```
@@ -139,36 +139,36 @@ $ /smart-review
 ### Specific Problem Analysis
 
 ```bash
-$ /smart-review "How should we set JWT expiration?"
+$ /smart-review "How to set JWT expiration time"
 → "🤔 Technical design decision detected"
-→ "This problem requires multiple expert perspectives"
+→ "This issue requires multiple expert perspectives"
 → ""
 → "Recommended approach:"
 → "/role-debate security,performance,frontend"
-→ "Reason: Balance between security, performance, and UX is critical"
+→ "Reason: Balance between security, performance, and UX is important"
 ```
 
-### Integration with Claude
+### Collaboration with Claude
 
 ```bash
 # Analysis combined with file content
 cat src/auth/middleware.js
 /smart-review
-"Analyze this file content from a security perspective"
+"Analyze this file from a security perspective"
 
 # Analysis combined with errors
 npm run build 2>&1 | tee build-error.log
 /smart-review build-error.log
-"Suggest solutions for build errors"
+"Suggest ways to resolve build errors"
 
 # Design consultation
 /smart-review
-"Debate whether to choose React Native or Progressive Web App"
+"Discuss whether to choose React Native or Progressive Web App"
 ```
 
-### Important Notes
+### Notes
 
-- Suggestions are for reference. Final decisions should be made by users
-- More complex problems warrant discussion format (role-debate)
-- Simple problems often need only a single role
-- Security-related issues always warrant specialist role review
+- Suggestions are for reference only. The final decision is up to the user
+- Debate format (role-debate) is recommended for complex issues
+- Single role is often sufficient for simple problems
+- Security-related matters should always be confirmed with a specialized role

@@ -1,6 +1,6 @@
 ## AI Writing Check
 
-Detects mechanical patterns in AI-generated text and provides suggestions for more natural writing.
+Detects mechanical patterns in AI-generated text and provides suggestions for improving to more natural Japanese.
 
 ### Usage
 
@@ -14,53 +14,55 @@ Detects mechanical patterns in AI-generated text and provides suggestions for mo
 - `--file <path>`: Analyze specific file
 - `--dir <path>`: Batch analyze files in directory
 - `--severity <level>`: Detection level (all/high/medium)
-- `--fix`: Auto-fix detected patterns
+- `--fix`: Automatically fix detected patterns
 
 ### Basic Examples
 
 ```bash
-# Check file for AI-like patterns
+# Check AI writing style in file
 cat README.md
 /ai-writing-check
-"Check this document for AI-like patterns and provide improvement suggestions"
+"Check this document for AI writing style and suggest improvements"
 
 # Analyze specific file
 /ai-writing-check --file docs/guide.md
-"Detect AI-like expressions and suggest natural alternatives"
+"Detect AI-like expressions and suggest corrections to natural expressions"
 
 # Scan entire project
 /ai-writing-check --dir . --severity high
-"Report only critical AI-like issues in the project"
+"Report only critical AI writing issues in the project"
 ```
 
-### Detection Patterns
+### Detected Patterns
 
-#### 1. Mechanical List Formatting
+#### 1. Mechanical List Format Patterns
 
 ```markdown
-Detected patterns:
-- **Important**: This is an important item
-- ✅ Completed item (with checkmark)
-- 🔥 Hot topic (with fire emoji)
-- 🚀 Ready to start (with rocket emoji)
+Examples detected:
 
-Improved version:
+- **Important**: This is an important item
+- Completed item (with checkmark emoji)
+- Hot topic (with fire emoji)
+- Ready to start (with rocket emoji)
+
+Improved examples:
+
 - Important item: This is an important item
 - Completed item
 - Notable topic
 - Ready to start
 ```
 
-#### 2. Hyperbolic and Hype Expressions
+#### 2. Exaggerated/Hype Expressions
 
 ```markdown
-Detected patterns:
-Revolutionary technology that transforms the industry.
-This completely solves all problems.
+Examples detected:
+Revolutionary technology will change the industry.
+This completely solves the problem.
 Works like magic.
 
-Improved version:
-Effective technology that brings change to the industry.
+Improved examples:
+Effective technology brings change to the industry.
 Solves many problems.
 Works smoothly.
 ```
@@ -68,117 +70,117 @@ Works smoothly.
 #### 3. Mechanical Emphasis Patterns
 
 ```markdown
-Detected patterns:
-**💡 Idea**: New proposal here (with lightbulb emoji)
-**⚠️ Warning**: Important notice (with warning emoji)
+Examples detected:
+**Idea**: New proposal (with lightbulb emoji)
+**Caution**: Important warning (with warning emoji)
 
-Improved version:
-Idea: New proposal here
-Note: Important notice
+Improved examples:
+Idea: New proposal
+Note: Important warning
 ```
 
 #### 4. Redundant Technical Writing
 
 ```markdown
-Detected patterns:
-First, start by configuring the settings.
-You can utilize this tool to accomplish tasks.
-Significantly improves performance.
+Examples detected:
+First, we will perform the setup.
+You can use this tool.
+Performance is greatly improved.
 
-Improved version:
-Configure the settings.
-Use this tool to accomplish tasks.
-Improves performance by 30%.
+Improved examples:
+First, perform setup.
+You can use this tool.
+Performance improves by 30%.
 ```
 
-### Claude Integration
+### Collaboration with Claude
 
 ```bash
-# Analyze entire document for AI patterns
+# Analyze entire document for AI writing style
 cat article.md
 /ai-writing-check
-"Analyze from these perspectives and provide improvements:
-1. Detect mechanical expressions
-2. Suggest natural alternatives
-3. Priority-sorted improvement list"
+"Analyze and suggest improvements from these perspectives:
+1. Detection of mechanical expressions
+2. Suggestions for correction to natural Japanese
+3. Priority-based improvement list"
 
 # Focus on specific patterns
 /ai-writing-check --file blog.md
-"Focus especially on hyperbolic and redundant expressions"
+"Pay special attention to exaggerated and redundant expressions and suggest improvements"
 
 # Batch check multiple files
 find . -name "*.md" -type f
 /ai-writing-check --dir docs/
-"Analyze AI patterns across all documentation and create summary"
+"Analyze AI writing style throughout the documentation and create a summary"
 ```
 
 ### Detailed Examples
 
 ```bash
-# Before/after comparison
+# Compare before and after improvement
 /ai-writing-check --file draft.md
-"Detect AI-like expressions and present in this format:
-- Problem locations (with line numbers)
-- Type and reason for issue
+"Detect AI-like expressions and present them in the following format:
+- Problem areas (with line numbers)
+- Type of problem and reason
 - Specific improvement suggestions
-- Expected impact of changes"
+- Effect of improvement"
 
 # Auto-fix mode
 /ai-writing-check --file report.md --fix
-"Auto-fix detected patterns and report results"
+"Automatically fix detected patterns and report results"
 
-# Project-wide AI pattern report
+# Project AI writing style report
 /ai-writing-check --dir . --severity all
-"Analyze project-wide AI patterns:
-1. Statistics (detection count by pattern type)
+"Analyze AI writing style throughout the project and provide:
+1. Statistical information (detection count by pattern)
 2. Top 5 most problematic files
 3. Improvement priority matrix
-4. Phased improvement plan"
+4. Step-by-step improvement plan"
 ```
 
-### Advanced Usage
+### Advanced Usage Examples
 
 ```bash
 # Apply custom rules
 /ai-writing-check --file spec.md
-"Check as technical specification with additional criteria:
-- Vague expressions (appropriate, as needed)
-- Lack of specificity (fast → specific metrics)
-- Inconsistent terminology"
+"Check technical specifications with these additional criteria:
+- Ambiguous expressions (appropriate, as needed)
+- Lack of specificity (fast → specific numbers)
+- Inconsistent terminology usage"
 
-# CI/CD integration check
+# Check for CI/CD integration
 /ai-writing-check --dir docs/ --severity high
-"Output results in GitHub Actions compatible format:
-- Error count and filenames
-- Line numbers needing fixes
-- Exit code setting"
+"Output results in GitHub Actions executable format:
+- Number of errors and filenames
+- Line numbers requiring correction
+- Exit code configuration"
 
 # Style guide compliance check
 /ai-writing-check --file manual.md
 "Additional checks based on company style guide:
-- Consistent tone (formal/informal)
-- Appropriate technical terminology
-- Reader consideration"
+- Honorific usage (unification of desu/masu form)
+- Appropriate use of technical terms
+- Consideration for readers"
 ```
 
 ### Notes
 
-- AI pattern detection varies by context; treat suggestions as recommendations
-- Adjust criteria based on document type (technical docs, blogs, manuals, etc.)
-- Not all suggestions need to be accepted; select appropriate ones
-- `--fix` option automatically corrects detected patterns
+- AI writing style determination varies by context, so treat suggestions as reference
+- Adjust criteria according to document type (technical documents, blogs, manuals, etc.)
+- You don't need to accept all suggestions; select appropriate ones
+- The `--fix` option automatically corrects detected patterns
 
 ### Command Execution Behavior
 
-When executing `/ai-writing-check`, Claude performs:
+When you run the `/ai-writing-check` command, Claude performs the following processes:
 
-1. **Pattern Detection**: Detects AI-like patterns in specified files or text
-2. **Specific Suggestions**: Provides fixes with line numbers for each issue
-3. **--fix Mode**: Auto-corrects patterns and displays result summary
-4. **Report Generation**: Provides detection counts, improvement priorities, before/after comparisons
+1. **Pattern Detection**: Detects AI-like patterns from specified files or text
+2. **Specific Correction Suggestions**: Presents correction suggestions with line numbers for each issue
+3. **--fix Mode**: Automatically fixes detected patterns and displays a summary of results
+4. **Report Generation**: Provides detection count, improvement priority, and comparison before/after correction
 
-Claude reads actual file contents and analyzes based on textlint-rule-preset-ai-writing rules.
+Claude reads the actual file contents and performs analysis based on the rules of textlint-rule-preset-ai-writing.
 
 ### Reference
 
-This command is based on the [textlint-rule-preset-ai-writing](https://github.com/textlint-ja/textlint-rule-preset-ai-writing) ruleset, which detects mechanical patterns in AI-generated text and promotes more natural expression.
+This command is created with reference to the [textlint-rule-preset-ai-writing](https://github.com/textlint-ja/textlint-rule-preset-ai-writing) rule set. It is a textlint rule preset for detecting mechanical patterns in AI-generated text and promoting more natural expressions.

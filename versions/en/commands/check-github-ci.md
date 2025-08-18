@@ -1,6 +1,6 @@
-## Check GitHub CI
+## GitHub CI Monitoring
 
-Check GitHub Actions CI/CD status and configuration.
+Monitors GitHub Actions CI status and tracks until completion.
 
 ### Usage
 
@@ -13,24 +13,24 @@ gh pr checks
 
 ```bash
 # Check CI after creating PR
-gh pr create --title "Add new features" --body "Description"
+gh pr create --title "Add new feature" --body "Description"
 gh pr checks
 ```
 
-### Claude Integration
+### Collaboration with Claude
 
 ```bash
-# CI check to fix workflow
+# Flow from CI check to correction
 gh pr checks
 "Analyze CI check results and suggest fixes if there are failures"
 
-# Re-check after fixes
+# Recheck after correction
 git push origin feature-branch
 gh pr checks
-"Verify the CI results after fixes and confirm there are no issues"
+"Check CI results after correction to confirm no issues"
 ```
 
-### Execution Result Example
+### Example Execution Results
 
 ```
 All checks were successful
@@ -46,8 +46,8 @@ All checks were successful
 -  Visual Test (pull_request)                                                  https://github.com/user/repo/actions/runs/123456789
 ```
 
-### Important Notes
+### Notes
 
-- Check details when failures occur
+- Check details when failed
 - Wait for all checks to complete before merging
 - Re-run `gh pr checks` as needed

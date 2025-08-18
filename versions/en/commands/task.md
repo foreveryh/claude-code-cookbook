@@ -1,151 +1,156 @@
 ## Task
 
-Launch dedicated agents to autonomously execute complex search, investigation, and analysis tasks. Handles large-scale information processing by combining multiple tools with a focus on context efficiency.
+Launches a smart agent to handle complex searches and investigations. Great for large-scale work without eating up context.
 
 ### Usage
 
 ```bash
-# Request Claude Task
-"[Issue] Investigate with Task"
+# Request Task from Claude
+"Investigate [task] using Task"
 ```
 
-### Task Features
+### What Task Does
 
-**Autonomous Execution**
-- Automatically combines multiple tools for execution
-- Staged information collection and analysis
-- Result integration and structured reporting
+**Works Independently**
 
-**Efficient Information Processing**
-- Optimized context consumption
-- Large-scale file search and analysis
-- Data collection from external information sources
+- Combines multiple tools automatically
+- Gathers and analyzes step by step
+- Puts results together in clear reports
 
-**Quality Assurance**
-- Information source reliability checks
-- Multi-perspective verification
-- Automatic completion of missing information
+**Saves Context**
+
+- Uses less memory than manual searching
+- Searches lots of files efficiently
+- Pulls data from outside sources
+
+**Ensures Quality**
+
+- Checks if sources are reliable
+- Verifies from different angles
+- Fills in missing pieces
 
 ### Basic Examples
 
 ```bash
 # Complex codebase investigation
-"Which files implement this feature? Investigate with Task"
+"Investigate which files implement this feature using Task"
 
 # Large-scale file search
-"Identify configuration file inconsistencies with Task"
+"Identify configuration file inconsistencies using Task"
 
 # External information collection
-"Investigate latest AI technology trends with Task"
+"Investigate the latest AI technology trends using Task"
 ```
 
-### Claude Integration
+### Collaboration with Claude
 
 ```bash
 # Complex problem analysis
-"Analyze the cause of memory leaks with Task. Include profiling results and logs"
+"Analyze the cause of memory leaks using Task, including profiling results and logs"
 
 # Dependency investigation
-"Investigate vulnerabilities in this npm package with Task"
+"Investigate vulnerabilities of this npm package using Task"
 
-# Competitive analysis
-"Investigate competitor service API specifications with Task"
+# Competitor analysis
+"Investigate API specifications of competing services using Task"
 
 # Architecture analysis
-"Analyze microservice dependencies with Task"
+"Analyze dependencies of this microservice using Task"
 ```
 
-### Comparison with Other Commands
+### Task vs Other Commands
 
-#### Task vs Other Commands
+#### When to Use What
 
-| Command | Primary Use | Execution Style | Information Collection |
-|---------|-------------|-----------------|----------------------|
-| **Task** | Investigation/Analysis/Search | Autonomous execution | Multiple sources |
-| ultrathink | Deep thinking/judgment | Structured thinking | Primarily existing knowledge |
-| sequential-thinking | Problem solving/design | Step-by-step thinking | As needed |
-| plan | Implementation planning | Approval process | Requirements analysis |
+| Command | Main Use Case | Execution Method | Information Collection |
+|---------|---------------|-----------------|------------------------|
+| **Task** | Investigation, analysis, search | Autonomous execution | Multiple sources |
+| ultrathink | Deep thinking, judgment | Structured thinking | Existing knowledge-focused |
+| sequential-thinking | Problem-solving, design | Step-by-step thinking | As needed |
+| plan | Implementation planning | Approval process | Requirement analysis |
 
-#### Decision Flow Chart
+#### Quick Decision Guide
 
 ```
-Is information collection needed?
-├─ Yes → Multiple sources/large-scale?
-│ ├─ Yes → **Task**
-│ └─ No → Regular question
-└─ No → Deep thinking required?
-    ├─ Yes → ultrathink/sequential-thinking
-    └─ No → Regular question
+Need to gather info?
+├─ Yes → From many places or lots of files?
+│          ├─ Yes → **Use Task**
+│          └─ No → Just ask normally
+└─ No → Need deep thinking?
+          ├─ Yes → Use ultrathink/sequential-thinking
+          └─ No → Just ask normally
 ```
 
-### Effective Cases & Unnecessary Cases
+### When Task Works Best
 
-**Effective Cases**
-- Complex codebase investigation (dependency, architecture analysis)
-- Large-scale file search (specific implementation patterns, config files)
-- External information collection and organization (tech trends, library research)
-- Information integration from multiple sources (log analysis, metrics analysis)
-- Iterative investigation work (security audits, technical debt investigation)
-- Large-scale analysis avoiding context consumption
+**Great For**
 
-**Unnecessary Cases**
-- Simple questions answerable with existing knowledge
-- Quick one-off tasks
-- Work requiring interactive confirmation/consultation
-- Implementation or design decisions (plan or thinking commands are appropriate)
+- Exploring complex codebases (dependencies, architecture)
+- Searching many files (patterns, configs)
+- Gathering external info (tech trends, libraries)
+- Combining data from multiple places (logs, metrics)
+- Repetitive investigations (audits, debt checks)
+- Big searches that would eat too much context
 
-### Category-Specific Detailed Examples
+**Not Great For**
 
-#### System Analysis & Investigation
+- Simple questions I already know
+- Quick one-time tasks
+- Things needing back-and-forth discussion
+- Design decisions (use plan or thinking commands instead)
+
+### Detailed Examples by Category
+
+#### System Analysis and Investigation
 
 ```bash
 # Complex system analysis
-"Identify bottlenecks in the e-commerce site with Task. Investigate database, API, and frontend comprehensively"
+"Identify bottlenecks in the EC site using Task, investigating database, API, and frontend"
 
 # Architecture analysis
-"Analyze microservice dependencies with Task. Include API communication and data flow"
+"Analyze dependencies of this microservice using Task, including API communication and data flow"
 
 # Technical debt investigation
-"Analyze technical debt in legacy code with Task. Include refactoring priorities"
+"Analyze technical debt in legacy code using Task, including refactoring priorities"
 ```
 
-#### Security & Compliance
+#### Security and Compliance
 
 ```bash
 # Security audit
-"Investigate application vulnerabilities with Task. Based on OWASP Top 10"
+"Investigate vulnerabilities in this application using Task, based on OWASP Top 10"
 
 # License investigation
-"Investigate project dependency license issues with Task"
+"Investigate license issues in project dependencies using Task"
 
 # Configuration file audit
-"Identify security configuration inconsistencies with Task. Include differences across environments"
+"Identify security configuration inconsistencies using Task, including environment differences"
 ```
 
-#### Performance & Optimization
+#### Performance and Optimization
 
 ```bash
 # Performance analysis
-"Identify heavy queries in the application with Task. Include execution plans and optimization suggestions"
+"Identify heavy queries in the application using Task, including execution plans and optimization proposals"
 
 # Resource usage investigation
-"Investigate memory leak causes with Task. Include profiling results and code analysis"
+"Investigate causes of memory leaks using Task, including profiling results and code analysis"
 
 # Bundle size analysis
-"Investigate frontend bundle size issues with Task. Include optimization recommendations"
+"Investigate frontend bundle size issues using Task, including optimization suggestions"
 ```
 
 #### External Information Collection
 
 ```bash
-# Technology trend research
-"Investigate 2024 JavaScript framework trends with Task"
+# Technology trend investigation
+"Investigate 2024 JavaScript framework trends using Task"
 
-# Competitive analysis
-"Investigate competitor service API specifications with Task. Include feature comparison table"
+# Competitor analysis
+"Investigate API specifications of competing services using Task, including feature comparison table"
 
 # Library evaluation
-"Compare state management libraries with Task. Include performance and learning curve"
+"Compare state management libraries using Task, including performance and learning costs"
 ```
 
 ### Execution Flow and Quality Assurance
@@ -154,62 +159,65 @@ Is information collection needed?
 
 ```
 1. Initial Analysis
-├─ Break down issues and identify investigation scope
-├─ Select necessary tools and information sources
-└─ Create execution plan
+   ├─ Decomposition of task and identification of investigation scope
+   ├─ Selection of necessary tools and information sources
+   └─ Development of execution plan
 
 2. Information Collection
-├─ File search and code analysis
-├─ External information collection
-└─ Data structuring
+   ├─ File search and code analysis
+   ├─ Collection of external information
+   └─ Data structuring
 
-3. Analysis & Integration
-├─ Analyze relationships in collected information
-├─ Identify patterns and issues
-└─ Verify hypotheses
+3. Analysis and Integration
+   ├─ Relevance analysis of collected information
+   ├─ Identification of patterns and issues
+   └─ Verification of hypotheses
 
-4. Reporting & Recommendations
-├─ Structure results
-├─ Create improvement proposals
-└─ Present next actions
+4. Reporting and Proposal
+   ├─ Structuring of results
+   ├─ Creation of improvement proposals
+   └─ Presentation of next actions
 ```
 
 #### Quality Assurance
-- **Information source reliability checks**: Fact verification through multiple sources
-- **Completeness verification**: Check for gaps in investigation targets
-- **Consistency validation**: Resolve conflicting information
-- **Practicality evaluation**: Assess feasibility and effectiveness of proposals
+
+- **Reliability check of information sources**: Fact confirmation from multiple sources
+- **Completeness check**: Verification of no gaps in investigation targets
+- **Consistency verification**: Confirmation of consistency in conflicting information
+- **Practicality evaluation**: Assessment of feasibility and effectiveness of proposals
 
 ### Error Handling and Constraints
 
 #### Common Constraints
+
 - **External API usage limits**: Rate limits and authentication errors
 - **Large file processing limits**: Memory and timeout constraints
-- **Access permission issues**: File or directory access restrictions
+- **Access permission issues**: Restrictions on file and directory access
 
-#### Error Response
+#### Error Handling
+
 - **Partial result reporting**: Analysis with only obtainable information
-- **Alternative method suggestions**: Alternative investigation methods under constraints
-- **Staged execution**: Breaking down large tasks for execution
+- **Alternative proposals**: Suggestion of alternative investigation methods under constraints
+- **Stepwise execution**: Division of large-scale tasks for execution
 
-### Important Notes
+### Notes
 
-- Task is optimal for complex autonomous investigation and analysis tasks
-- For simple questions or cases requiring immediate answers, use regular question format
+- Task is optimal for complex, autonomous investigation and analysis tasks
+- For simple questions or when immediate answers are needed, use normal question format
 - Treat investigation results as reference information and always verify important decisions
-- When collecting external information, pay attention to information freshness and accuracy
+- When collecting external information, pay attention to the freshness and accuracy of information
 
-### Usage Example
+### Execution Example
 
 ```bash
 # Usage example
-"Investigate GraphQL schema issues with Task"
+"Investigate issues in GraphQL schema using Task"
 
 # Expected behavior
 # 1. Dedicated agent starts
 # 2. Search for GraphQL-related files
 # 3. Analyze schema definitions
 # 4. Compare with best practices
-# 5. Identify issues and improvement suggestions
+# 5. Identify issues and propose improvements
 # 6. Create structured report
 ```

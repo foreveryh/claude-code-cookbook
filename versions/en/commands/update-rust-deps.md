@@ -1,13 +1,13 @@
 ## Rust Dependencies Update
 
-Update Rust project dependencies safely.
+Safely update dependencies in your Rust project.
 
 ### Usage
 
 ```bash
-# Check dependency status and request to Claude
+# Check dependency status and request Claude's help
 cargo tree
-"Update the dependencies in Cargo.toml to the latest versions"
+"Please update the dependencies in Cargo.toml to their latest versions"
 ```
 
 ### Basic Examples
@@ -17,9 +17,9 @@ cargo tree
 cat Cargo.toml
 "Analyze this Rust project's dependencies and tell me which crates can be updated"
 
-# Check updatable list
+# Check list of updatable crates
 cargo update --dry-run
-"Analyze the risk level for updating these crates"
+"Analyze the risk level of updating these crates"
 ```
 
 ### Integration with Claude
@@ -28,39 +28,38 @@ cargo update --dry-run
 # Comprehensive dependency update
 cat Cargo.toml
 "Analyze Rust dependencies and perform the following:
-1. Investigate the latest version of each crate
+1. Research the latest version of each crate
 2. Check for breaking changes
-3. Evaluate risk level (safe/caution/danger)
+3. Evaluate risk level (safe, caution, dangerous)
 4. Suggest necessary code changes
 5. Generate updated Cargo.toml"
 
-# Safe incremental update
+# Safe, gradual update
 cargo tree
-"Avoid major version upgrades and only update crates that can be safely updated"
+"Update only crates that can be safely updated, avoiding major version upgrades"
 
-# Analyze specific crate update impact
-"Tell me the impact and necessary changes if I update tokio to the latest version"
+# Impact analysis for specific crate update
+"Tell me the impact and necessary changes when updating tokio to the latest version"
 ```
 
 ### Detailed Examples
 
 ```bash
-# Detailed analysis with Release Notes
+# Detailed analysis including release notes
 cat Cargo.toml && cargo tree
-"Analyze dependencies and for each crate provide:
+"Analyze dependencies and provide the following for each crate in table format:
 1. Current → Latest version
-2. Risk evaluation (safe/caution/danger)
+2. Risk evaluation (safe, caution, dangerous)
 3. Main changes (from CHANGELOG)
-4. Trait bounds changes
-5. Required code modifications
-in table format"
+4. Trait bound changes
+5. Required code fixes"
 
 # Async runtime migration analysis
 cat Cargo.toml src/main.rs
-"Show all necessary changes for migrating from async-std to tokio, or for a tokio major version upgrade"
+"Present all necessary changes for migrating from async-std to tokio or upgrading tokio to a new major version"
 ```
 
-### Risk Level Criteria
+### Risk Criteria
 
 ```
 Safe (🟢):
@@ -71,19 +70,19 @@ Safe (🟢):
 Caution (🟡):
 - Minor version upgrade (0.1.0 → 0.2.0)
 - New features added
-- Deprecation warnings present
+- Deprecation warnings
 
-Danger (🔴):
+Dangerous (🔴):
 - Major version upgrade (0.x.y → 1.0.0, 1.x.y → 2.0.0)
 - Breaking changes
-- API deletions/changes
-- Trait bounds changes
+- API removals or modifications
+- Trait bound changes
 ```
 
-### Executing Updates
+### Execution of Update
 
 ```bash
-# Create backup
+# Create backups
 cp Cargo.toml Cargo.toml.backup
 cp Cargo.lock Cargo.lock.backup
 
@@ -96,9 +95,9 @@ cargo test
 cargo clippy
 ```
 
-### Important Notes
+### Notes
 
-Always test functionality after updates. If problems occur, restore with:
+Always verify functionality after updates. If issues occur, restore with:
 
 ```bash
 cp Cargo.toml.backup Cargo.toml

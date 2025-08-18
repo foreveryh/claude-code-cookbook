@@ -1,60 +1,60 @@
 ## Commit Message
 
-ステージングされた変更（git diff --staged）から適切なコミットメッセージを生成します。git コマンドの実行は行わず、メッセージの生成とクリップボードへのコピーのみを行います。
+Generates commit messages from staged changes (git diff --staged). This command only creates messages and copies them to your clipboard—it doesn't run any git commands.
 
-### 使い方
+### Usage
 
 ```bash
-/commit-message [オプション]
+/commit-message [options]
 ```
 
-### オプション
+### Options
 
-- `--format <形式>` : メッセージ形式を指定（conventional, gitmoji, angular）
-- `--lang <言語>` : メッセージ言語を強制指定（en, ja）
-- `--breaking` : Breaking Change の検出と記載
+- `--format <format>` : Choose message format (conventional, gitmoji, angular)
+- `--lang <language>` : Set language explicitly (en, ja)
+- `--breaking` : Include breaking change detection
 
-### 基本例
+### Basic Examples
 
 ```bash
-# ステージングされた変更からメッセージ生成（言語自動判定）
-# メイン候補が自動的にクリップボードにコピーされます
+# Generate message from staged changes (language auto-detected)
+# The top suggestion is automatically copied to your clipboard
 /commit-message
 
-# 言語を強制的に指定
+# Specify language explicitly
 /commit-message --lang ja
 /commit-message --lang en
 
-# Breaking Change を検出
+# Include breaking change detection
 /commit-message --breaking
 ```
 
-### 前提条件
+### Prerequisites
 
-**重要**: このコマンドはステージングされた変更のみを分析します。事前に `git add` で変更をステージングしておく必要があります。
+**Important**: This command only works with staged changes. Run `git add` first to stage your changes.
 
 ```bash
-# ステージングされていない場合は警告が表示されます
+# If nothing is staged, you'll see:
 $ /commit-message
-ステージングされた変更がありません。先に git add を実行してください。
+No staged changes found. Please run git add first.
 ```
 
-### 自動クリップボード機能
+### Automatic Clipboard Feature
 
-生成されたメイン候補は `git commit -m "メッセージ"` の完全な形式で自動的にクリップボードにコピーされます。ターミナルでそのまま貼り付けて実行できます。
+The top suggestion gets copied to your clipboard as a complete command: `git commit -m "message"`. Just paste and run it in your terminal.
 
-**実装時の注意**:
+**Implementation Notes**:
 
-- コミットコマンドを `pbcopy` に渡す際は、メッセージ出力とは別プロセスで実行すること
-- `echo` の代わりに `printf` を使用して末尾の改行を避けること
+- Run `pbcopy` in a separate process from the message output
+- Use `printf` instead of `echo` to avoid unwanted newlines
 
-### プロジェクト規約の自動検出
+### Automatic Project Convention Detection
 
-**重要**: プロジェクト独自の規約が存在する場合は、それを優先します。
+**Important**: If project-specific conventions exist, they take priority.
 
-#### 1. CommitLint 設定の確認
+#### 1. CommitLint Configuration Check
 
-以下のファイルから設定を自動検出：
+Automatically detects settings from the following files:
 
 - `commitlint.config.js`
 - `commitlint.config.mjs`
@@ -64,16 +64,16 @@ $ /commit-message
 - `.commitlintrc.json`
 - `.commitlintrc.yml`
 - `.commitlintrc.yaml`
-- `package.json` の `commitlint` セクション
+- `package.json` with `commitlint` section
 
 ```bash
-# 設定ファイルの検索
+# Search for configuration files
 find . -name "commitlint.config.*" -o -name ".commitlintrc.*" | head -1
 ```
 
-#### 2. カスタムタイプの検出
+#### 2. Custom Type Detection
 
-プロジェクト独自のタイプ例：
+Example of project-specific types:
 
 ```javascript
 // commitlint.config.mjs
@@ -85,190 +85,190 @@ export default {
       'always',
       [
         'feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore',
-        'wip',      // 作業中
-        'hotfix',   // 緊急修正
-        'release',  // リリース
-        'deps',     // 依存関係更新
-        'config'    // 設定変更
+        'wip',      // work in progress
+        'hotfix',   // urgent fix
+        'release',  // release
+        'deps',     // dependency update
+        'config'    // configuration change
       ]
     ]
   }
 }
 ```
 
-#### 3. 言語設定の検出
+#### 3. Detecting Language Settings
 
 ```javascript
-// プロジェクトが日本語メッセージを使用する場合
+// When project uses Japanese messages
 export default {
   rules: {
-    'subject-case': [0],  // 日本語対応のため無効化
-    'subject-max-length': [2, 'always', 72]  // 日本語は文字数制限を調整
+    'subject-case': [0],  // Disabled for Japanese support
+    'subject-max-length': [2, 'always', 72]  // Adjusted character limit for Japanese
   }
 }
 ```
 
-#### 4. 既存コミット履歴の分析
+#### 4. Existing Commit History Analysis
 
 ```bash
-# 最近のコミットから使用パターンを学習
+# Learn patterns from recent commits
 git log --oneline -50 --pretty=format:"%s"
 
-# 使用タイプ統計
+# Type usage statistics
 git log --oneline -100 --pretty=format:"%s" | \
 grep -oE '^[a-z]+(\([^)]+\))?' | \
 sort | uniq -c | sort -nr
 ```
 
-### 言語の自動判定
+### Automatic Language Detection
 
-以下の条件で自動的に日本語/英語を切り替えます：
+Automatically switches between Japanese/English based on:
 
-1. **CommitLint 設定**から言語設定を確認
-2. **git log 分析**による自動判定
-3. **プロジェクトファイル**の言語設定
-4. **変更ファイル内**のコメント・文字列分析
+1. **CommitLint configuration** language settings
+2. **git log analysis** automatic detection
+3. **Project file** language settings
+4. **Changed file** comment and string analysis
 
-デフォルトは英語。日本語プロジェクトと判定された場合は日本語で生成。
+Default is English. Generates in Japanese if detected as Japanese project.
 
-### メッセージ形式
+### Message Format
 
-#### Conventional Commits (デフォルト)
+#### Conventional Commits (Default)
 
 ```
 <type>: <description>
 ```
 
-**重要**: 必ず 1 行のコミットメッセージを生成します。複数行のメッセージは生成しません。
+**Important**: Always generates single-line commit messages. Does not generate multi-line messages.
 
-**注意**: プロジェクト独自の規約がある場合は、それを優先します。
+**Note**: Project-specific conventions take priority if they exist.
 
-### 標準タイプ
+### Standard Types
 
-**必須タイプ**:
+**Required Types**:
 
-- `feat`: 新機能（ユーザーに見える機能追加）
-- `fix`: バグ修正
+- `feat`: New feature (user-visible feature addition)
+- `fix`: Bug fix
 
-**任意タイプ**:
+**Optional Types**:
 
-- `build`: ビルドシステムや外部依存関係の変更
-- `chore`: その他の変更（リリースに影響しない）
-- `ci`: CI 設定ファイルやスクリプトの変更
-- `docs`: ドキュメントのみの変更
-- `style`: コードの意味に影響しない変更（空白、フォーマット、セミコロンなど）
-- `refactor`: バグ修正や機能追加を伴わないコード変更
-- `perf`: パフォーマンス改善
-- `test`: テストの追加や修正
+- `build`: Build system or external dependency changes
+- `chore`: Other changes (no release impact)
+- `ci`: CI configuration files and scripts changes
+- `docs`: Documentation only changes
+- `style`: Changes that don't affect code meaning (whitespace, formatting, semicolons, etc.)
+- `refactor`: Code changes without bug fixes or feature additions
+- `perf`: Performance improvements
+- `test`: Adding or fixing tests
 
-### 出力例（英語プロジェクト）
+### Output Example (English Project)
 
 ```bash
 $ /commit-message
 
-📝 コミットメッセージ提案
+📝 Commit Message Suggestions
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✨ メイン候補:
+✨ Main Candidate:
 feat: implement JWT-based authentication system
 
-📋 代替案:
+📋 Alternatives:
 1. feat: add user authentication with JWT tokens
 2. fix: resolve token validation error in auth middleware
 3. refactor: extract auth logic into separate module
 
-✅ `git commit -m "feat: implement JWT-based authentication system"` をクリップボードにコピーしました
+✅ `git commit -m "feat: implement JWT-based authentication system"` copied to clipboard
 ```
 
-**実装例（修正版）**:
+**Implementation Example (Fixed)**:
 
 ```bash
-# コミットコマンドを先にクリップボードにコピー（改行なし）
+# Copy commit command to clipboard first (no newline)
 printf 'git commit -m "%s"' "$COMMIT_MESSAGE" | pbcopy
 
-# その後でメッセージを表示
+# Then display message
 cat << EOF
-📝 コミットメッセージ提案
+📝 Commit Message Suggestions
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✨ メイン候補:
+✨ Main Candidate:
 $COMMIT_MESSAGE
 
-📋 代替案:
+📋 Alternatives:
 1. ...
 2. ...
 3. ...
 
-✅ \`git commit -m "$COMMIT_MESSAGE"\` をクリップボードにコピーしました
+✅ \`git commit -m "$COMMIT_MESSAGE"\` copied to clipboard
 EOF
 ```
 
-### 出力例（日本語プロジェクト）
+### Output Example (Japanese Project)
 
 ```bash
 $ /commit-message
 
-📝 コミットメッセージ提案
+📝 Commit Message Suggestions
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 
-✨ メイン候補:
-feat: JWT 認証システムを実装
+✨ Main Candidate:
+feat: JWT authentication system implemented
 
-📋 代替案:
-1. feat: JWT トークンによるユーザー認証を追加
-2. fix: 認証ミドルウェアのトークン検証エラーを解決
-3. docs: 認証ロジックを別モジュールに分離
+📋 Alternatives:
+1. feat: add user authentication with JWT tokens
+2. fix: resolve token validation error in auth middleware
+3. docs: separate auth logic into different module
 
-✅ `git commit -m "feat: JWT 認証システムを実装"` をクリップボードにコピーしました
+✅ `git commit -m "feat: JWT authentication system implemented"` copied to clipboard
 ```
 
-### 動作概要
+### Operation Overview
 
-1. **分析**: `git diff --staged` の内容を分析
-2. **生成**: 適切なコミットメッセージを生成
-3. **コピー**: メイン候補を自動的にクリップボードへコピー
+1. **Analysis**: Analyze content of `git diff --staged`
+2. **Generation**: Generate appropriate commit message
+3. **Copy**: Automatically copy main candidate to clipboard
 
-**注意**: このコマンドは git add や git commit を実行しません。コミットメッセージの生成とクリップボードへのコピーのみを行います。
+**Note**: This command does not execute git add or git commit. It only generates commit messages and copies to clipboard.
 
-### スマート機能
+### Smart Features
 
-#### 1. 変更内容の自動分類（ステージングされたファイルのみ）
+#### 1. Automatic Change Classification (Staged Files Only)
 
-- 新ファイル追加 → `feat`
-- エラー修正パターン → `fix`
-- テストファイルのみ → `test`
-- 設定ファイル変更 → `chore`
-- README/docs 更新 → `docs`
+- New file addition → `feat`
+- Error fix patterns → `fix`
+- Test files only → `test`
+- Configuration file changes → `chore`
+- README/docs updates → `docs`
 
-#### 2. プロジェクト規約の自動検出
+#### 2. Automatic Project Convention Detection
 
-- `.gitmessage` ファイル
-- `CONTRIBUTING.md` 内の規約
-- 過去のコミット履歴パターン
+- `.gitmessage` file
+- Conventions in `CONTRIBUTING.md`
+- Past commit history patterns
 
-#### 3. 言語判定の詳細（ステージングされた変更のみ）
+#### 3. Language Detection Details (Staged Changes Only)
 
 ```bash
-# 判定基準（優先順位）
-1. git diff --staged の内容から言語を判定
-2. ステージングされたファイルのコメント分析
-3. git log --oneline -20 の言語分析
-4. プロジェクトのメイン言語設定
+# Detection criteria (priority order)
+1. Detect language from git diff --staged content
+2. Comment analysis of staged files
+3. Language analysis of git log --oneline -20
+4. Project main language settings
 ```
 
-#### 4. ステージング分析の詳細
+#### 4. Staging Analysis Details
 
-分析に使用する情報（読み取りのみ）:
+Information used for analysis (read-only):
 
-- `git diff --staged --name-only` - 変更ファイル一覧
-- `git diff --staged` - 実際の変更内容
-- `git status --porcelain` - ファイル状態
+- `git diff --staged --name-only` - Changed file list
+- `git diff --staged` - Actual change content
+- `git status --porcelain` - File status
 
-### Breaking Change 検出時
+### Breaking Change Detection
 
-API の破壊的変更がある場合：
+For breaking API changes:
 
-**英語**:
+**English**:
 
 ```bash
 feat!: change user API response format
@@ -276,37 +276,37 @@ feat!: change user API response format
 BREAKING CHANGE: user response now includes additional metadata
 ```
 
-または
+Or:
 
 ```bash
 feat(api)!: change authentication flow
 ```
 
-**日本語**:
+**Japanese**:
 
 ```bash
-feat!: ユーザー API レスポンス形式を変更
+feat!: change user API response format
 
-BREAKING CHANGE: レスポンスに追加のメタデータが含まれるようになりました
+BREAKING CHANGE: response now includes additional metadata
 ```
 
-または
+Or:
 
 ```bash
-feat(api)!: 認証フローを変更
+feat(api)!: change authentication flow
 ```
 
-### ベストプラクティス
+### Best Practices
 
-1. **プロジェクトに合わせる**: 既存のコミット言語に従う
-2. **簡潔性**: 50 文字以内で明確に
-3. **一貫性**: 混在させない（英語なら英語で統一）
-4. **OSS**: オープンソースなら英語推奨
-5. **1 行厳守**: 必ず 1 行のコミットメッセージにする（詳細な説明が必要な場合は PR で補足）
+1. **Match project**: Follow existing commit language
+2. **Conciseness**: Clear within 50 characters
+3. **Consistency**: Don't mix languages (stay consistent in English)
+4. **OSS**: English recommended for open source
+5. **Single line**: Always single-line commit message (supplement with PR for detailed explanations)
 
-### よくあるパターン
+### Common Patterns
 
-**英語**:
+**English**:
 
 ```
 feat: add user registration endpoint
@@ -314,35 +314,35 @@ fix: resolve memory leak in cache manager
 docs: update API documentation
 ```
 
-**日本語**:
+**Japanese**:
 
 ```
-feat: ユーザー登録エンドポイントを追加
-fix: キャッシュマネージャーのメモリリークを解決
-docs: API ドキュメントを更新
+feat: add user registration endpoint
+fix: resolve memory leak in cache manager
+docs: update API documentation
 ```
 
-### Claude との連携
+### Integration with Claude
 
 ```bash
-# ステージングされた変更と組み合わせて使用
-git add -p  # インタラクティブにステージング
+# Use with staged changes
+git add -p  # Interactive staging
 /commit-message
-「最適なコミットメッセージを生成して」
+"Generate optimal commit message"
 
-# 特定のファイルだけステージングして分析
+# Stage and analyze specific files
 git add src/auth/*.js
 /commit-message --lang en
-「認証関連の変更に適したメッセージを生成して」
+"Generate message for authentication changes"
 
-# Breaking Change の検出と対応
+# Breaking Change detection and handling
 git add -A
 /commit-message --breaking
-「破壊的変更がある場合は適切にマークして」
+"Mark appropriately if there are breaking changes"
 ```
 
-### 注意事項
+### Important Notes
 
-- **前提条件**: 変更は事前に `git add` でステージングされている必要があります
-- **制限事項**: ステージングされていない変更は分析対象外です
-- **推奨事項**: プロジェクトの既存コミット規約を事前に確認してください
+- **Prerequisite**: Changes must be staged with `git add` beforehand
+- **Limitation**: Unstaged changes are not analyzed
+- **Recommendation**: Check existing project commit conventions first

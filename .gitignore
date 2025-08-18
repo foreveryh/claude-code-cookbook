@@ -12,10 +12,3 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Project specific
-.claude/*
-pm_docs/*
-
-# Generated files (should not be committed)
-settings.json

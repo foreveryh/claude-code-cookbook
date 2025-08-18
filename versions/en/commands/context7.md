@@ -1,11 +1,11 @@
 ## Context7
 
-Manage and optimize context window usage.
+Searches technical documentation using MCP's Context7.
 
 ### Usage
 
 ```bash
-# Request format for Claude
+# Format for requesting Claude
 "Search for [search keyword] using context7"
 ```
 
@@ -16,35 +16,35 @@ Manage and optimize context window usage.
 "Search for React hooks using context7"
 
 # Search for error solutions
-"Look up TypeScript type errors using context7"
+"Search for TypeScript type errors using context7"
 ```
 
-### Claude Integration
+### Collaboration with Claude
 
 ```bash
-# Technical research request
-"Search for Rust ownership system using context7 and explain for beginners"
+# Request technical research
+"Search for information about Rust's ownership system using context7 and explain it for beginners"
 
-# Error solution request
-"Search for common causes and solutions for Python ImportError using context7"
+# Request error solution
+"Search for common causes and solutions for Python's ImportError using context7"
 
-# Best practices confirmation
-"Find React performance optimization best practices using context7"
+# Confirm best practices
+"Search for best practices for React performance optimization using context7"
 ```
 
 ### Detailed Examples
 
 ```bash
 # Research from multiple perspectives
-"Research GraphQL using context7 from these perspectives:
+"Search for GraphQL using context7 from the following perspectives:
 1. Basic concepts and differences from REST API
 2. Implementation methods and best practices
 3. Common issues and solutions"
 
 # Research specific versions or environments
-"Search for Next.js 14 new features using context7, focusing on App Router usage"
+"Search for new features in Next.js 14 using context7, focusing on how to use App Router"
 ```
 
-### Important Notes
+### Notes
 
-If Context7 cannot find the information, Claude will automatically suggest other methods such as web search.
+If information cannot be found with Context7, Claude will automatically suggest other methods such as web search.

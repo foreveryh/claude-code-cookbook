@@ -1,174 +1,174 @@
 ## Smart Review
 
-現在の状況を分析し、最適なロール・アプローチを自動提案するコマンド。
+A command that analyzes the current situation and automatically suggests the optimal role and approach.
 
-### 使い方
+### Usage
 
 ```bash
-/smart-review                    # 現在のディレクトリを分析
-/smart-review <ファイル/ディレクトリ> # 特定対象を分析
+/smart-review                    # Analyze current directory
+/smart-review <file/directory>   # Analyze specific target
 ```
 
-### 自動判定ロジック
+### Automatic Analysis Logic
 
-### ファイル拡張子による判定
+### Analysis by File Extension
 
 - `package.json`, `*.tsx`, `*.jsx`, `*.css`, `*.scss` → **frontend**
 - `Dockerfile`, `docker-compose.yml`, `*.yaml` → **architect**
 - `*.test.js`, `*.spec.ts`, `test/`, `__tests__/` → **qa**
 - `*.rs`, `Cargo.toml`, `performance/` → **performance**
 
-### セキュリティ関連ファイル検出
+### Security-related File Detection
 
 - `auth.js`, `security.yml`, `.env`, `config/auth/` → **security**
 - `login.tsx`, `signup.js`, `jwt.js` → **security + frontend**
 - `api/auth/`, `middleware/auth/` → **security + architect**
 
-### 複合判定パターン
+### Complex Analysis Patterns
 
 - `mobile/` + `*.swift`, `*.kt`, `react-native/` → **mobile**
 - `webpack.config.js`, `vite.config.js`, `large-dataset/` → **performance**
 - `components/` + `responsive.css` → **frontend + mobile**
 - `api/` + `auth/` → **security + architect**
 
-### エラー・問題分析
+### Error/Problem Analysis
 
-- スタックトレース、`error.log`, `crash.log` → **analyzer**
+- Stack traces, `error.log`, `crash.log` → **analyzer**
 - `memory leak`, `high CPU`, `slow query` → **performance + analyzer**
 - `SQL injection`, `XSS`, `CSRF` → **security + analyzer**
 
-### 提案パターン
+### Suggestion Patterns
 
-### 単一ロール提案
+### Single Role Suggestion
 
 ```bash
 $ /smart-review src/auth/login.js
-→ 「認証ファイルを検出しました」
-→ 「security ロールでの分析を推奨します」
-→ 「実行しますか？ [y]es / [n]o / [m]ore options」
+→ "Authentication file detected"
+→ "Analysis with security role recommended"
+→ "Execute? [y]es / [n]o / [m]ore options"
 ```
 
-### 複数ロール提案
+### Multiple Role Suggestion
 
 ```bash
 $ /smart-review src/mobile/components/
-→ 「📱🎨 モバイル + フロントエンド要素を検出」
-→ 「推奨アプローチ:」
-→ 「[1] mobile ロール単体」
-→ 「[2] frontend ロール単体」  
-→ 「[3] multi-role mobile,frontend」
-→ 「[4] role-debate mobile,frontend」
+→ "📱🎨 Mobile + Frontend elements detected"
+→ "Recommended approaches:"
+→ "[1] mobile role alone"
+→ "[2] frontend role alone"
+→ "[3] multi-role mobile,frontend"
+→ "[4] role-debate mobile,frontend"
 ```
 
-### 問題分析時の提案
+### Suggestions for Problem Analysis
 
 ```bash
 $ /smart-review error.log
-→ 「⚠️ エラーログを検出しました」
-→ 「analyzer ロールで根本原因分析を開始します」
-→ 「[自動実行] /role analyzer」
+→ "⚠️ Error log detected"
+→ "Starting root cause analysis with analyzer role"
+→ "[Auto-execute] /role analyzer"
 
 $ /smart-review slow-api.log
-→ 「🐌 パフォーマンス問題を検出」
-→ 「推奨: [1]/role performance [2]/role-debate performance,analyzer」
+→ "🐌 Performance issue detected"
+→ "Recommended: [1]/role performance [2]/role-debate performance,analyzer"
 ```
 
-### 複雑な設計決定時の提案
+### Suggestions for Complex Design Decisions
 
 ```bash
 $ /smart-review architecture-design.md
-→ 「🏗️🔒⚡ アーキテクチャ + セキュリティ + パフォーマンス要素検出」
-→ 「複雑な設計決定のため、議論形式を推奨します」
-→ 「[推奨] /role-debate architect,security,performance」
-→ 「[代替] /multi-role architect,security,performance」
+→ "🏗️🔒⚡ Architecture + Security + Performance elements detected"
+→ "For complex design decisions, debate format recommended"
+→ "[Recommended] /role-debate architect,security,performance"
+→ "[Alternative] /multi-role architect,security,performance"
 ```
 
-### 提案ロジックの詳細
+### Suggestion Logic Details
 
-### 優先度判定
+### Priority Assessment
 
-1. **Security** - 認証・認可・暗号化関連は最優先
-2. **Critical Errors** - システム停止・データ損失は緊急
-3. **Architecture** - 大規模変更・技術選定は慎重検討
-4. **Performance** - ユーザー体験に直結
-5. **Frontend/Mobile** - UI/UX 改善
-6. **QA** - 品質保証・テスト関連
+1. **Security** - Authentication, authorization, and encryption are top priorities
+2. **Critical Errors** - System outages and data loss are urgent
+3. **Architecture** - Large-scale changes and technology selection require careful consideration
+4. **Performance** - Directly impacts user experience
+5. **Frontend/Mobile** - UI/UX improvements
+6. **QA** - Quality assurance and testing
 
-### 議論推奨条件
+### Conditions for Recommending Debate
 
-- 3 つ以上のロールが関連する場合
-- セキュリティ vs パフォーマンスのトレードオフがある場合
-- アーキテクチャの大幅変更が含まれる場合
-- モバイル + Web の両方に影響がある場合
+- When 3 or more roles are involved
+- When there's a trade-off between security and performance
+- When significant architectural changes are involved
+- When both mobile and web are affected
 
-### 基本例
+### Basic Examples
 
 ```bash
-# 現在のディレクトリを分析
+# Analyze current directory
 /smart-review
-「最適なロールとアプローチを提案して」
+"Suggest the optimal role and approach"
 
-# 特定ファイルを分析
+# Analyze specific file
 /smart-review src/auth/login.js
-「このファイルに最適なレビュー方法を提案して」
+"Suggest the best review method for this file"
 
-# エラーログを分析
+# Analyze error log
 /smart-review error.log
-「このエラーの解決に最適なアプローチを提案して」
+"Suggest the best approach to resolve this error"
 ```
 
-### 実裁例
+### Practical Examples
 
-### プロジェクト全体の分析
+### Project-wide Analysis
 
 ```bash
 $ /smart-review
-→ 「📊 プロジェクト分析中...」
-→ 「React + TypeScript プロジェクトを検出」
-→ 「認証機能 + API + モバイル対応を確認」
-→ 「」
-→ 「💡 推奨ワークフロー:」
-→ 「1. security で認証系チェック」
-→ 「2. frontend で UI/UX 評価」
-→ 「3. mobile でモバイル最適化確認」
-→ 「4. architect で全体設計レビュー」
-→ 「」
-→ 「自動実行しますか？ [y]es / [s]elect role / [c]ustom」
+→ "📊 Analyzing project..."
+→ "React + TypeScript project detected"
+→ "Authentication functionality + API + mobile support confirmed"
+→ ""
+→ "💡 Recommended workflow:"
+→ "1. Check authentication with security"
+→ "2. Evaluate UI/UX with frontend"
+→ "3. Confirm mobile optimization with mobile"
+→ "4. Review overall design with architect"
+→ ""
+→ "Auto-execute? [y]es / [s]elect role / [c]ustom"
 ```
 
-### 特定問題の分析
+### Specific Problem Analysis
 
 ```bash
-$ /smart-review "JWT の有効期限をどう設定すべきか"
-→ 「🤔 技術的な設計判断を検出」
-→ 「複数の専門観点が必要な問題です」
-→ 「」
-→ 「推奨アプローチ:」
-→ 「/role-debate security,performance,frontend」
-→ 「理由: セキュリティ・パフォーマンス・ UX のバランスが重要」
+$ /smart-review "How to set JWT expiration time"
+→ "🤔 Technical design decision detected"
+→ "This issue requires multiple expert perspectives"
+→ ""
+→ "Recommended approach:"
+→ "/role-debate security,performance,frontend"
+→ "Reason: Balance between security, performance, and UX is important"
 ```
 
-### Claude との連携
+### Collaboration with Claude
 
 ```bash
-# ファイル内容と組み合わせた分析
+# Analysis combined with file content
 cat src/auth/middleware.js
 /smart-review
-「このファイルの内容を含めてセキュリティ観点で分析して」
+"Analyze this file from a security perspective"
 
-# エラーと組み合わせた分析
+# Analysis combined with errors
 npm run build 2>&1 | tee build-error.log
 /smart-review build-error.log
-「ビルドエラーの解決方法を提案して」
+"Suggest ways to resolve build errors"
 
-# 設計相談
+# Design consultation
 /smart-review
-「React Native と Progressive Web App のどちらを選ぶべきか議論して」
+"Discuss whether to choose React Native or Progressive Web App"
 ```
 
-### 注意事項
+### Notes
 
-- 提案は参考情報です。最終的な判断はユーザーが行ってください
-- 複雑な問題ほど議論形式（role-debate）を推奨します
-- 単純な問題は single role で十分な場合が多いです
-- セキュリティ関連は必ず専門ロールでの確認を推奨します
+- Suggestions are for reference only. The final decision is up to the user
+- Debate format (role-debate) is recommended for complex issues
+- Single role is often sufficient for simple problems
+- Security-related matters should always be confirmed with a specialized role

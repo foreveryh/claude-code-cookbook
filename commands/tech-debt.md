@@ -1,87 +1,87 @@
 ## Tech Debt
 
-プロジェクトの技術的負債を分析し、優先順位付けされた改善計画を作成します。
+Finds technical debt in your project and creates a fix-it plan.
 
-### 使い方
+### Usage
 
 ```bash
-# プロジェクトの構成を確認して技術的負債を分析
+# Check project structure for tech debt
 ls -la
-「このプロジェクトの技術的負債を分析して改善計画を作成して」
+"Find the technical debt in this project and make a plan to fix it"
 ```
 
-### 基本例
+### Basic Examples
 
 ```bash
-# TODO/FIXME コメントの分析
+# Find TODO/FIXME comments
 grep -r "TODO\|FIXME\|HACK\|XXX\|WORKAROUND" . --exclude-dir=node_modules --exclude-dir=.git
-「これらの TODO コメントを優先度順に整理して改善計画を立てて」
+"Sort these TODOs by priority and tell me how to fix them"
 
-# プロジェクトの依存関係確認
+# Check dependencies
 ls -la | grep -E "package.json|Cargo.toml|pubspec.yaml|go.mod|requirements.txt"
-「プロジェクトの依存関係を分析して古くなっているものとリスクを特定して」
+"Which dependencies are outdated? What are the risks?"
 
-# 大きなファイルや複雑な関数の検出
+# Find big files and complex code
 find . -type f -not -path "*/\.*" -not -path "*/node_modules/*" -exec wc -l {} + | sort -rn | head -10
-「大きすぎるファイルや複雑な構造を特定して改善案を提示して」
+"Which files are too big? How should we split them up?"
 ```
 
-### Claude との連携
+### Collaboration with Claude
 
 ```bash
-# 包括的な技術的負債分析
+# Full tech debt analysis
 ls -la && find . -name "*.md" -maxdepth 2 -exec head -20 {} \;
-「このプロジェクトの技術的負債を以下の観点で分析して：
-1. コード品質（複雑度、重複、保守性）
-2. 依存関係の健全性
-3. セキュリティリスク
-4. パフォーマンス問題
-5. テストカバレッジ不足」
+"Check this project's tech debt:
+1. Code quality (too complex? duplicated? hard to maintain?)
+2. Are dependencies healthy?
+3. Security problems?
+4. Performance issues?
+5. Missing tests?"
 
-# アーキテクチャの負債分析
+# Architecture debt check
 find . -type d -name "src" -o -name "lib" -o -name "app" | head -10 | xargs ls -la
-「アーキテクチャレベルの技術的負債を特定し、リファクタリング計画を提案して」
+"What's wrong with the architecture? How do we fix it?"
 
-# 優先順位付けされた改善計画
-「技術的負債を以下の基準で評価して表形式で提示：
-- 影響度（高/中/低）
-- 修正コスト（時間）
-- ビジネスリスク
-- 改善による効果
-- 推奨実施時期」
+# Make a priority list
+"Rate the tech debt and show me a table with:
+- Impact (High/Medium/Low)
+- Time to fix
+- Business risk
+- What we gain
+- When to do it"
 ```
 
-### 詳細例
+### Detailed Examples
 
 ```bash
-# プロジェクトタイプの自動検出と分析
+# Auto-detect project type and analyze
 find . -maxdepth 2 -type f \( -name "package.json" -o -name "Cargo.toml" -o -name "pubspec.yaml" -o -name "go.mod" -o -name "pom.xml" \)
-「検出されたプロジェクトタイプに基づいて、以下を分析：
-1. 言語・フレームワーク固有の技術的負債
-2. ベストプラクティスからの逸脱
-3. モダナイゼーションの機会
-4. 段階的な改善戦略」
+"For this project type, check:
+1. Language-specific debt
+2. Where we break best practices
+3. What can be modernized
+4. Step-by-step fix plan"
 
-# コードの品質メトリクス分析
+# Code quality check
 find . -type f -name "*" | grep -E "\.(js|ts|py|rs|go|dart|kotlin|swift|java)$" | wc -l
-「プロジェクトのコード品質を分析し、以下のメトリクスを提示：
-- 循環的複雑度が高い関数
-- 重複コードの検出
-- 長すぎるファイル/関数
-- 適切なエラーハンドリングの欠如」
+"Check code quality:
+- Which functions are too complex?
+- Where's the duplicate code?
+- What's too long?
+- Where's error handling missing?"
 
-# セキュリティ負債の検出
+# Security debt check
 grep -r "password\|secret\|key\|token" . --exclude-dir=.git --exclude-dir=node_modules | grep -v ".env.example"
-「セキュリティに関する技術的負債を検出し、修正優先度と対策を提案して」
+"Find security problems and tell me what to fix first"
 
-# テスト不足の分析
+# Test coverage check
 find . -type f \( -name "*test*" -o -name "*spec*" \) | wc -l && find . -type f -name "*.md" | xargs grep -l "test"
-「テストカバレッジの技術的負債を分析し、テスト戦略を提案して」
+"Where are tests missing? What's our testing strategy?"
 ```
 
-### 注意事項
+### Notes
 
-- プロジェクトの言語やフレームワークを自動検出し、それに応じた分析を行います
-- 技術的負債は「すぐに修正すべき重要な問題」と「長期的に改善する項目」に分類されます
-- ビジネス価値と技術的改善のバランスを考慮した現実的な計画を提供します
-- 改善による ROI（投資対効果）も考慮に入れます
+- Auto-detects your language and framework
+- Splits debt into "fix now" vs "fix later"
+- Balances business needs with tech improvements
+- Shows ROI - what you get for the effort

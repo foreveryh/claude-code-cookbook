@@ -1,6 +1,6 @@
 ## Error Fix
 
-Identify root causes from error messages and propose proven solutions.
+Analyzes error messages to find root causes and suggest proven fixes.
 
 ### Usage
 
@@ -11,9 +11,9 @@ Identify root causes from error messages and propose proven solutions.
 ### Options
 
 - None: Standard error analysis
-- `--deep`: Deep analysis mode (including dependencies and environmental factors)
-- `--preventive`: Focus on preventive measures
-- `--quick`: Show only immediately applicable fixes
+- `--deep`: Deep dive including dependencies and environment
+- `--preventive`: Focus on preventing future occurrences
+- `--quick`: Quick fixes only
 
 ### Basic Examples
 
@@ -21,67 +21,67 @@ Identify root causes from error messages and propose proven solutions.
 # Standard error analysis
 npm run build 2>&1
 /fix-error
-"Analyze the build error and suggest fixes"
+"Analyze this build error and suggest fixes"
 
 # Deep analysis mode
 python app.py 2>&1
 /fix-error --deep
-"Analyze the root cause including environmental factors"
+"Find the root cause, including environment issues"
 
-# Quick fix focus
+# Quick fixes only
 cargo test 2>&1
 /fix-error --quick
-"Provide immediately applicable fixes"
+"Just give me a quick fix"
 
-# Prevention focus
+# Prevention-focused
 ./app 2>&1 | tail -50
 /fix-error --preventive
-"Provide error fixes and future prevention strategies"
+"Fix this and help me prevent it next time"
 ```
 
-### Integration with Claude
+### Collaboration with Claude
 
 ```bash
-# Error log analysis
+# Analyze error logs
 cat error.log
 /fix-error
-"Identify root causes and suggest solutions"
+"What's causing this error and how do I fix it?"
 
-# Test failure resolution
+# Resolve test failures
 npm test 2>&1
 /fix-error --quick
-"Analyze failed tests and provide immediate fixes"
+"These tests are failing - need a quick fix"
 
-# Stack trace analysis
+# Analyze stack traces
 python script.py 2>&1
 /fix-error --deep
-"Identify problem areas from this stack trace including environmental factors"
+"Dig into this stack trace and check for environment issues"
 
-# Multiple error resolution
+# Handle multiple errors
 grep -E "ERROR|WARN" app.log | tail -20
 /fix-error
-"Classify these errors and warnings by priority and suggest solutions for each"
+"Sort these by priority and tell me how to fix each one"
 ```
 
-### Error Analysis Priority
+### Error Analysis Priorities
 
-#### 🔴 Urgency: High (Immediate action required)
+#### Urgency: High (Fix now!)
 
-- **Application crashes**: Crashes, infinite loops, deadlocks
+- **Application downtime**: Crashes, infinite loops, deadlocks
 - **Data loss risk**: Database errors, file corruption
 - **Security vulnerabilities**: Authentication failures, permission errors, injections
 - **Production impact**: Deployment failures, service outages
 
-#### 🟡 Urgency: Medium (Early action recommended)
+#### 🟡 Urgency: Medium (Fix soon)
 
-- **Performance issues**: Memory leaks, latency, timeouts
-- **Partial malfunction**: Specific feature errors, UI glitches
-- **Development efficiency**: Build errors, test failures
+- **Performance issues**: Memory leaks, delays, timeouts
+- **Partial functionality failure**: Errors in specific features, UI glitches
+- **Reduced development efficiency**: Build errors, test failures
 
-#### 🟢 Urgency: Low (Planned action)
+#### 🟢 Urgency: Low (Fix when convenient)
 
 - **Warning messages**: Deprecation, lint errors
-- **Development environment only**: Local environment issues
+- **Development environment only**: Issues only in local environments
 - **Future risks**: Technical debt, maintainability issues
 
 ### Analysis Process
@@ -89,56 +89,56 @@ grep -E "ERROR|WARN" app.log | tail -20
 #### Phase 1: Error Information Collection
 
 ```bash
-🔴 Required:
-- Complete error message capture
-- Stack trace verification
-- Occurrence conditions (reproducibility)
+🔴 Must have:
+- Full error message
+- Stack trace
+- Steps to reproduce
 
-🟡 Early collection:
-- Environment info (OS, versions, dependencies)
-- Recent change history (git log, recent commits)
-- Related log verification
+🟡 Should have:
+- Environment details (OS, versions, dependencies)
+- Recent changes (git log, commits)
+- Related logs
 
-🟢 Additional:
-- System resource status
+🟢 Nice to have:
+- System resources
 - Network state
-- External service status
+- External services
 ```
 
 #### Phase 2: Root Cause Analysis
 
-1. **Surface symptom organization**
-   - Exact error message content
-   - Occurrence timing and patterns
-   - Impact scope identification
+1. **Identify symptoms**
+   - Exact error message
+   - When and how it happens
+   - What's affected
 
-2. **Deep cause identification**
-   - 5 Whys analysis application
-   - Dependency tracking
-   - Environment difference verification
+2. **Find root causes**
+   - Use 5 Whys analysis
+   - Check dependencies
+   - Compare environments
 
-3. **Hypothesis verification**
-   - Minimal reproduction code creation
-   - Isolation test execution
-   - Cause narrowing
+3. **Test your theory**
+   - Create minimal repro
+   - Isolate the issue
+   - Confirm the cause
 
 #### Phase 3: Solution Implementation
 
 ```bash
-🔴 Immediate response (hotfix):
-- Minimal fix to suppress symptoms
-- Temporary workaround application
-- Emergency deployment preparation
+🔴 Quick fix (hotfix):
+- Stop the bleeding
+- Apply workarounds
+- Get ready to deploy
 
-🟡 Fundamental solution:
-- Essential fix for the cause
-- Test case addition
-- Documentation update
+🟡 Root cause fix:
+- Fix the actual problem
+- Add tests
+- Update docs
 
-🟢 Preventive measures:
-- Error handling enhancement
-- Monitoring/alert setup
-- CI/CD pipeline improvement
+🟢 Prevent future issues:
+- Better error handling
+- Add monitoring
+- Improve CI/CD
 ```
 
 ### Output Example
@@ -148,51 +148,51 @@ grep -E "ERROR|WARN" app.log | tail -20
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📍 Error Overview
-├─ Type: [Compile/Runtime/Logic/Environment]
+├─ Type: [Compilation/Runtime/Logical/Environmental]
 ├─ Urgency: 🔴 High / 🟡 Medium / 🟢 Low
-├─ Impact: [Feature/Component name]
+├─ Impact Scope: [Feature name/Component]
 └─ Reproducibility: [100% / Intermittent / Specific conditions]
 
 🔍 Root Cause
-├─ Direct cause: [Specific cause]
-├─ Background factors: [Environment/Config/Dependencies]
+├─ Direct Cause: [Specific cause]
+├─ Background Factors: [Environment/Configuration/Dependencies]
 └─ Trigger: [Occurrence conditions]
 
 💡 Solutions
-🔴 Immediate action:
+🔴 Immediate response:
 1. [Specific fix command/code]
 2. [Temporary workaround]
 
-🟡 Fundamental fix:
+🟡 Fundamental solution:
 1. [Essential fix method]
-2. [Required refactoring]
+2. [Necessary refactoring]
 
-🟢 Prevention:
+🟢 Preventive measures:
 1. [Error handling improvement]
-2. [Test addition]
+2. [Add tests]
 3. [Monitoring setup]
 
-📝 Verification Steps
-1. [Post-fix verification method]
+📝 Verification Procedure
+1. [Method to confirm after applying fix]
 2. [Test execution command]
 3. [Operation check items]
 ```
 
-### Error Type-Specific Analysis Methods
+### Analysis Methods by Error Type
 
-#### Compile/Build Errors
+#### Compilation/Build Errors
 
 ```bash
 # TypeScript type errors
-Required checks (High):
+Must check (high):
 - tsconfig.json settings
-- Type definition files (.d.ts) existence
-- Import statement accuracy
+- Presence of type definition files (.d.ts)
+- Accuracy of import statements
 
 # Rust lifetime errors
-Required checks (High):
-- Ownership transfers
-- Reference lifetimes
+Must check (high):
+- Ownership movement
+- Reference validity periods
 - Mutability conflicts
 ```
 
@@ -200,13 +200,13 @@ Required checks (High):
 
 ```bash
 # Null/Undefined references
-Required checks (High):
-- Missing optional chaining
+Must check (high):
+- Insufficient optional chaining
 - Initialization timing
-- Async operation completion
+- Waiting for async processing completion
 
 # Memory-related errors
-Required checks (High):
+Must check (high):
 - Heap dump acquisition
 - GC log analysis
 - Circular reference detection
@@ -216,43 +216,43 @@ Required checks (High):
 
 ```bash
 # Version conflicts
-Required checks (High):
-- Lock file integrity
-- Peer dependency requirements
+Must check (high):
+- Lock file consistency
+- Peer dependencies requirements
 - Transitive dependencies
 
 # Module resolution errors
-Required checks (High):
+Must check (high):
 - NODE_PATH settings
 - Path alias configuration
 - Symbolic links
 ```
 
-### Important Notes
+### Notes
 
-- **Absolutely forbidden**: Judging based on partial error messages, applying Stack Overflow solutions without verification
-- **Exception conditions**: Temporary workarounds allowed only under these 3 conditions:
-  1. Production emergency response (fundamental fix required within 24 hours)
-  2. External service failure (alternative during recovery wait)
-  3. Known framework bugs (waiting for fix release)
-- **Recommendation**: Prioritize root cause identification, avoid superficial fixes
+- **Absolutely prohibited**: Making judgments based only on part of an error message, applying Stack Overflow solutions without verification
+- **Exception conditions**: Temporary workarounds are only allowed under these 3 conditions:
+  1. Emergency response in production environment (root solution required within 24 hours)
+  2. External service failures (alternative means while waiting for recovery)
+  3. Known framework bugs (waiting for fixed version release)
+- **Recommendation**: Prioritize identifying root causes and avoid superficial fixes
 
 ### Best Practices
 
-1. **Complete information gathering**: Check error messages from start to end
-2. **Reproducibility confirmation**: Prioritize minimal reproduction code creation
-3. **Incremental approach**: Start with small fixes and verify
-4. **Documentation**: Record solution process for knowledge sharing
+1. **Complete information collection**: Check error messages from beginning to end
+2. **Reproducibility confirmation**: Prioritize creating minimal reproduction code
+3. **Step-by-step approach**: Start with small fixes and verify
+4. **Documentation**: Record the solution process for knowledge sharing
 
 #### Common Pitfalls
 
 - **Symptom treatment**: Superficial fixes that miss root causes
-- **Over-generalization**: Applying specific case solutions broadly
-- **Skipping verification**: Not checking side effects after fixes
-- **Knowledge silos**: Not documenting solutions
+- **Overgeneralization**: Widely applying solutions for specific cases
+- **Omitted verification**: Not checking side effects after fixes
+- **Knowledge individualization**: Not documenting solution methods
 
 ### Related Commands
 
 - `/design-patterns`: Analyze code structure issues and suggest patterns
-- `/tech-debt`: Analyze error root causes from technical debt perspective
-- `/analyzer`: When deeper root cause analysis is needed
+- `/tech-debt`: Analyze root causes of errors from a technical debt perspective
+- `/analyzer`: For cases requiring deeper root cause analysis

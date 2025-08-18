@@ -1,23 +1,21 @@
-## PR Create (Deprecated)
+## PR Create
 
-> Deprecated: Prefer `/pr-create-smart` which focuses on drafting a high-quality PR description. Use your normal tool (gh/GUI) to create the PR. This legacy command attempted to automate PR creation end-to-end (template preservation, label selection, Draft creation). Keep for backward compatibility.
-
-Achieve efficient Pull Request workflow with automatic PR creation based on Git change analysis.
+Creates Pull Requests automatically by analyzing your Git changes for a smoother workflow.
 
 ### Usage
 
 ```bash
-# Automatic PR creation with change analysis
+# Auto-create PR from your changes
 git add . && git commit -m "feat: Implement user authentication"
-"Analyze changes and create a Draft PR with appropriate description and labels"
+"Create a Draft PR with the right description and labels"
 
-# Update while preserving existing template
+# Keep your existing template
 cp .github/PULL_REQUEST_TEMPLATE.md pr_body.md
-"Complete the change details while fully preserving template structure"
+"Fill in the blanks but keep the template structure intact"
 
-# Gradual quality improvement
+# Mark as ready when done
 gh pr ready
-"After quality check, change to Ready for Review"
+"Switch to Ready for Review after checking quality"
 ```
 
 ### Basic Examples
@@ -30,47 +28,47 @@ git add . && git commit -m "feat: Implement user profile feature"
 git push -u origin feat-user-profile
 
 # 2. Create PR
-"Please create a PR following these steps:
-1. Check changes with git diff --cached
-2. Create description using .github/PULL_REQUEST_TEMPLATE.md
-3. Select up to 3 appropriate labels based on changes
-4. Create as Draft PR (preserve HTML comments)"
+"Please create a PR:
+1. Check what changed with git diff --cached
+2. Use the PR template from .github/PULL_REQUEST_TEMPLATE.md
+3. Pick up to 3 labels that match the changes
+4. Create it as a Draft (keep HTML comments)"
 
-# 3. Ready after CI check
-"Once CI passes, change PR to Ready for Review"
+# 3. Make it ready after CI passes
+"Once CI is green, mark the PR as Ready for Review"
 ```
 
 ### Execution Steps
 
-#### 1. Branch Creation
+#### 1. Create Branch
 
 ```bash
-# Naming convention following guidelines: {type}-{subject}
+# Branch naming: {type}-{subject}
 git checkout main
 git pull
 git checkout -b feat-user-authentication
 
-# Verify branch (display current branch name)
+# Confirm you're on the right branch
 git branch --show-current
 ```
 
 #### 2. Commit
 
 ```bash
-# Stage changes
+# Stage your changes
 git add .
 
-# Commit message following guidelines
+# Commit with a clear message
 git commit -m "feat: Implement user authentication API"
 ```
 
 #### 3. Push to Remote
 
 ```bash
-# Initial push (set upstream)
+# First push (sets upstream)
 git push -u origin feat-user-authentication
 
-# Subsequent pushes
+# Later pushes
 git push
 ```
 
@@ -79,98 +77,98 @@ git push
 **Step 1: Analyze Changes**
 
 ```bash
-# Get file changes (check staged changes)
+# See what files changed
 git diff --cached --name-only
 
-# Content analysis (max 1000 lines)
+# Review the actual changes (first 1000 lines)
 git diff --cached | head -1000
 ```
 
 **Step 2: Auto-generate Description**
 
 ```bash
-# Template processing priority
-# 1. Existing PR description (fully preserve)
-# 2. .github/PULL_REQUEST_TEMPLATE.md
-# 3. Default template
+# Template priority:
+# 1. Keep existing PR description as-is
+# 2. Use .github/PULL_REQUEST_TEMPLATE.md
+# 3. Fall back to default template
 
 cp .github/PULL_REQUEST_TEMPLATE.md pr_body.md
-# Complete only empty sections while preserving HTML comments and dividers
+# Fill empty sections only - don't touch HTML comments or separators
 ```
 
 **Step 3: Auto-select Labels**
 
 ```bash
 # Get available labels (non-interactive)
-"Get available labels from .github/labels.yml or GitHub repository and auto-select appropriate labels based on changes"
+"Retrieve available labels from .github/labels.yml or GitHub repository and automatically select appropriate labels based on changes"
 
-# Auto-selection via pattern matching (max 3)
+# Auto-selection by pattern matching (max 3)
 # - Documentation: *.md, docs/ → documentation|docs
 # - Tests: test, spec → test|testing
 # - Bug fixes: fix|bug → bug|fix
 # - New features: feat|feature → feature|enhancement
 ```
 
-**Step 4: PR Creation via GitHub API (Preserve HTML Comments)**
+**Step 4: Create PR via GitHub API (Preserve HTML Comments)**
 
 ```bash
 # Create PR
 "Create a Draft PR with the following information:
 - Title: Auto-generated from commit message
 - Description: Properly filled using .github/PULL_REQUEST_TEMPLATE.md
-- Labels: Auto-selected based on changes (max 3)
+- Labels: Auto-selected from changes (max 3)
 - Base branch: main
-- Fully preserve HTML comments"
+- Preserve all HTML comments"
 ```
 
 **Method B: GitHub MCP (Fallback)**
 
 ```javascript
-// PR creation with HTML comment preservation
+// Create PR while preserving HTML comments
 mcp_github_create_pull_request({
   owner: 'organization',
   repo: 'repository',
   base: 'main',
   head: 'feat-user-authentication',
   title: 'feat: Implement user authentication',
-  body: prBodyContent, // Complete content including HTML comments
+  body: prBodyContent, // Full content including HTML comments
   draft: true,
   maintainer_can_modify: true,
 });
 ```
 
-### Automatic Label Selection System
+### Auto Label Selection System
 
-#### File Pattern-Based Detection
+#### Determining from File Patterns
 
 - **Documentation**: `*.md`, `README`, `docs/` → `documentation|docs|doc`
 - **Tests**: `test`, `spec` → `test|testing`
 - **CI/CD**: `.github/`, `*.yml`, `Dockerfile` → `ci|build|infra|ops`
 - **Dependencies**: `package.json`, `pubspec.yaml` → `dependencies|deps`
 
-#### Change Content-Based Detection
+#### Determining from Content
 
-- **Bug fixes**: `fix|bug|error|crash` → `bug|fix`
-- **New features**: `feat|feature|add|implement` → `feature|enhancement|feat`
-- **Refactoring**: `refactor|clean` → `refactor|cleanup|clean`
+- **Bug fixes**: `fix|bug|error|crash|repair` → `bug|fix`
+- **New features**: `feat|feature|add|implement|new-feature|implementation` → `feature|enhancement|feat`
+- **Refactoring**: `refactor|clean|restructure` → `refactor|cleanup|clean`
 - **Performance**: `performance|perf|optimize` → `performance|perf`
 - **Security**: `security|secure` → `security`
 
 #### Constraints
 
-- **Maximum 3**: Upper limit for auto-selection
-- **Existing labels only**: No creation of new labels
-- **Partial match**: Detection by keyword inclusion
+- **Max 3 labels**: Upper limit for automatic selection
+- **Existing labels only**: Prohibited from creating new labels
+- **Partial match**: Determined by keyword inclusion in label names
 
 ### Project Guidelines
 
-#### Basic Principles
+#### Basic Approach
 
-1. **Always start with Draft**: All PRs are created in Draft state
-2. **Gradual quality improvement**: Phase 1 (basic implementation) → Phase 2 (add tests) → Phase 3 (update documentation)
-3. **Appropriate labels**: Always apply up to 3 types of labels
-4. **Use template**: Always use `.github/PULL_REQUEST_TEMPLATE.md`
-5. **Spacing convention**: Always add single-byte space between Japanese and alphanumeric characters
+1. **Always start as Draft**: All PRs must be created in Draft state
+2. **Gradual quality improvement**: Phase 1 (Basic implementation) → Phase 2 (Add tests) → Phase 3 (Update documentation)
+3. **Appropriate labels**: Always add up to 3 labels
+4. **Use templates**: Always use `.github/PULL_REQUEST_TEMPLATE.md`
+5. **Japanese spacing**: Always add half-width space between Japanese text and alphanumerics
 
 #### Branch Naming Convention
 
@@ -183,14 +181,14 @@ Examples:
 - refactor-api-client
 ```
 
-#### Commit Message
+#### Commit Messages
 
 ```text
 {type}: {description}
 
 Examples:
 - feat: Implement user authentication API
-- fix: Fix login error
+- fix: Correct login error
 - docs: Update README
 ```
 
@@ -198,54 +196,54 @@ Examples:
 
 #### Processing Priority
 
-1. **Existing PR description**: **Completely follow** already written content
-2. **Project template**: Maintain `.github/PULL_REQUEST_TEMPLATE.md` structure
-3. **Default template**: When above don't exist
+1. **Existing PR description**: Keep everything that's already written
+2. **Project template**: Use `.github/PULL_REQUEST_TEMPLATE.md`
+3. **Default template**: Use this if nothing else exists
 
 #### Existing Content Preservation Rules
 
-- **Don't change a single character**: Already written content
-- **Complete only empty sections**: Fill placeholder parts with change content
-- **Preserve functional comments**: Maintain `<!-- Copilot review rule -->` etc.
-- **Preserve HTML comments**: Fully preserve `<!-- ... -->`
-- **Preserve dividers**: Maintain structures like `---`
+- **Don't touch existing content**: Leave what's already there alone
+- **Fill in the blanks only**: Add content where it's missing
+- **Keep functional comments**: Like `<!-- Copilot review rule -->`
+- **Keep HTML comments**: All `<!-- ... -->` stay as-is
+- **Keep separators**: Things like `---` stay put
 
 #### Handling HTML Comment Preservation
 
-**Important**: GitHub CLI (`gh pr edit`) automatically escapes HTML comments, and shell processing may introduce invalid strings like `EOF < /dev/null`.
+**Heads up**: GitHub CLI (`gh pr edit`) escapes HTML comments, and shell processing can mess things up with strings like `EOF < /dev/null`.
 
-**Fundamental Solutions**:
+**How to fix this**:
 
-1. **Use GitHub API --field option**: Preserve HTML comments with proper escaping
-2. **Simplify template processing**: Avoid complex pipe processing and redirects
-3. **Complete preservation approach**: Abolish HTML comment removal and fully preserve templates
+1. **Use GitHub API's --field option**: This handles escaping properly
+2. **Keep it simple**: Skip complex pipes and redirects
+3. **Don't remove anything**: Keep all HTML comments and templates intact
 
-### Review Comment Response
+### Review Comment Responses
 
 ```bash
-# Re-commit after changes
+# Commit your fixes
 git add .
-git commit -m "fix: Corrections based on review feedback"
+git commit -m "fix: Address review feedback"
 git push
 ```
 
-### Important Notes
+### Notes
 
 #### Importance of HTML Comment Preservation
 
-- **GitHub CLI limitations**: `gh pr edit` escapes HTML comments, introduces invalid strings
-- **Fundamental workaround**: Use GitHub API `--field` option for proper escaping
-- **Complete template preservation**: Abolish HTML comment removal, fully maintain structure
+- **GitHub CLI issue**: `gh pr edit` escapes HTML comments and can break things
+- **The fix**: Use GitHub API's `--field` option for proper handling
+- **Keep everything**: Don't remove HTML comments - keep the whole template
 
 #### Automation Constraints
 
-- **No new labels**: Cannot create labels outside `.github/labels.yml` definitions
-- **Maximum 3 labels**: Upper limit for auto-selection
-- **Existing content priority**: Never change manually written content
+- **No new labels**: Can only use labels from `.github/labels.yml`
+- **3 labels max**: That's the limit for auto-selection
+- **Hands off manual content**: Never change what someone wrote
 
-#### Gradual Quality Improvement
+#### Step-by-Step Quality
 
-- **Draft required**: All PRs start as Draft
-- **CI check**: Check status with `gh pr checks`
-- **Ready transition**: `gh pr ready` after quality confirmation
-- **Complete template compliance**: Maintain project-specific structure
+- **Start with Draft**: Every PR begins as a draft
+- **Check CI**: Run `gh pr checks` to see the status
+- **Mark as ready**: Use `gh pr ready` when quality looks good
+- **Follow the template**: Stick to your project's structure

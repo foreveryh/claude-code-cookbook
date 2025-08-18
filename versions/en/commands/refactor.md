@@ -1,50 +1,50 @@
 ## Refactor
 
-Perform safe and incremental code refactoring while evaluating SOLID principle compliance.
+Cleans up code safely step-by-step and checks SOLID principles.
 
 ### Usage
 
 ```bash
-# Identify complex code and plan refactoring
+# Find complex code to refactor
 find . -name "*.js" -exec wc -l {} + | sort -rn | head -10
-"Refactor large files to reduce complexity"
+"Make these big files simpler"
 
-# Detect and consolidate duplicate code
+# Find duplicate code
 grep -r "function processUser" . --include="*.js"
-"Consolidate duplicate functions using Extract Method"
+"Combine these duplicate functions"
 
-# Detect SOLID principle violations
+# Check SOLID principles
 grep -r "class.*Service" . --include="*.js" | head -10
-"Evaluate if these classes follow the Single Responsibility Principle"
+"Do these classes have just one job?"
 ```
 
 ### Basic Examples
 
 ```bash
-# Detect long methods
+# Find long methods
 grep -A 50 "function" src/*.js | grep -B 50 -A 50 "return" | wc -l
-"Split methods longer than 50 lines using Extract Method"
+"Break up methods over 50 lines"
 
-# Conditional complexity
+# Find complex conditions
 grep -r "if.*if.*if" . --include="*.js"
-"Improve nested conditionals using Strategy pattern"
+"Simplify these nested ifs"
 
-# Code smell detection
+# Find code smells
 grep -r "TODO\|FIXME\|HACK" . --exclude-dir=node_modules
-"Resolve technical debt in these comments"
+"Fix these TODO comments"
 ```
 
 ### Refactoring Techniques
 
-#### Extract Method
+#### Extract Method (Split Big Functions)
 
 ```javascript
 // Before: Long method
 function processOrder(order) {
-  // 50 lines of complex logic
+  // 50 lines of complex processing
 }
 
-// After: Separated responsibilities
+// After: Separation of responsibilities
 function processOrder(order) {
   validateOrder(order);
   calculateTotal(order);
@@ -52,10 +52,10 @@ function processOrder(order) {
 }
 ```
 
-#### Replace Conditional with Polymorphism
+#### Replace Conditional with Polymorphism (Remove Switch/If Chains)
 
 ```javascript
-// Before: Switch statement
+// Before: switch statement
 function getPrice(user) {
   switch (user.type) {
     case 'premium': return basePrice * 0.8;
@@ -69,59 +69,59 @@ class PremiumPricing {
 }
 ```
 
-### SOLID Principles Check
+### SOLID Principles We Check
 
 ```
 S - Single Responsibility
-├─ Each class has a single responsibility
+├─ One class = one job
 ├─ Only one reason to change
-└─ Clear responsibility boundaries
+└─ Clear boundaries
 
 O - Open/Closed
-├─ Open for extension
-├─ Closed for modification
-└─ Existing code protection when adding features
+├─ Easy to extend
+├─ Don't modify existing code
+└─ Add features without breaking things
 
 L - Liskov Substitution
-├─ Derived class substitutability
-├─ Contract compliance
-└─ Expected behavior maintenance
+├─ Child classes can replace parents
+├─ Keep the same behavior
+└─ Don't break expectations
 
 I - Interface Segregation
-├─ Appropriate interface granularity
-├─ Avoid depending on unused methods
-└─ Role-based interface definition
+├─ Small, focused interfaces
+├─ No unused methods
+└─ Each interface for a specific role
 
 D - Dependency Inversion
-├─ Depend on abstractions
-├─ Separation from concrete implementations
-└─ Leverage dependency injection
+├─ Depend on interfaces, not classes
+├─ Keep implementations separate
+└─ Use dependency injection
 ```
 
-### Refactoring Process
+### How to Refactor Safely
 
-1. **Current State Analysis**
-   - Complexity measurement (cyclomatic complexity)
-   - Duplicate code detection
-   - Dependency analysis
+1. **Check the current state**
+   - Measure complexity
+   - Find duplicate code
+   - Map dependencies
 
-2. **Incremental Execution**
-   - Small steps (15-30 minute units)
-   - Test execution after each change
-   - Frequent commits
+2. **Make small changes**
+   - 15-30 minute chunks
+   - Test after each change
+   - Commit often
 
-3. **Quality Verification**
-   - Maintain test coverage
-   - Performance measurement
-   - Code review
+3. **Verify quality**
+   - Keep tests passing
+   - Check performance
+   - Get code reviewed
 
-### Common Code Smells
+### Code Smells to Fix
 
-- **God Object**: Class with too many responsibilities
-- **Long Method**: Methods exceeding 50 lines
-- **Duplicate Code**: Repeated logic
-- **Large Class**: Classes exceeding 300 lines
-- **Long Parameter List**: More than 4 parameters
+- **God Object**: Classes that do everything
+- **Long Method**: Functions over 50 lines
+- **Duplicate Code**: Same logic in multiple places
+- **Large Class**: Classes over 300 lines
+- **Long Parameter List**: More than 3 parameters
 
 ### Automation Support
 
@@ -139,9 +139,9 @@ npm test
 npm run test:coverage
 ```
 
-### Important Notes
+### Important Rules
 
-- **No functional changes**: Do not change external behavior
-- **Test first**: Add tests before refactoring
-- **Incremental approach**: Avoid large changes at once
-- **Continuous verification**: Test execution at each step
+- **Don't break things**: Keep the same behavior
+- **Test first**: Write tests before changing code
+- **Small steps**: No huge changes all at once
+- **Test often**: Run tests after every change

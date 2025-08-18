@@ -1,12 +1,12 @@
 ## PR List
 
-Display open pull requests list with priority ranking for the current repository.
+Displays a prioritized list of open PRs in the current repository.
 
 ### Usage
 
 ```bash
-# Request to Claude
-"Display open PR list with priority ranking"
+# Request from Claude
+"Show a prioritized list of open PRs"
 ```
 
 ### Basic Examples
@@ -15,31 +15,31 @@ Display open pull requests list with priority ranking for the current repository
 # Get repository information
 gh repo view --json nameWithOwner | jq -r '.nameWithOwner'
 
-# Get open PR information and request to Claude
+# Get open PR information and request from Claude
 gh pr list --state open --draft=false --json number,title,author,createdAt,additions,deletions,reviews --limit 30
 
-"Organize the above PRs by priority and include a 2-line summary for each PR. Generate URLs using the repository name obtained above"
+"Organize the above PRs by priority, including a 2-line summary for each PR. Generate URLs using the repository name obtained above"
 ```
 
 ### Display Format
 
 ```
-Open PR List (Sorted by Priority)
+Open PRs List (by Priority)
 
 ### High Priority
-#Number Title [Draft/DNM] | Author | Time Since Opened | Approved Count | +Additions/-Deletions
+#number Title [Draft/DNM] | Author | Time since opened | Approved count | +additions/-deletions
       ├─ Summary line 1
       └─ Summary line 2
       https://github.com/owner/repo/pull/number
 
 ### Medium Priority
-(Same format)
+(Similar format)
 
 ### Low Priority
-(Same format)
+(Similar format)
 ```
 
-### Priority Criteria
+### Priority Assessment Criteria
 
 **High Priority**
 
@@ -57,10 +57,10 @@ Open PR List (Sorted by Priority)
 - PRs containing DO NOT MERGE
 - Draft PRs with `test:`, `build:`, `perf:`
 
-### Important Notes
+### Notes
 
-- GitHub CLI (`gh`) is required
-- Only displays open PRs (excludes Drafts)
-- Displays maximum 30 PRs
+- Requires GitHub CLI (`gh`)
+- Only displays PRs in open state (Drafts are excluded)
+- Shows maximum 30 PRs
 - Elapsed time is from when the PR was opened
 - PR URLs are automatically generated from the actual repository name

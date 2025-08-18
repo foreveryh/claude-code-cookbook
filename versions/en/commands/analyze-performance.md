@@ -1,63 +1,63 @@
 ## Analyze Performance
 
-Analyze application performance and identify bottlenecks for optimization opportunities.
+Finds performance bottlenecks and suggests fixes based on technical debt analysis.
 
 ### Usage
 
 ```bash
-# Comprehensive performance problem analysis
+# Find performance issues comprehensively
 find . -name "*.js" -o -name "*.ts" | xargs wc -l | sort -rn | head -10
-"Identify large files and performance issues and suggest improvements"
+"Show me the big files and performance problems, then suggest fixes"
 
-# Detect inefficient code patterns
+# Spot inefficient patterns
 grep -r "for.*await\|forEach.*await" . --include="*.js"
-"Analyze N+1 query problems and performance bottlenecks"
+"Find N+1 queries and other performance killers"
 
-# Memory leak possibilities
+# Check for memory leaks
 grep -r "addEventListener\|setInterval" . --include="*.js" | grep -v "removeEventListener\|clearInterval"
-"Evaluate memory leak risks and countermeasures"
+"Where might we have memory leaks and how do we fix them?"
 ```
 
 ### Basic Examples
 
 ```bash
-# Bundle size and load time
+# Check bundle size and load time
 npm ls --depth=0 && find ./public -name "*.js" -o -name "*.css" | xargs ls -lh
-"Identify bundle size and asset optimization improvement points"
+"How can we shrink bundles and optimize assets?"
 
-# Database performance
+# Database query performance
 grep -r "SELECT\|findAll\|query" . --include="*.js" | head -20
-"Analyze database query optimization points"
+"Which database queries need optimization?"
 
-# Dependencies performance impact
+# Dependency performance impact
 npm outdated && npm audit
-"Evaluate the performance impact of outdated dependencies"
+"Are outdated dependencies slowing us down?"
 ```
 
-### Analysis Perspectives
+### What We Look For
 
-#### 1. Code-Level Issues
+#### 1. Code-Level Problems
 
-- **O(n²) Algorithms**: Detect inefficient array operations
-- **Synchronous I/O**: Identify blocking operations
-- **Duplicate Processing**: Remove unnecessary calculations and requests
-- **Memory Leaks**: Manage event listeners and timers
+- **O(n²) Algorithms**: Slow array operations that don't scale
+- **Synchronous I/O**: Blocking operations that freeze everything
+- **Redundant Processing**: Doing the same work over and over
+- **Memory Leaks**: Event listeners and timers left running
 
-#### 2. Architecture-Level Issues
+#### 2. Architecture Problems
 
-- **N+1 Queries**: Database access patterns
-- **Insufficient Caching**: Repeated calculations or API calls
-- **Bundle Size**: Unnecessary libraries or code splitting
-- **Resource Management**: Connection pools and thread usage
+- **N+1 Queries**: Too many database round trips
+- **Missing Cache**: Repeating expensive operations
+- **Bundle Bloat**: Shipping code users don't need
+- **Resource Waste**: Poor connection and thread management
 
 #### 3. Technical Debt Impact
 
-- **Legacy Code**: Performance degradation from old implementations
-- **Design Issues**: High coupling due to insufficient responsibility distribution
-- **Insufficient Testing**: Missed performance regression detection
-- **Lack of Monitoring**: Early problem detection systems
+- **Legacy Code**: Old implementations dragging us down
+- **Poor Design**: Everything's too tightly coupled
+- **Missing Tests**: Performance regressions slip through
+- **Blind Spots**: Can't see problems until it's too late
 
-### Improvement Priority
+### Improvement Priorities
 
 ```
 🔴 Critical: System failure risk
@@ -108,9 +108,9 @@ grep -r "useMemo\|useCallback" . --include="*.jsx"
 find ./src -name "*.png" -o -name "*.jpg" | xargs ls -lh
 ```
 
-### Continuous Improvement
+### Keep Improving
 
-- **Regular audits**: Execute weekly performance testing
-- **Metrics collection**: Track response times and memory usage
-- **Alert configuration**: Automatic notifications on threshold violations
-- **Team sharing**: Document improvement cases and anti-patterns
+- **Weekly checks**: Run performance tests regularly
+- **Track metrics**: Watch response times and memory usage
+- **Set alerts**: Get notified when things slow down
+- **Share knowledge**: Document what works and what doesn't

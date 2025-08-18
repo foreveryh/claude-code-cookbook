@@ -1,59 +1,59 @@
-## Analyze Dependencies
+## Dependency Analysis
 
-Analyze project dependencies and evaluate architecture health. Visualizes dependency structures and identifies circular dependencies and architectural violations.
+Analyzes your project's dependencies and checks architecture health.
 
 ### Usage
 
 ```bash
-/analyze-dependencies [Options]
+/dependency-analysis [options]
 ```
 
 ### Options
 
-- `--visual` : Display dependencies graphically
-- `--circular` : Detect circular dependencies only
-- `--depth <number>` : Specify analysis depth (default: 3)
-- `--focus <path>` : Focus on specific module/directory
+- `--visual`: Visually display dependencies
+- `--circular`: Detect only circular dependencies
+- `--depth <number>`: Specify analysis depth (default: 3)
+- `--focus <path>`: Focus on specific module/directory
 
 ### Basic Examples
 
 ```bash
-# Analyze entire project dependencies
-/analyze-dependencies
+# Analyze dependencies for entire project
+/dependency-analysis
 
 # Detect circular dependencies
-/analyze-dependencies --circular
+/dependency-analysis --circular
 
 # Detailed analysis of specific module
-/analyze-dependencies --focus src/core --depth 5
+/dependency-analysis --focus src/core --depth 5
 ```
 
-### Analysis Items
+### What Gets Analyzed
 
 #### 1. Dependency Matrix
 
-Quantify and display inter-module dependencies:
+Shows how modules connect to each other:
 
 - Direct dependencies
 - Indirect dependencies
 - Dependency depth
-- Fan-in/Fan-out metrics
+- Fan-in/fan-out
 
-#### 2. Architecture Violation Detection
+#### 2. Architecture Violations
 
-- Layer violations (lower layer depending on upper layer)
+- Layer violations (when lower layers depend on upper ones)
 - Circular dependencies
-- Excessive coupling (high dependency count)
-- Isolated modules
+- Excessive coupling (too many connections)
+- Orphaned modules
 
-#### 3. Clean Architecture Compliance Check
+#### 3. Clean Architecture Check
 
-- Domain layer independence
-- Infrastructure layer proper separation
-- Use case layer dependency direction
-- Interface implementation status
+- Is the domain layer independent?
+- Is infrastructure properly separated?
+- Do use case dependencies flow correctly?
+- Are interfaces being used properly?
 
-### Output Examples
+### Output Example
 
 ```
 Dependency Analysis Report
@@ -76,7 +76,7 @@ Dependency Analysis Report
 ✅ Recommended Actions
 1. Introduce UserRepository interface
 2. Redesign authentication service responsibilities
-3. Split helper functions by feature
+3. Split helper functions by functionality
 
 📈 Dependency Graph
 [Visual dependency diagram displayed in ASCII art]
@@ -85,14 +85,14 @@ Dependency Analysis Report
 ### Advanced Usage Examples
 
 ```bash
-# Automated check in CI/CD pipeline
-/analyze-dependencies --circular --fail-on-violation
+# Automatic CI/CD checks
+/dependency-analysis --circular --fail-on-violation
 
-# Define and verify architecture rules
-/analyze-dependencies --rules .architecture-rules.yml
+# Check against architecture rules
+/dependency-analysis --rules .architecture-rules.yml
 
-# Track dependency changes over time
-/analyze-dependencies --compare HEAD~10
+# See how dependencies changed
+/dependency-analysis --compare HEAD~10
 ```
 
 ### Configuration File Example (.dependency-analysis.yml)
@@ -118,41 +118,41 @@ ignore:
   - "**/mocks/**"
 ```
 
-### Integration Tools
+### Tools We Use
 
-- `madge` : JavaScript/TypeScript dependency visualization
-- `dep-cruiser` : Dependency rules verification
-- `nx` : Monorepo dependency management
-- `plato` : Integrated complexity and dependency analysis
+- `madge`: Shows JavaScript/TypeScript dependencies visually
+- `dep-cruiser`: Checks dependency rules
+- `nx`: Manages monorepo dependencies
+- `plato`: Analyzes complexity and dependencies together
 
-### Claude Integration Examples
+### Collaboration with Claude
 
 ```bash
-# Analysis including package.json
+# Check dependencies with package.json
 cat package.json
 /analyze-dependencies
-"Analyze the dependency issues in this project"
+"Find dependency issues in this project"
 
-# Combine with specific module source code
+# Deep dive into a specific module
 ls -la src/core/
 /analyze-dependencies --focus src/core
-"Evaluate the core module dependencies in detail"
+"Check the core module's dependencies in detail"
 
-# Compare with architecture documentation
+# Compare design vs reality
 cat docs/architecture.md
 /analyze-dependencies --visual
-"Check for discrepancies between design documentation and implementation"
+"Does our implementation match the architecture docs?"
 ```
 
-### Important Notes
+### Notes
 
-- **Prerequisites**: Must be executed from project root
-- **Limitations**: Analysis of large projects may take considerable time
-- **Recommendations**: Consider immediate action when circular dependencies are found
+- **Run from**: Project root directory
+- **Be patient**: Large projects take time to analyze
+- **Act fast**: Fix circular dependencies as soon as you find them
 
 ### Best Practices
 
-1. **Regular analysis**: Weekly dependency health checks
-2. **Document rules**: Manage architecture rules in configuration files
-3. **Gradual improvement**: Avoid massive refactoring, prefer incremental improvements
-4. **Track metrics**: Monitor dependency complexity over time
+1. **Check weekly**: Keep an eye on dependency health
+2. **Write rules down**: Put architecture rules in config files
+3. **Small steps**: Fix things gradually, not all at once
+4. **Track trends**: Watch how complexity changes over time

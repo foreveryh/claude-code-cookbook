@@ -1,571 +1,571 @@
 ## Role Debate
 
-異なる専門性を持つロールが議論し、トレードオフを検討して最適解を導出するコマンド。
+A command that allows roles with different expertise to discuss and examine trade-offs to derive optimal solutions.
 
-### 使い方
+### Usage
 
 ```bash
-/role-debate <ロール 1>,<ロール 2> [議題]
-/role-debate <ロール 1>,<ロール 2>,<ロール 3> [議題]
+/role-debate <Role 1>,<Role 2> [Topic]
+/role-debate <Role 1>,<Role 2>,<Role 3> [Topic]
 ```
 
-### 基本例
+### Basic Examples
 
 ```bash
-# セキュリティ vs パフォーマンスのトレードオフ
+# Security vs Performance trade-off
 /role-debate security,performance
-「JWT トークンの有効期限設定について」
+"JWT Token Expiry Setting"
 
-# ユーザビリティ vs セキュリティのバランス
+# Usability vs Security balance
 /role-debate frontend,security
-「2 段階認証の UX 最適化について」
+"2-Factor Authentication UX Optimization"
 
-# 技術選定の議論
+# Technology selection discussion
 /role-debate architect,mobile
-「React Native vs Flutter の選択について」
+"React Native vs Flutter Selection"
 
-# 3 者議論
+# Three-party debate
 /role-debate architect,security,performance
-「マイクロサービス化の是非について」
+"Pros and Cons of Microservices"
 ```
 
-### 議論の基本原則
+### Basic Principles of Debate
 
-#### 建設的議論の心得
+#### Constructive Debate Guidelines
 
-- **相互尊重**: 他ロールの専門性と視点を尊重する
-- **事実ベース**: 感情的反論ではなく、データ・根拠に基づく議論
-- **解決志向**: 批判のための批判ではなく、より良い解決策を目指す
-- **実装重視**: 理想論ではなく実現可能性を考慮した提案
+- **Mutual Respect**: Respect the expertise and perspectives of other roles
+- **Fact-Based**: Debate based on data and evidence, not emotional reactions
+- **Solution-Oriented**: Aim for better solutions rather than criticizing for criticism's sake
+- **Implementation-Focused**: Consider feasibility rather than idealism
 
-#### 論拠の質的要件
+#### Quality Requirements for Arguments
 
-- **公式文書**: 標準・ガイドライン・公式ドキュメントへの言及
-- **実証事例**: 成功事例・失敗事例の具体的引用
-- **定量評価**: 可能な限り数値・指標での比較
-- **時系列考慮**: 短期・中期・長期での影響評価
+- **Official Documentation**: Reference standards, guidelines, and official documentation
+- **Empirical Cases**: Specific citations of success or failure cases
+- **Quantitative Evaluation**: Comparisons using numbers and metrics whenever possible
+- **Time-Series Consideration**: Evaluation of short-term, medium-term, and long-term impacts
 
-#### 議論倫理
+#### Debate Ethics
 
-- **誠実性**: 自身の専門分野の限界も認める
-- **開放性**: 新しい情報・視点に対する柔軟性
-- **透明性**: 判断根拠・前提条件の明示
-- **責任性**: 提案の実装リスクも含めて言及
+- **Honesty**: Acknowledge the limits of your expertise
+- **Openness**: Flexibility toward new information and perspectives
+- **Transparency**: Explicitly state judgment grounds and assumptions
+- **Accountability**: Mention implementation risks of proposals
 
-### 議論プロセス
+### Debate Process
 
-### Phase 1: 初期立場表明
+### Phase 1: Initial Position Statement
 
-各ロールが専門視点から独立して意見表明
+Each role independently expresses opinions from their professional perspective
 
-- 推奨案の提示
-- 根拠となる標準・文書の明示
-- 想定されるリスク・課題の説明
-- 成功指標の定義
+- Presentation of recommendations
+- Explicit citation of standards and documents as grounds
+- Explanation of anticipated risks and issues
+- Definition of success metrics
 
-### Phase 2: 相互議論・反駁
+### Phase 2: Mutual Discussion & Rebuttal
 
-ロール間でのクロス議論
+Cross-discussion between roles
 
-- 他ロール提案への建設的反論
-- 見落とされた視点の指摘
-- トレードオフの明確化
-- 代替案の提示
+- Constructive rebuttal of other roles' proposals
+- Identification of overlooked perspectives
+- Clarification of trade-offs
+- Presentation of alternatives
 
-### Phase 3: 妥協点探索
+### Phase 3: Search for Compromises
 
-実装可能な解決策の模索
+Exploration of implementable solutions
 
-- 各視点の重要度評価
-- Win-Win 解決策の検討
-- 段階的実装アプローチ
-- リスク軽減策の検討
+- Evaluation of the importance of each perspective
+- Consideration of win-win solutions
+- Step-by-step implementation approach
+- Consideration of risk mitigation measures
 
-### Phase 4: 統合結論
+### Phase 4: Integrated Conclusion
 
-最終的な推奨事項の決定
+Determining final recommendations
 
-- 合意された解決策
-- 実装ロードマップ
-- 成功指標・測定方法
-- 将来の見直しポイント
+- Agreed-upon solution
+- Implementation roadmap
+- Success metrics and measurement methods
+- Future review points
 
-### 出力フォーマット例
+### Output Format Examples
 
-### 2 ロール議論の場合
+### For 2-Role Debate
 
 ```
-ロール議論: Security vs Performance
+Role Debate: Security vs Performance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-議題: JWT トークンの有効期限設定
+Topic: JWT Token Expiry Setting
 
-Security ロールの主張:
-「15 分の短期有効期限を推奨します」
+Security Role's Argument:
+"15-minute short expiry recommended"
 
-根拠:
-- OWASP JWT Security Cheat Sheet 準拠
-- トークン漏洩時の被害時間窓を最小化
-- 攻撃者の利用可能時間を制限
+Grounds:
+- Compliance with OWASP JWT Security Cheat Sheet
+- Minimizing damage window in case of token leakage
+- Limiting attacker available time
 
-懸念事項:
-- 長期有効期限は攻撃リスクが指数関数的に増大
-- コンプライアンス要件（金融系）では短期が必須
+Concerns:
+- Long expiry exponentially increases attack risk
+- Short expiry mandatory for financial compliance
 
-成功指標:
-- セキュリティインシデント発生率 < 0.1%
-- 平均攻撃検出時間 < 5 分
+Success Metrics:
+- Security incident rate < 0.1%
+- Average attack detection time < 5 minutes
 
-Performance ロールの反論:
-「2 時間の有効期限を推奨します」
+Performance Role's Rebuttal:
+"2-hour expiry recommended"
 
-根拠:
-- Google OAuth 2.0 Best Practices 参考
-- 頻繁な再認証によるサーバー負荷増大を回避
-- ユーザー体験（作業中断）の最小化
+Grounds:
+- Reference to Google OAuth 2.0 Best Practices
+- Avoiding increased server load from frequent reauthentication
+- Minimizing user experience disruption
 
-懸念事項:
-- 15 分間隔の再認証は API 負荷 8 倍増
-- モバイル環境での接続断が頻発
+Concerns:
+- 15-minute reauthentication increases API load by 8x
+- Frequent disconnections in mobile environments
 
-成功指標:
-- API レスポンス時間 < 200ms 維持
-- サーバー CPU 使用率 < 60%
+Success Metrics:
+- Maintain API response time < 200ms
+- Server CPU usage < 60%
 
-相互議論:
+Mutual Discussion:
 Security → Performance:
-「サーバー負荷よりもセキュリティ侵害のビジネス損失の方が甚大。
-例: Equifax 事件では 7 億ドルの損失」
+"Business losses from security breaches are greater than server load.
+Example: Equifax breach cost $700 million"
 
 Performance → Security:
-「リフレッシュトークン機構で両立可能。
-バックグラウンド更新により UX を損なわずセキュリティ確保」
+"Both can be achieved with refresh token mechanism.
+Background updates ensure security without compromising UX"
 
 Security → Performance:
-「リフレッシュトークンも攻撃対象。適切な実装が前提」
+"Refresh tokens are also attack targets. Proper implementation is prerequisite"
 
 Performance → Security:
-「段階的アプローチを提案。通常操作 30 分、機密操作 15 分」
+"Propose phased approach. 30 minutes for normal operations, 15 minutes for sensitive operations"
 
-妥協点探索:
-共通理解:
-- ユーザー体験とセキュリティの両立が必要
-- リスクレベルに応じた柔軟な対応
-- 実装・運用コストの現実的考慮
+Compromise Search:
+Common Understanding:
+- Need to balance user experience and security
+- Flexible response based on risk level
+- Practical consideration of implementation and operational costs
 
-Win-Win 要素:
-- リフレッシュトークン機構の活用
-- リスクベース認証の段階的導入
-- 自動ログアウト機能による補完
+Win-Win Elements:
+- Utilization of refresh token mechanism
+- Phased introduction of risk-based authentication
+- Complementation with auto-logout function
 
-統合結論:
-「30 分有効期限 + リフレッシュトークン + リスクベース認証」
+Integrated Conclusion:
+"30-minute expiry + refresh token + risk-based authentication"
 
-実装詳細:
-1. アクセストークン: 30 分有効期限
-2. リフレッシュトークン: 7 日有効期限
-3. 高リスク操作: 15 分で強制再認証
-4. 無操作 30 分で自動ログアウト
+Implementation Details:
+1. Access token: 30-minute expiry
+2. Refresh token: 7-day expiry
+3. High-risk operations: Enforce reauthentication every 15 minutes
+4. Auto-logout after 30 minutes of inactivity
 
-段階的実装:
-週 1-2: 基本的な 30 分トークン実装
-週 3-4: リフレッシュトークン機構追加
-月 2: リスクベース認証の導入
+Phased Implementation:
+Weeks 1-2: Basic 30-minute token implementation
+Weeks 3-4: Add refresh token mechanism
+Month 2: Introduce risk-based authentication
 
-成功指標:
-- セキュリティ: インシデント発生率 < 0.1%
-- パフォーマンス: API 負荷増加率 < 20%
-- UX: ユーザー満足度 > 85%
+Success Metrics:
+- Security: Incident rate < 0.1%
+- Performance: API load increase < 20%
+- UX: User satisfaction > 85%
 
-将来の見直し:
-- 3 ヶ月後: 実際の攻撃パターン・負荷状況を評価
-- 6 ヶ月後: より洗練されたリスクベース認証への移行検討
+Future Review:
+- After 3 months: Evaluate actual attack patterns and load conditions
+- After 6 months: Consider migration to more sophisticated risk-based authentication
 ```
 
-### 3 ロール議論の場合
+### For 3-Role Debate
 
 ```
-ロール議論: Architect vs Security vs Performance
+Role Debate: Architect vs Security vs Performance
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-議題: マイクロサービス化の是非
+Topic: Pros and Cons of Microservices
 
-Architect ロールの主張:
-「段階的マイクロサービス化を推奨」
-根拠: ドメイン境界の明確化、独立したデプロイ、技術選択の自由度
+Architect Role's Argument:
+"Phased microservices recommended"
+Grounds: Clear domain boundaries, independent deployment, freedom in technology selection
 
-Security ロールの懸念:
-「サービス間通信のセキュリティ複雑化」
-根拠: API Gateway、mTLS、分散認証の管理コスト
+Security Role's Concerns:
+"Security complexity of inter-service communication"
+Grounds: Management costs of API Gateway, mTLS, distributed authentication
 
-Performance ロールの懸念:
-「ネットワーク通信によるレイテンシ増加」
-根拠: 内部 API 呼び出しによる N+1 問題、分散トランザクション
+Performance Role's Concerns:
+"Latency increase due to network communication"
+Grounds: N+1 problem from internal API calls, distributed transactions
 
-3 者議論:
-Architect → Security: 「API Gateway で集中管理により統制可能」
-Security → Architect: 「単一障害点となるリスク」
-Performance → Architect: 「サービス分割の粒度が重要」
-...（議論継続）
+Three-Party Discussion:
+Architect → Security: "Can be controlled through centralized API Gateway management"
+Security → Architect: "Risk of single point of failure"
+Performance → Architect: "Service division granularity is important"
+...(discussion continues)
 
-統合結論:
-「ドメイン駆動設計による段階的分割 + セキュリティファースト設計」
+Integrated Conclusion:
+"Domain-driven design for phased division + security-first design"
 ```
 
-### 効果的な議論パターン
+### Effective Debate Patterns
 
-### 技術選定
+### Technology Selection
 
 ```bash
 /role-debate architect,performance
-「データベース選択: PostgreSQL vs MongoDB」
+"Database Selection: PostgreSQL vs MongoDB"
 
 /role-debate frontend,mobile
-「UI フレームワーク: React vs Vue」
+"UI Framework: React vs Vue"
 
 /role-debate security,architect
-「認証方式: JWT vs Session Cookie」
+"Authentication Method: JWT vs Session Cookie"
 ```
 
-### 設計判断
+### Design Decisions
 
 ```bash
 /role-debate security,frontend
-「ユーザー認証の UX 設計」
+"User Authentication UX Design"
 
 /role-debate performance,mobile
-「データ同期戦略の最適化」
+"Data Synchronization Strategy Optimization"
 
 /role-debate architect,qa
-「テスト戦略とアーキテクチャ設計」
+"Test Strategy and Architecture Design"
 ```
 
-### トレードオフ問題
+### Trade-off Issues
 
 ```bash
 /role-debate security,performance
-「暗号化レベル vs 処理速度」
+"Encryption Level vs Processing Speed"
 
 /role-debate frontend,performance
-「リッチ UI vs ページ読み込み速度」
+"Rich UI vs Page Loading Speed"
 
 /role-debate mobile,security
-「利便性 vs データ保護レベル」
+"Convenience vs Data Protection Level"
 ```
 
-### ロール別議論特性
+### Role-Specific Debate Characteristics
 
-#### 🔒 Security ロール
+#### 🔒 Security Role
 
 ```yaml
-議論スタンス:
-  - 保守的アプローチ (リスク最小化)
-  - 規則準拠重視 (標準からの逸脱に慎重)
-  - 最悪ケース想定 (攻撃者視点)
-  - 長期的影響重視 (技術的負債としてのセキュリティ)
+debate_stance:
+  - Conservative approach (risk minimization)
+  - Compliance-focused (cautious about deviations from standards)
+  - Worst-case scenario assumption (attacker perspective)
+  - Long-term impact focus (security as technical debt)
 
-典型的論点:
-  - "セキュリティ vs 利便性" のトレードオフ
-  - "コンプライアンス要件の必達"
-  - "攻撃コスト vs 防御コストの比較"
-  - "プライバシー保護の徹底"
+typical_issues:
+  - "Security vs Convenience" trade-offs
+  - "Mandatory compliance requirements"
+  - "Attack cost vs Defense cost comparison"
+  - "Thorough privacy protection"
 
-論拠ソース:
-  - OWASP ガイドライン
-  - NIST フレームワーク
-  - 業界標準 (ISO 27001, SOC 2)
-  - 実際の攻撃事例・統計
+evidence_sources:
+  - OWASP guidelines
+  - NIST frameworks
+  - Industry standards (ISO 27001, SOC 2)
+  - Actual attack cases and statistics
 
-議論での強み:
-  - リスク評価の精度
-  - 規制要件の知識
-  - 攻撃手法への理解
+debate_strengths:
+  - Precision in risk assessment
+  - Knowledge of regulatory requirements
+  - Understanding of attack methods
 
-注意すべき偏見:
-  - 過度な保守性 (イノベーション阻害)
-  - UX への配慮不足
-  - 実装コストの軽視
+potential_biases:
+  - Excessive conservatism (inhibiting innovation)
+  - Insufficient UX consideration
+  - Downplaying implementation costs
 ```
 
-#### ⚡ Performance ロール
+#### ⚡ Performance Role
 
 ```yaml
-議論スタンス:
-  - データ駆動判断 (測定ベース)
-  - 効率性重視 (コスト対効果の最適化)
-  - ユーザー体験優先 (体感速度重視)
-  - 継続的改善 (段階的最適化)
+debate_stance:
+  - Data-driven decisions (measurement-based)
+  - Efficiency-focused (optimizing cost-effectiveness)
+  - User experience priority (perceived speed focus)
+  - Continuous improvement (phased optimization)
 
-典型的論点:
-  - "パフォーマンス vs セキュリティ"
-  - "最適化コスト vs 効果の投資対効果"
-  - "現在 vs 将来のスケーラビリティ"
-  - "ユーザー体験 vs システム効率"
+typical_issues:
+  - "Performance vs Security"
+  - "Optimization cost vs effectiveness ROI"
+  - "Current vs future scalability"
+  - "User experience vs system efficiency"
 
-論拠ソース:
-  - Core Web Vitals メトリクス
-  - ベンチマーク結果・統計
-  - ユーザー行動への影響データ
-  - 業界パフォーマンス標準
+evidence_sources:
+  - Core Web Vitals metrics
+  - Benchmark results and statistics
+  - Impact data on user behavior
+  - Industry performance standards
 
-議論での強み:
-  - 定量的評価能力
-  - ボトルネック特定
-  - 最適化手法の知識
+debate_strengths:
+  - Quantitative evaluation ability
+  - Bottleneck identification
+  - Knowledge of optimization techniques
 
-注意すべき偏見:
-  - セキュリティの軽視
-  - 保守性への配慮不足
-  - プレマチュアオプティマイゼーション
+potential_biases:
+  - Downplaying security
+  - Insufficient maintainability consideration
+  - Premature optimization
 ```
 
-#### 🏗️ Architect ロール
+#### 🏗️ Architect Role
 
 ```yaml
-議論スタンス:
-  - 長期視点重視 (システム進化への配慮)
-  - バランス追求 (全体最適)
-  - 段階的変更 (リスク管理)
-  - 標準準拠 (実証済みパターン優先)
+debate_stance:
+  - Long-term perspective (consideration for system evolution)
+  - Balance pursuit (overall optimization)
+  - Phased changes (risk management)
+  - Standard compliance (preference for proven patterns)
 
-典型的論点:
-  - "短期効率 vs 長期保守性"
-  - "技術的負債 vs 開発速度"
-  - "マイクロサービス vs モノリス"
-  - "新技術採用 vs 安定性"
+typical_issues:
+  - "Short-term efficiency vs long-term maintainability"
+  - "Technical debt vs development speed"
+  - "Microservices vs monolith"
+  - "New technology adoption vs stability"
 
-論拠ソース:
-  - アーキテクチャパターン集
-  - 設計原則 (SOLID, DDD)
-  - 大規模システム事例
-  - 技術進化のトレンド
+evidence_sources:
+  - Architecture pattern collections
+  - Design principles (SOLID, DDD)
+  - Large-scale system cases
+  - Technology evolution trends
 
-議論での強み:
-  - 全体俯瞰能力
-  - 設計パターンの知識
-  - 長期影響の予測
+debate_strengths:
+  - Overall perspective ability
+  - Knowledge of design patterns
+  - Prediction of long-term impacts
 
-注意すべき偏見:
-  - 過度な一般化
-  - 新技術への保守性
-  - 実装詳細への理解不足
+potential_biases:
+  - Excessive generalization
+  - Conservatism toward new technologies
+  - Insufficient understanding of implementation details
 ```
 
-#### 🎨 Frontend ロール
+#### 🎨 Frontend Role
 
 ```yaml
-議論スタンス:
-  - ユーザー中心設計 (UX 最優先)
-  - 包摂的アプローチ (多様性配慮)
-  - 直感性重視 (学習コスト最小化)
-  - アクセシビリティ標準 (WCAG 準拠)
+debate_stance:
+  - User-centered design (UX first priority)
+  - Inclusive approach (diversity consideration)
+  - Intuitiveness focus (minimizing learning costs)
+  - Accessibility standards (WCAG compliance)
 
-典型的論点:
-  - "ユーザビリティ vs セキュリティ"
-  - "デザイン統一 vs プラットフォーム最適化"
-  - "機能性 vs シンプルさ"
-  - "パフォーマンス vs リッチな体験"
+typical_issues:
+  - "Usability vs Security"
+  - "Design consistency vs platform optimization"
+  - "Functionality vs simplicity"
+  - "Performance vs rich experience"
 
-論拠ソース:
-  - UX 研究・ユーザビリティテスト結果
-  - アクセシビリティガイドライン
-  - デザインシステム標準
-  - ユーザー行動データ
+evidence_sources:
+  - UX research and usability test results
+  - Accessibility guidelines
+  - Design system standards
+  - User behavior data
 
-議論での強み:
-  - ユーザー視点の代弁
-  - デザイン原則の知識
-  - アクセシビリティ要件
+debate_strengths:
+  - Representation of user perspective
+  - Knowledge of design principles
+  - Accessibility requirements
 
-注意すべき偏見:
-  - 技術制約への理解不足
-  - セキュリティ要件の軽視
-  - パフォーマンス影響の過小評価
+potential_biases:
+  - Insufficient understanding of technical constraints
+  - Downplaying security requirements
+  - Underestimation of performance impact
 ```
 
-#### 📱 Mobile ロール
+#### 📱 Mobile Role
 
 ```yaml
-議論スタンス:
-  - プラットフォーム特化 (iOS/Android 差異考慮)
-  - コンテキスト適応 (移動中・片手操作)
-  - リソース制約 (バッテリー・メモリ・通信)
-  - ストア準拠 (審査ガイドライン)
+debate_stance:
+  - Platform specialization (considering iOS/Android differences)
+  - Context adaptation (on-the-go, one-handed operation)
+  - Resource constraints (battery, memory, communication)
+  - Store compliance (review guidelines)
 
-典型的論点:
-  - "ネイティブ vs クロスプラットフォーム"
-  - "オフライン対応 vs リアルタイム同期"
-  - "バッテリー効率 vs 機能性"
-  - "プラットフォーム統一 vs 最適化"
+typical_issues:
+  - "Native vs cross-platform"
+  - "Offline support vs real-time synchronization"
+  - "Battery efficiency vs functionality"
+  - "Platform unification vs optimization"
 
-論拠ソース:
+evidence_sources:
   - iOS HIG / Android Material Design
-  - App Store / Google Play ガイドライン
-  - モバイル UX 研究
-  - デバイス性能統計
+  - App Store / Google Play guidelines
+  - Mobile UX research
+  - Device performance statistics
 
-議論での強み:
-  - モバイル特有制約の理解
-  - プラットフォーム差異の知識
-  - タッチインターフェース設計
+debate_strengths:
+  - Understanding of mobile-specific constraints
+  - Knowledge of platform differences
+  - Touch interface design
 
-注意すべき偏見:
-  - Web プラットフォームへの理解不足
-  - サーバーサイド制約の軽視
-  - デスクトップ環境への配慮不足
+potential_biases:
+  - Insufficient understanding of web platform
+  - Downplaying server-side constraints
+  - Insufficient consideration for desktop environment
 ```
 
-#### 🔍 Analyzer ロール
+#### 🔍 Analyzer Role
 
 ```yaml
-議論スタンス:
-  - 証拠重視 (データファースト)
-  - 仮説検証 (科学的アプローチ)
-  - 構造的思考 (システム思考)
-  - バイアス除去 (客観性追求)
+debate_stance:
+  - Evidence-focused (data-first)
+  - Hypothesis verification (scientific approach)
+  - Structural thinking (system thinking)
+  - Bias elimination (objectivity pursuit)
 
-典型的論点:
-  - "相関関係 vs 因果関係"
-  - "症状対症療法 vs 根本解決"
-  - "仮説 vs 事実の区別"
-  - "短期症状 vs 構造的問題"
+typical_issues:
+  - "Correlation vs causation"
+  - "Symptomatic treatment vs root solution"
+  - "Distinction between hypothesis and fact"
+  - "Short-term symptoms vs structural problems"
 
-論拠ソース:
-  - 実測データ・ログ分析
-  - 統計的手法・分析結果
-  - システム思考理論
-  - 認知バイアス研究
+evidence_sources:
+  - Measured data and log analysis
+  - Statistical methods and analysis results
+  - System thinking theory
+  - Cognitive bias research
 
-議論での強み:
-  - 論理的分析能力
-  - 証拠評価の客観性
-  - 構造的問題の発見
+debate_strengths:
+  - Logical analysis ability
+  - Objectivity in evidence evaluation
+  - Discovery of structural problems
 
-注意すべき偏見:
-  - 分析麻痺 (行動力不足)
-  - 完璧主義 (実用性軽視)
-  - データ万能主義
+potential_biases:
+  - Analysis paralysis (insufficient action)
+  - Perfectionism (downplaying practicality)
+  - Data absolutism
 ```
 
-### 議論進行テンプレート
+### Debate Progression Templates
 
-#### Phase 1: 立場表明テンプレート
-
-```
-【ロール名】の推奨案:
-「[具体的な提案]」
-
-根拠:
-- [公式文書・標準への言及]
-- [実証事例・データ]
-- [専門分野の原則]
-
-想定効果:
-- [短期的効果]
-- [中長期的効果]
-
-懸念・リスク:
-- [実装リスク]
-- [運用リスク]
-- [他分野への影響]
-
-成功指標:
-- [測定可能な指標 1]
-- [測定可能な指標 2]
-```
-
-#### Phase 2: 反駁テンプレート
+#### Phase 1: Position Statement Template
 
 ```
-[対象ロール] への反論:
-「[対象提案への具体的反論]」
+[Role Name]'s Recommendation:
+"[Specific proposal]"
 
-反論根拠:
-- [見落とされた視点]
-- [対立する証拠・事例]
-- [専門分野からの懸念]
+Grounds:
+- [Reference to official documents/standards]
+- [Empirical cases/data]
+- [Professional field principles]
 
-代替案:
-「[改良された提案]」
+Expected Effects:
+- [Short-term effects]
+- [Medium to long-term effects]
 
-妥協可能ポイント:
-- [受け入れ可能な条件]
-- [段階的実装の可能性]
+Concerns/Risks:
+- [Implementation risks]
+- [Operational risks]
+- [Impacts on other fields]
+
+Success Metrics:
+- [Measurable metric 1]
+- [Measurable metric 2]
 ```
 
-#### Phase 3: 統合解決テンプレート
+#### Phase 2: Rebuttal Template
 
 ```
-統合解決案:
-「[各ロールの懸念を考慮した最終提案]」
+Rebuttal to [Target Role]:
+"[Specific rebuttal to target proposal]"
 
-各ロールへの配慮:
-- [Security]: [セキュリティ要件の満足方法]
-- [Performance]: [パフォーマンス要件の満足方法]
-- [その他]: [その他要件の満足方法]
+Rebuttal Grounds:
+- [Overlooked perspectives]
+- [Contradictory evidence/cases]
+- [Concerns from professional field]
 
-実装ロードマップ:
-- フェーズ 1 (即座): [緊急対応事項]
-- フェーズ 2 (短期): [基本実装]
-- フェーズ 3 (中期): [完全実装]
+Alternative Proposal:
+"[Improved proposal]"
 
-成功指標・測定方法:
-- [統合的な成功指標]
-- [測定方法・頻度]
-- [見直しタイミング]
+Compromise Points:
+- [Acceptable conditions]
+- [Possibility of phased implementation]
 ```
 
-### 議論品質チェックリスト
+#### Phase 3: Integrated Solution Template
 
-#### 論拠の質
+```
+Integrated Solution:
+"[Final proposal considering all roles' concerns]"
 
-- [ ] 公式文書・標準への言及がある
-- [ ] 具体的な事例・データが提示されている
-- [ ] 推測と事実が明確に区別されている
-- [ ] 情報源が明示されている
+Considerations for Each Role:
+- [Security]: [How security requirements are met]
+- [Performance]: [How performance requirements are met]
+- [Others]: [How other requirements are met]
 
-#### 議論の建設性
+Implementation Roadmap:
+- Phase 1 (Immediate): [Urgent response items]
+- Phase 2 (Short-term): [Basic implementation]
+- Phase 3 (Medium-term): [Complete implementation]
 
-- [ ] 相手の提案を正確に理解している
-- [ ] 感情的でなく論理的な反論
-- [ ] 代替案も提示している
-- [ ] Win-Win の可能性を探っている
+Success Metrics & Measurement Methods:
+- [Integrated success metrics]
+- [Measurement methods/frequency]
+- [Review timing]
+```
 
-#### 実装可能性
+### Debate Quality Checklist
 
-- [ ] 技術的実現可能性を考慮
-- [ ] 実装コスト・期間を見積もり
-- [ ] 段階的実装の可能性を検討
-- [ ] リスク軽減策を提示
+#### Evidence Quality
 
-#### 統合性
+- [ ] References to official documents/standards
+- [ ] Specific cases/data presented
+- [ ] Distinction between speculation and fact
+- [ ] Sources explicitly stated
 
-- [ ] 他分野への影響を考慮
-- [ ] 全体最適を追求
-- [ ] 長期的視点を含む
-- [ ] 測定可能な成功指標を設定
+#### Debate Constructiveness
 
-### Claude との連携
+- [ ] Accurate understanding of opponent's proposals
+- [ ] Logical rather than emotional rebuttal
+- [ ] Alternatives also presented
+- [ ] Exploration of win-win possibilities
+
+#### Implementation Feasibility
+
+- [ ] Technical feasibility considered
+- [ ] Implementation costs/duration estimated
+- [ ] Phased implementation possibility considered
+- [ ] Risk mitigation measures presented
+
+#### Integration
+
+- [ ] Impacts on other fields considered
+- [ ] Pursuit of overall optimization
+- [ ] Long-term perspective included
+- [ ] Measurable success metrics set
+
+### Collaboration with Claude
 
 ```bash
-# 設計文書を元にした議論
+# Debate based on design documents
 cat system-design.md
 /role-debate architect,security
-「この設計のセキュリティ面での課題を議論して」
+"Discuss security issues in this design"
 
-# 問題を元にした解決策議論
+# Solution debate based on problems
 cat performance-issues.md
 /role-debate performance,architect
-「パフォーマンス問題の根本的解決策を議論して」
+"Discuss fundamental solutions to performance issues"
 
-# 要件を元にした技術選定議論
+# Technology selection debate based on requirements
 /role-debate mobile,frontend
-「iOS ・ Android ・ Web の統一 UI 戦略について議論して」
+"Discuss unified UI strategy for iOS, Android, and Web"
 ```
 
-### 注意事項
+### Notes
 
-- 議論は時間がかかる場合があります（複雑なトピックほど長時間）
-- 3 つ以上のロールでは議論が発散する可能性があります
-- 最終判断は議論結果を参考にユーザーが行ってください
-- 緊急性の高い問題では single role や multi-role を先に検討してください
+- Debates may take time (longer for complex topics)
+- With 3+ roles, discussions may diverge
+- Final decisions should be made by users referencing debate results
+- For urgent issues, consider single role or multi-role first

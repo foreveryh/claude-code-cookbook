@@ -1,143 +1,143 @@
 ## PR Feedback
 
-Pull Request のレビューコメントを効率的に対応し、エラー分析 3 段階アプローチで根本解決を図ります。
+Efficiently handle Pull Request review comments and achieve root cause resolution using a 3-stage error analysis approach.
 
-### 使い方
+### Usage
 
 ```bash
-# レビューコメントの取得と分析
+# Retrieve and analyze review comments
 gh pr view --comments
-「レビューコメントを優先度別に分類して対応計画を作成してください」
+"Classify review comments by priority and create an action plan"
 
-# エラー関連コメントの詳細分析
+# Detailed analysis of error-related comments
 gh pr checks
-「CI エラーを 3 段階アプローチで分析して根本原因を特定してください」
+"Analyze CI errors using a 3-stage approach to identify root causes"
 
-# 修正完了後の品質確認
+# Quality confirmation after fixes
 npm test && npm run lint
-「修正が完了したので回帰テストとコード品質をチェックしてください」
+"Fixes are complete - please check regression tests and code quality"
 ```
 
-### 基本例
+### Basic Examples
 
 ```bash
-# コメント分類の実行
+# Classify comments
 gh pr view 123 --comments | head -20
-"レビューコメントを must/imo/nits/q に分類して対応順序を決めてください"
+"Classify review comments into must/imo/nits/q categories and determine response order"
 
-# エラー情報の収集
+# Collect error information
 npm run build 2>&1 | tee error.log
-"ビルドエラーの根本原因を特定し、適切な修正方法を提案してください"
+"Identify the root cause of build errors and suggest appropriate fixes"
 
-# 修正実装の確認
+# Verify fix implementation
 git diff HEAD~1
-"この修正がレビュー指摘事項を適切に解決しているか評価してください"
+"Evaluate whether this fix appropriately addresses the review comments"
 ```
 
-### コメント分類体系
+### Comment Classification System
 
 ```
-🔴 must: 修正必須
-├─ セキュリティ問題
-├─ 機能バグ
-├─ 設計原則違反
-└─ 規約違反
+🔴 must: Required fixes
+├─ Security issues
+├─ Functional bugs
+├─ Design principle violations
+└─ Convention violations
 
-🟡 imo: 改善提案
-├─ より良い実装方法
-├─ パフォーマンス改善
-├─ 可読性向上
-└─ リファクタリング提案
+🟡 imo: Improvement suggestions
+├─ Better implementation methods
+├─ Performance improvements
+├─ Readability enhancements
+└─ Refactoring proposals
 
-🟢 nits: 軽微な指摘
-├─ タイポ修正
-├─ インデント調整
-├─ コメント追加
-└─ 命名の微調整
+🟢 nits: Minor points
+├─ Typo fixes
+├─ Indentation adjustments
+├─ Comment additions
+└─ Naming refinements
 
-🔵 q: 質問・確認
-├─ 実装意図の確認
-├─ 仕様の明確化
-├─ 設計判断の背景
-└─ 代替案の検討
+🔵 q: Questions/confirmations
+├─ Implementation intent verification
+├─ Specification clarification
+├─ Design decision background
+└─ Alternative solution consideration
 ```
 
-### エラー分析 3 段階アプローチ
+### 3-Stage Error Analysis Approach
 
-#### Stage 1: 情報収集
+#### Stage 1: Information Collection
 
-**必須実行**
+**Required actions**
 
-- エラーメッセージの完全取得
-- スタックトレースの確認
-- 再現条件の特定
+- Full error message capture
+- Stack trace review
+- Reproduction condition identification
 
-**推奨実行**
+**Recommended actions**
 
-- 環境情報の収集
-- 最近の変更履歴
-- 関連ログの確認
+- Environment information collection
+- Recent change history
+- Related logs review
 
-#### Stage 2: 根本原因分析
+#### Stage 2: Root Cause Analysis
 
-- 5 Whys 分析の適用
-- 依存関係の追跡
-- 環境差異の確認
-- 最小再現コードの作成
+- 5 Whys analysis application
+- Dependency tracking
+- Environment difference checking
+- Minimal reproduction code creation
 
-#### Stage 3: 解決策実装
+#### Stage 3: Solution Implementation
 
-- 即座の対処（ホットフィックス）
-- 根本的解決（本質修正）
-- 予防策（再発防止）
+- Immediate response (hotfix)
+- Root cause resolution (essential fix)
+- Preventive measures (recurrence prevention)
 
-### 対応フロー
+### Response Flow
 
-1. **コメント分析**: 優先度別の分類
-2. **修正計画**: 対応順序の決定
-3. **段階的修正**: Critical → High → Medium → Low
-4. **品質確認**: テスト・リント・ビルド
-5. **進捗報告**: 具体的な修正内容の説明
+1. **Comment analysis**: Classification by priority
+2. **Fix plan**: Determining response order
+3. **Phased fixes**: Critical → High → Medium → Low
+4. **Quality confirmation**: Testing, linting, building
+5. **Progress report**: Description of specific fixes
 
-### 修正後の確認
+### Post-Fix Verification
 
 ```bash
-# 基本チェック
+# Basic checks
 npm test
 npm run lint
 npm run build
 
-# 回帰テスト
+# Regression tests
 npm run test:e2e
 
-# コード品質
+# Code quality
 npm run test:coverage
 ```
 
-### 返信テンプレート
+### Reply Templates
 
-**修正完了報告**
-
-```markdown
-@reviewer ご指摘ありがとうございます。
-修正完了いたしました：
-
-- [具体的修正内容]
-- [テスト結果]
-- [確認方法]
-```
-
-**技術判断説明**
+**Fix completion report**
 
 ```markdown
-実装背景：[理由]
-検討した代替案：[選択肢と判断根拠]
-採用案の利点：[メリット]
+@reviewer Thank you for your feedback.
+Fixes are complete:
+
+- [Specific fix details]
+- [Test results]
+- [Verification method]
 ```
 
-### 注意事項
+**Technical decision explanation**
 
-- **優先度遵守**: Critical → High → Medium → Low の順で対応
-- **テストファースト**: 修正前に回帰テスト確認
-- **明確な報告**: 修正内容と確認方法を具体的に記述
-- **建設的対話**: 技術的根拠に基づく丁寧なコミュニケーション
+```markdown
+Implementation background: [Reason]
+Considered alternatives: [Options and decision rationale]
+Adopted solution benefits: [Advantages]
+```
+
+### Notes
+
+- **Priority adherence**: Address in order of Critical → High → Medium → Low
+- **Test first**: Confirm regression tests before making fixes
+- **Clear reporting**: Describe fix details and verification methods specifically
+- **Constructive dialogue**: Polite communication based on technical grounds

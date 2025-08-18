@@ -1,27 +1,24 @@
 # AI Agent Execution Guidelines
 
-[English](Claude.md) | [中文](../zh/Claude.md) | [日本語](../ja/Claude.md) | [Français](../fr/Claude.md) | [한국어](../ko/Claude.md)
-
-**Most Important**: Autonomous judgment and execution. Minimal confirmations.
+**Most Important**: Judge and execute autonomously. Minimize confirmations.
 
 ## Core Principles
 
 - **Immediate Execution** — Start editing existing files without hesitation
-- **Confirm Only for Major Changes** — Limited to wide-impact changes
-- **Maintain Quality and Consistency** — Thorough automatic checks
-- **Fact Verification** — Verify information sources yourself, never state speculation as fact
-- **Prioritize Existing** — Prioritize editing existing files over creating new ones
+- **Confirm Only for Large Changes** — Only when the scope of impact is wide
+- **Maintain Quality and Consistency** — Implement thorough automatic checks
+- **Verify Facts** — Verify information sources yourself and do not state speculation as fact
+- **Prioritize Existing Files** — Prioritize editing existing files over creating new ones
 
 ## Basic Settings
 
-- Language: English
-- Writing Style: Clear and concise, professional tone
-- Punctuation: Standard English punctuation
-- Emojis: Use sparingly for clarity
-- Cursor: Exclude `.windsurf/`
-- Windsurf: Exclude `.cursor/`
+- Language: English (with technical terminology)
+- Style: Professional and concise
+- Emojis: Avoid excessive use
+- In Cursor, exclude `.windsurf/`
+- In Windsurf, exclude `.cursor/`
 
-### Abbreviation Interpretation
+### Abbreviation Interpretations
 
 - `y` = Yes
 - `n` = No
@@ -31,21 +28,21 @@
 
 ## Execution Rules
 
-### Immediate Execution (No Confirmation Required)
+### Immediate Execution (No Confirmation Needed)
 
 - **Code Operations**: Bug fixes, refactoring, performance improvements
-- **File Editing**: Modifying and updating existing files
-- **Documentation**: Updating README, specifications (create new only when requested)
-- **Dependencies**: Adding, updating, removing packages
-- **Testing**: Implementing unit and integration tests (following TDD cycle)
-- **Configuration**: Changing settings, applying formatting
+- **File Editing**: Modification/updating of existing files
+- **Documentation**: Updates to README, specifications (create new only when requested)
+- **Dependencies**: Package addition/updating/removal
+- **Tests**: Implementing unit/integration tests (follow TDD cycle)
+- **Settings**: Configuration value changes, format application
 
 ### Confirmation Required
 
 - **New File Creation**: Explain necessity and confirm
-- **File Deletion**: Deleting important files
-- **Structural Changes**: Major changes to architecture or folder structure
-- **External Integration**: New APIs, external library introduction
+- **File Deletion**: Deletion of important files
+- **Structural Changes**: Large-scale changes to architecture, folder structure
+- **External Integration**: Introduction of new APIs, external libraries
 - **Security**: Implementing authentication/authorization features
 - **Database**: Schema changes, migrations
 - **Production Environment**: Deployment settings, environment variable changes
@@ -53,70 +50,79 @@
 ## Execution Flow
 
 ```text
-1. Task Received
+1. Task reception
    ↓
-2. Determine Immediate Execution or Confirmation Required
+2. Determine immediate execution or confirmation request
    ↓
-3. Execute (Following Existing Patterns)
+3. Execute (following existing patterns)
    ↓
-4. Completion Report
+4. Completion report
 ```
 
-## Work Completion Reporting Rules
+## Context Management
+
+### Pure Task Isolation
+
+Break complex tasks into "pure tasks" where only the result matters, executing them independently to keep the main context clean.
+
+- **Pure task examples**: Bug fixes, test execution, code generation
+- **Context cleanup**: When context grows large during extensive work, using the `/compact` command is recommended
+
+## Rules for Work Completion Reports
 
 ### Types of Completion Reports
 
-#### 1. Complete Completion Catchphrase
+#### 1. Password for Complete Completion
 
-When work is completely finished with no further continuable tasks, report exactly as follows:
+When work is completely finished and there are no more tasks to continue, report exactly the following:
 
 ```text
 May the Force be with you.
 ```
 
-**Usage Conditions (all must be met)**:
+**Usage Conditions (must meet all)**:
 
-- ✅ All tasks 100% complete
-- ✅ All TODO items completed (TODO list managed by TodoWrite tool is empty)
+- ✅ All tasks are 100% complete
+- ✅ All TODO items are completed (TODO list managed by TodoWrite tool is empty)
 - ✅ Zero errors
-- ✅ No continuable tasks without new instructions
+- ✅ No tasks that can continue unless new instructions are given
 
-**Prohibited**:
+**Prohibited Items**:
 
-- ❌ When TODO list has incomplete tasks
-- ❌ When mentioning "next steps", "remaining tasks", "main remaining tasks are:" etc.
-- ❌ When phases or steps in staged work remain incomplete
-- ❌ When specific remaining work list is explicitly stated in your response
+- ❌ If there are incomplete tasks in the TODO list
+- ❌ If you describe plans to continue such as "next steps", "remaining tasks", or "current remaining main tasks:"
+- ❌ If there are incomplete phases in step-by-step work
+- ❌ If you specify a concrete list of remaining work in your answer
 
-#### 2. Partial Completion Report
+#### 2. Report for Partial Completion
 
-When work is partially complete with remaining tasks, use the following template:
+When work is partially completed and there are continuing tasks, use the following template:
 
 ```markdown
 ## Execution Complete
 
-### Changes Made
+### Changes
 
-- [Specific changes made]
+- [Specific changes]
 
 ### Next Steps
 
-- [Recommended next actions]
+- [Recommended next work]
 ```
 
-### Behavior When Continuation Required
+### Actions When Continuation is Needed
 
-When catchphrase conditions are not met:
+If conditions for the password are not met:
 
-- Do not use the catchphrase
-- Clearly state progress and next actions
-- Clearly communicate if tasks remain
+- Do not use the password
+- Clearly indicate progress and next actions
+- Clearly communicate if there are remaining tasks
 
-## Development Methodology
+## Development Methods
 
 ### TDD Cycle
 
-Follow Test-Driven Development (TDD) cycle during development:
+Follow the Test-Driven Development (TDD) cycle during development:
 
 1. **Red (Failure)**
 
@@ -126,14 +132,13 @@ Follow Test-Driven Development (TDD) cycle during development:
 
 2. **Green (Success)**
 
-   - Implement minimal code to pass test
-   - Don't consider optimization or beauty at this stage
+   - Implement minimal code to pass the test
+   - Do not consider optimization or beauty at this stage
    - Focus solely on passing the test
 
 3. **Refactor (Improvement)**
-
    - Refactor only after tests pass
-   - Eliminate duplication, clarify intent
+   - Eliminate duplication and clarify intent
    - Run tests after each refactoring
 
 ### Change Management
@@ -142,51 +147,49 @@ Clearly separate changes into two types:
 
 - **Structural Changes**
 
-  - Code organization, arrangement, formatting
-  - No behavior changes whatsoever
-  - Examples: Method reordering, import organization, variable renaming
+  - Code arrangement, organization, formatting
+  - Do not change behavior at all
+  - Examples: Method reordering, import organization, variable name changes
 
 - **Behavioral Changes**
+  - Addition, modification, deletion of functions
+  - Changes that alter test results
+  - Examples: New feature addition, bug fixes, logic changes
 
-  - Adding, modifying, or removing functionality
-  - Changes that affect test results
-  - Examples: New features, bug fixes, logic changes
-
-**Important**: Never mix structural and behavioral changes in the same commit
+**Important**: Do not include structural and behavioral changes in the same commit
 
 ### Commit Discipline
 
-Execute commits only when all conditions are met:
+Execute commits only when all the following conditions are met:
 
 - ✅ All tests pass
 - ✅ Zero compiler/linter warnings
 - ✅ Represents a single logical unit of work
-- ✅ Commit message clearly explains changes
+- ✅ Commit message clearly explains the change
 
 **Recommendations**:
 
 - Small, frequent commits
-- Each commit independently meaningful
-- Granularity that makes history easy to follow
+- Each commit has independent meaning
+- Granularity that makes history easy to follow later
 
 ### Refactoring Rules
 
-Strict rules during refactoring:
+Strict rules for refactoring:
 
 1. **Prerequisites**
 
    - Start only when all tests pass
-   - Don't mix behavioral changes with refactoring
+   - Do not mix behavior changes with refactoring
 
 2. **Execution Steps**
 
    - Use established refactoring patterns
-   - One change at a time
-   - Run tests after each step
-   - Immediately revert if tests fail
+   - Make only one change at a time
+   - Always run tests after each step
+   - Immediately revert if failed
 
-3. **Common Patterns**
-
+3. **Frequently Used Patterns**
    - Extract Method
    - Rename
    - Move Method
@@ -196,92 +199,84 @@ Strict rules during refactoring:
 
 Priorities for efficient implementation:
 
-1. **First Steps**
+1. **First Step**
 
-   - Start with simplest case
-   - Prioritize "working" over perfection
+   - Start with the simplest case
+   - Prioritize "working" above all else
    - Value progress over perfection
 
 2. **Code Quality Principles**
 
-   - Eliminate duplication immediately when found
+   - Immediately eliminate duplication when found
    - Write code with clear intent
    - Make dependencies explicit
-   - Keep methods small with single responsibility
+   - Keep methods small and single-responsible
 
-3. **Incremental Improvement**
+3. **Gradual Improvement**
 
-   - First make it work
+   - First create something that works
    - Cover with tests
    - Then optimize
 
-4. **Edge Case Handling**
-
-   - Consider after basic case works
-   - Add corresponding test for each edge case
-   - Incrementally improve robustness
+4. **Handling Edge Cases**
+   - Consider after basic cases work
+   - Add tests for each edge case
+   - Gradually improve robustness
 
 ## Quality Assurance
 
 ### Design Principles
 
-- Adhere to Single Responsibility Principle
+- Follow single responsibility principle
 - Loose coupling through interfaces
 - Improve readability with early returns
 - Avoid excessive abstraction
 
 ### Efficiency Optimization
 
-- Automatic elimination of duplicate work
-- Active use of batch processing
-- Minimize context switching
+- Automatically eliminate duplicate work
+- Actively utilize batch processing
+- Minimize context switches
 
 ### Consistency Maintenance
 
-- Automatic inheritance of existing code style
-- Automatic application of project conventions
-- Automatic execution of naming convention unification
+- Automatically inherit existing code style
+- Automatically apply project conventions
+- Automatically enforce naming convention consistency
 
 ### Automatic Quality Management
 
-- Execute before/after behavior verification
-- Implementation considering edge cases
-- Synchronized documentation updates
+- Perform behavior confirmation before and after changes
+- Implement with edge cases in mind
+- Synchronously update documentation
 
-### Redundancy Elimination
+### Eliminate Redundancy
 
-- Always functionalize repetitive processing
+- Always functionize repetitive processes
 - Unify common error handling
-- Active use of utility functions
-- Immediate abstraction of duplicate logic
+- Actively utilize utility functions
+- Immediately abstract duplicate logic
 
-### Hardcoding Prohibition
+### Prohibit Hardcoding
 
-- Convert magic numbers to constants
+- Constantize magic numbers
 - Move URLs and paths to configuration files
 - Manage environment-dependent values with environment variables
-- Separate business logic from configuration values
+- Separate business logic and configuration values
 
 ### Error Handling
 
-- When execution impossible: Present 3 alternatives
-- When partially executable: Execute possible parts first, clarify remaining issues
+- When execution is impossible: Present 3 alternatives
+- When partial execution is possible: Execute possible parts first and clarify remaining issues
 
 ## Execution Examples
 
-- **Bug Fix**: `TypeError` discovered → Immediately fix type error
-- **Refactoring**: Duplicate code detected → Create common function
-- **DB Change**: Schema update needed → Request confirmation "Change table structure?"
+- **Bug Fix**: Discover `TypeError` → Immediately fix type error
+- **Refactoring**: Detect duplicate code → Create common function
+- **DB Change**: Schema update needed → Request confirmation "Shall I change the table structure?"
 
 ## Continuous Improvement
 
 - New pattern detection → Immediately learn and apply
 - Feedback → Automatically reflect in next execution
 - Best practices → Update as needed
-
-## Constraints
-
-### Web Search Constraints
-
-- **WebSearch Tool Prohibited** — Usage is forbidden
-- **Alternative**: `gemini --prompt "WebSearch: <search query>` — Search via Gemini

@@ -1,29 +1,29 @@
 ## PR Feedback
 
-Efficiently handle Pull Request review comments and achieve root cause resolution through a 3-stage error analysis approach.
+Efficiently handle Pull Request review comments and achieve root cause resolution using a 3-stage error analysis approach.
 
 ### Usage
 
 ```bash
-# Get and analyze review comments
+# Retrieve and analyze review comments
 gh pr view --comments
-"Please classify review comments by priority and create an action plan"
+"Classify review comments by priority and create an action plan"
 
 # Detailed analysis of error-related comments
 gh pr checks
-"Analyze CI errors with a 3-stage approach and identify root causes"
+"Analyze CI errors using a 3-stage approach to identify root causes"
 
-# Quality check after fix completion
+# Quality confirmation after fixes
 npm test && npm run lint
-"Check regression tests and code quality as fixes are complete"
+"Fixes are complete - please check regression tests and code quality"
 ```
 
 ### Basic Examples
 
 ```bash
-# Execute comment classification
+# Classify comments
 gh pr view 123 --comments | head -20
-"Classify review comments into must/imo/nits/q and determine response order"
+"Classify review comments into must/imo/nits/q categories and determine response order"
 
 # Collect error information
 npm run build 2>&1 | tee error.log
@@ -31,7 +31,7 @@ npm run build 2>&1 | tee error.log
 
 # Verify fix implementation
 git diff HEAD~1
-"Evaluate if this fix appropriately resolves the review issues"
+"Evaluate whether this fix appropriately addresses the review comments"
 ```
 
 ### Comment Classification System
@@ -46,58 +46,58 @@ git diff HEAD~1
 🟡 imo: Improvement suggestions
 ├─ Better implementation methods
 ├─ Performance improvements
-├─ Readability improvements
-└─ Refactoring suggestions
+├─ Readability enhancements
+└─ Refactoring proposals
 
-🟢 nits: Minor suggestions
+🟢 nits: Minor points
 ├─ Typo fixes
 ├─ Indentation adjustments
 ├─ Comment additions
-└─ Naming fine-tuning
+└─ Naming refinements
 
-🔵 q: Questions/Confirmations
-├─ Implementation intent confirmation
+🔵 q: Questions/confirmations
+├─ Implementation intent verification
 ├─ Specification clarification
 ├─ Design decision background
-└─ Alternative considerations
+└─ Alternative solution consideration
 ```
 
 ### 3-Stage Error Analysis Approach
 
 #### Stage 1: Information Collection
 
-**Required execution**
+**Required actions**
 
-- Complete error message capture
-- Stack trace verification
+- Full error message capture
+- Stack trace review
 - Reproduction condition identification
 
-**Recommended execution**
+**Recommended actions**
 
 - Environment information collection
 - Recent change history
-- Related log verification
+- Related logs review
 
 #### Stage 2: Root Cause Analysis
 
-- Apply 5 Whys analysis
+- 5 Whys analysis application
 - Dependency tracking
-- Environment difference verification
+- Environment difference checking
 - Minimal reproduction code creation
 
 #### Stage 3: Solution Implementation
 
 - Immediate response (hotfix)
-- Fundamental solution (essential fix)
+- Root cause resolution (essential fix)
 - Preventive measures (recurrence prevention)
 
 ### Response Flow
 
-1. **Comment analysis**: Priority classification
-2. **Fix planning**: Determine response order
-3. **Incremental fixes**: Critical → High → Medium → Low
-4. **Quality verification**: Test, lint, build
-5. **Progress reporting**: Explain specific fix details
+1. **Comment analysis**: Classification by priority
+2. **Fix plan**: Determining response order
+3. **Phased fixes**: Critical → High → Medium → Low
+4. **Quality confirmation**: Testing, linting, building
+5. **Progress report**: Description of specific fixes
 
 ### Post-Fix Verification
 
@@ -116,28 +116,28 @@ npm run test:coverage
 
 ### Reply Templates
 
-**Fix Completion Report**
+**Fix completion report**
 
 ```markdown
 @reviewer Thank you for your feedback.
-Fixes completed:
+Fixes are complete:
 
 - [Specific fix details]
 - [Test results]
 - [Verification method]
 ```
 
-**Technical Decision Explanation**
+**Technical decision explanation**
 
 ```markdown
 Implementation background: [Reason]
-Alternatives considered: [Options and rationale]
-Advantages of chosen approach: [Benefits]
+Considered alternatives: [Options and decision rationale]
+Adopted solution benefits: [Advantages]
 ```
 
-### Important Notes
+### Notes
 
-- **Priority compliance**: Address in order Critical → High → Medium → Low
-- **Test first**: Verify regression tests before fixes
-- **Clear reporting**: Specifically describe fix details and verification methods
-- **Constructive dialogue**: Polite communication based on technical rationale
+- **Priority adherence**: Address in order of Critical → High → Medium → Low
+- **Test first**: Confirm regression tests before making fixes
+- **Clear reporting**: Describe fix details and verification methods specifically
+- **Constructive dialogue**: Polite communication based on technical grounds

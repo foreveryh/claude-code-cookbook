@@ -1,12 +1,12 @@
 ## Issue List
 
-Display open issues list with priority ranking for the current repository.
+Displays a prioritized list of open issues in the current repository.
 
 ### Usage
 
 ```bash
-# Request to Claude
-"Display open issues list with priority ranking"
+# Request from Claude
+"Show a prioritized list of open issues"
 ```
 
 ### Basic Examples
@@ -15,31 +15,31 @@ Display open issues list with priority ranking for the current repository.
 # Get repository information
 gh repo view --json nameWithOwner | jq -r '.nameWithOwner'
 
-# Get open issue information and request to Claude
+# Get open issue information and request from Claude
 gh issue list --state open --json number,title,author,createdAt,updatedAt,labels,assignees,comments --limit 30
 
-"Organize the above issues by priority and include a 2-line summary for each issue. Generate URLs using the repository name obtained above"
+"Organize the above issues by priority, including a 2-line summary for each issue. Generate URLs using the repository name obtained above"
 ```
 
 ### Display Format
 
 ```
-Open Issues List (Sorted by Priority)
+Open Issues List (by Priority)
 
 ### High Priority
-#Number Title [Labels] | Author | Time Since Opened | Comments | Assignee
+#number Title [labels] | Author | Time since opened | Comment count | Assignee
       ├─ Summary line 1
       └─ Summary line 2
       https://github.com/owner/repo/issues/number
 
 ### Medium Priority
-(Same format)
+(Similar format)
 
 ### Low Priority
-(Same format)
+(Similar format)
 ```
 
-### Priority Criteria
+### Priority Assessment Criteria
 
 **High Priority**
 
@@ -51,7 +51,7 @@ Open Issues List (Sorted by Priority)
 
 - Issues with `enhancement` label
 - Issues with `feature` label
-- Issues with assignee set
+- Issues with assignees
 
 **Low Priority**
 
@@ -59,20 +59,20 @@ Open Issues List (Sorted by Priority)
 - Issues with `good first issue` label
 - Issues with `wontfix` or `duplicate` labels
 
-### Filtering by Labels
+### Label Filtering
 
 ```bash
 # Get only issues with specific label
 gh issue list --state open --label "bug" --json number,title,author,createdAt,labels,comments --limit 30
 
-# Filter by multiple labels (AND condition)
+# Filter with multiple labels (AND condition)
 gh issue list --state open --label "bug,high-priority" --json number,title,author,createdAt,labels,comments --limit 30
 ```
 
-### Important Notes
+### Notes
 
-- GitHub CLI (`gh`) is required
-- Only displays open issues
-- Displays maximum 30 issues
+- Requires GitHub CLI (`gh`)
+- Only displays issues in open state
+- Shows maximum 30 issues
 - Elapsed time is from when the issue was opened
 - Issue URLs are automatically generated from the actual repository name

@@ -1,16 +1,11 @@
 # Claude Code Cookbook
 
-[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md) | [Français](README_fr.md) | [한국어](README_ko.md)
+[English](README_en.md) | [中文](README_zh.md) | [한국어](README_ko.md) | [Português](README_pt.md) | [Español](README_es.md) | [日本語](README.md) | [locales/](locales/)
 
 Claude Code をもっと便利に使うための設定集です。
 
 細かい確認を省いて自動的に作業を進めてくれるので、本来やりたいことに集中できます。
 コードの修正やテストの実行、ドキュメントの更新など、よくある作業は Claude Code が判断して実行します。
-
-## 📚 リソース
-
-- **[Claude Best Practices](https://cc.deeptoai.com)** - Claude Code Cookbook の効果的な使用方法とカスタマイズ方法を学ぶ
-- **[Claudelog](https://claudelog.com)** - Claude Code の包括的なガイド、チュートリアル、ベストプラクティス
 
 ## 主要機能
 
@@ -43,11 +38,8 @@ Claude Code をもっと便利に使うための設定集です。
 | `/multi-role` | 複数の役割（Role）を組み合わせて、同じ対象を並行分析し統合レポートを生成する。 |
 | `/plan` | 実装前の計画立案モードを起動し、詳細な実装戦略を策定する。 |
 | `/pr-auto-update` | Pull Request の内容（説明、ラベル）を自動で更新する。 |
-|| `/pr-create-smart` | 変更内容から高品質な PR 説明文のドラフトを作成し、既存の PR 作成フローを補完する。注: 実際の PR 作成は `gh` またはホスティング UI で行います。 |
+| `/pr-create` | Git 変更分析に基づく自動 PR 作成で効率的な Pull Request ワークフローを実現する。 |
 | `/pr-feedback` | Pull Request のレビューコメントを効率的に対応し、エラー分析 3 段階アプローチで根本解決を図る。 |
-| `/pr-check` | PR 前の品質・安全チェックリスト。 |
-| `/test-e2e-local` | ローカルで E2E 検証。 |
-| `/deploy-check` | デプロイ前の準備・安全チェックリスト（意図定義）。 |
 | `/pr-issue` | 現在のリポジトリのオープン Issue 一覧を優先順位付きで表示する。 |
 | `/pr-list` | 現在のリポジトリのオープン PR 一覧を優先順位付きで表示する。 |
 | `/pr-review` | Pull Request の体系的レビューでコード品質とアーキテクチャの健全性を確保する。 |
@@ -147,7 +139,7 @@ flowchart TB
 
     Implementation --> Check["/smart-review<br/>品質チェック"]
     Check --> Commit["/semantic-commit<br/>目的単位でコミット"]
-    Commit --> PR["/pr-create-smart<br/>PR 説明ドラフト"]
+    Commit --> PR["/pr-create<br/>PR 自動作成"]
     PR --> CI["/check-github-ci<br/>CI 状況確認"]
 
     CI --> Status{問題あり？}
@@ -171,53 +163,23 @@ flowchart TB
 
 ---
 
-## 導入とカスタマイズ
+## インストール
 
-> 💡 **Claude Code が初めての方へ** 詳細なガイドと使用方法、カスタマイズ方法については [Claude Best Practices](https://cc.deeptoai.com) ウェブサイトをご覧ください。
-
-### 🚀 v2.0.0 の新機能：統一インストーラー
-
-**1 つのインストーラーで、すべての言語に対応！** すべてのインストールオプションを単一の賢いインストーラーに統一しました。
-
-#### クイックスタート（推奨）
 ```bash
 # リポジトリをクローン
-git clone https://github.com/foreveryh/claude-code-cookbook.git
+git clone https://github.com/wasabeef/claude-code-cookbook.git
 cd claude-code-cookbook
 
-# 言語自動検出でインストール
-./install.sh
-
-# または言語を明示的に指定
-./install.sh --lang en    # English
-./install.sh --lang ja    # 日本語
+# 言語を指定してインストール
+./scripts/install.sh ja    # 日本語（デフォルト）
+./scripts/install.sh en    # 英語
+./scripts/install.sh ko    # 韓国語
+./scripts/install.sh pt    # ポルトガル語
+./scripts/install.sh zh    # 中国語
+./scripts/install.sh es    # スペイン語
 ```
 
-#### インストール手順
-
-1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git`
-2. **ディレクトリに移動**: `cd claude-code-cookbook`
-3. **インストーラーを実行**: `./install.sh` （言語自動検出）または `./install.sh --lang <言語>`
-4. **Claude Desktop を設定**: Custom Instructions パスを `~/.claude` に設定
-5. **使用開始**: すべてのコマンドと役割が利用可能になります！
-
-#### レガシーインストール（手動）
-
-手動インストールをご希望の場合：
-
-##### 英語版
-1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
-2. **英語版をコピー**: `cp -r ~/.claude-temp/versions/en ~/.claude`
-3. **クライアントを設定**: Claude Desktop で `~/.claude` ディレクトリパスを指定
-4. **パスを確認**: `settings.json` 内のスクリプトパスが環境と一致することを確認
-5. **クリーンアップ**: `rm -rf ~/.claude-temp`
-
-##### 日本語版
-1. **リポジトリをクローン**: `git clone https://github.com/foreveryh/claude-code-cookbook.git ~/.claude-temp`
-2. **日本語版をコピー**: `cp -r ~/.claude-temp/versions/ja ~/.claude`
-3. **クライアントを設定**: Claude Desktop で `~/.claude` ディレクトリパスを指定
-4. **パスを確認**: `settings.json` 内のスクリプトパスが環境と一致することを確認
-5. **クリーンアップ**: `rm -rf ~/.claude-temp`
+Claude Desktop で Custom Instructions のパスを `~/.claude` に設定すれば完了です。
 
 ### カスタマイズ
 

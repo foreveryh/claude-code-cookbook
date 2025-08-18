@@ -1,65 +1,65 @@
-## UltraThink
+## Ultrathink
 
-Deep thinking mode for complex problem solving and critical decision making.
+Execute a step-by-step, structured thinking process for complex tasks and important decisions.
 
 ### Usage
 
 ```bash
-# Request Claude deep thinking
-"Consider [issue] with ultrathink"
+# Request deep thinking from Claude
+"Analyze [task] using ultrathink"
 ```
 
 ### Basic Examples
 
 ```bash
-# Architecture design consideration
-"Consider whether to choose microservices or monolith with ultrathink"
+# Examine architecture design
+"Analyze whether to choose microservices or monolith using ultrathink"
 
-# Technology selection analysis
-"Analyze whether Rust or TypeScript is more suitable for this project with ultrathink"
+# Analyze technology selection
+"Analyze whether Rust or TypeScript is suitable for this project using ultrathink"
 
-# Problem solving deep dive
-"Consider the causes and improvement methods for poor application performance with ultrathink"
+# Deep dive into problem solving
+"Analyze the causes of poor application performance and improvement methods using ultrathink"
 ```
 
-### Claude Integration
+### Collaboration with Claude
 
 ```bash
 # Business decisions
-"Consider new feature prioritization with ultrathink. From the perspectives of user value, development cost, and technical risk"
+"Prioritize new features using ultrathink. Consider user value, development cost, and technical risk"
 
 # System design
-"Consider authentication system design with ultrathink. Consider security, scalability, and maintainability"
+"Design an authentication system using ultrathink. Consider security, scalability, and maintainability"
 
 # Trade-off analysis
-"Analyze GraphQL vs REST API selection with ultrathink. Based on project requirements"
+"Analyze the choice between GraphQL vs REST API using ultrathink. Based on project requirements"
 
 # Refactoring strategy
 cat src/legacy_code.js
-"Develop a refactoring strategy for this legacy code with ultrathink"
+"Develop a refactoring strategy for this legacy code using ultrathink"
 ```
 
 ### Thinking Process
 
-1. **Problem decomposition** - Break down issues into components
-2. **MECE analysis** - Organize mutually exclusive and collectively exhaustive
-3. **Multi-perspective examination** - Analyze from technical, business, and user perspectives
-4. **Interactive confirmation** - Confirm important decision points with user
-5. **Evidence-based suggestions** - Conclusions based on data and logic
+1. **Problem Decomposition** - Break down tasks into components
+2. **MECE Analysis** - Organize without gaps or overlaps
+3. **Multiple Perspective Review** - Analyze from technical, business, and user perspectives
+4. **Interactive Confirmation** - Confirm with users at important decision points
+5. **Evidence-Based Proposal** - Conclusions based on data and logic
 
 ### Detailed Examples
 
 ```bash
-# Complex technical debt resolution
-"Consider strategy to modernize a 10-year legacy system with ultrathink. Include phased migration, risks, and ROI"
+# Resolve complex technical debt
+"Develop a strategy to modernize a 10-year legacy system using ultrathink. Include phased migration, risks, and ROI"
 
 # Organizational challenges
-"Consider development team scaling strategy with ultrathink. Assuming expansion from current 5 people to 20 people"
+"Develop a scaling strategy for the development team using ultrathink. Assume expansion from 5 to 20 people"
 
 # Database migration
-"Analyze migration from PostgreSQL to DynamoDB with ultrathink. Consider cost, performance, and operational aspects"
+"Analyze migrating from PostgreSQL to DynamoDB using ultrathink. Consider cost, performance, and operational aspects"
 ```
 
-### Important Notes
+### Notes
 
-UltraThink is optimal for complex issues that require time and deep consideration. For simple questions or cases requiring immediate answers, please use regular question format.
+Ultrathink is ideal for tasks that require deep thinking over time. For simple questions or immediate answers, use the normal question format.

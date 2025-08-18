@@ -1,6 +1,6 @@
 ## Plan
 
-Activate pre-implementation planning mode to develop detailed implementation strategies. Support efficient development by creating structured plans before code implementation.
+Helps you plan before coding. Creates detailed strategies to make development smoother.
 
 ### Usage
 
@@ -12,123 +12,123 @@ Activate pre-implementation planning mode to develop detailed implementation str
 ### Basic Examples
 
 ```bash
-# New feature implementation plan
-"Create an implementation plan for user authentication feature"
+# Implementation plan for new feature
+"Create an implementation plan for user authentication functionality"
 
-# System design planning
-"Create an implementation plan for microservices split"
+# System design plan
+"Create an implementation plan for microservice splitting"
 
 # Refactoring plan
 "Create a refactoring plan for legacy code"
 ```
 
-### Integration with Claude
+### Collaboration with Claude
 
 ```bash
 # Complex feature implementation
-"Create an implementation plan for chat feature. Include WebSocket, real-time notifications, and history management"
+"Create an implementation plan for chat functionality, including WebSocket, real-time notifications, and history management"
 
 # Database design
-"Create a database design plan for e-commerce site. Include products, orders, and user management"
+"Create a database design plan for an e-commerce site, including product, order, and user management"
 
 # API design
-"Create an implementation plan for GraphQL API. Include authentication, caching, and rate limiting"
+"Create an implementation plan for GraphQL API, including authentication, caching, and rate limiting"
 
 # Infrastructure design
-"Create a Dockerization implementation plan. Include development environment, production environment, and CI/CD"
+"Create an implementation plan for Dockerization, including development environment, production environment, and CI/CD"
 ```
 
-### Plan Mode Features
+### How Plan Mode Works
 
-**Automatic Activation**
+**Automatic Start**
 
-- Plan Mode activates automatically when implementation tasks are detected
-- Can be explicitly activated with keywords like "create implementation plan"
+- Starts automatically when you describe what to build
+- Or just say "Create an implementation plan"
 
-**Structured Specifications**
+**What You Get**
 
-- Requirements definition (user stories, acceptance criteria)
-- Design documents (architecture, data design, UI design)
-- Implementation plan (task breakdown, progress tracking, quality assurance)
-- Risk analysis and mitigation
+- Clear requirements (user stories, success criteria)
+- Design docs (architecture, data model, UI)
+- Implementation steps (tasks, tracking, quality checks)
+- Risk analysis and solutions
 
-**Approval Process**
+**Getting Your Approval**
 
-- Present plan with `exit_plan_mode` tool
-- **Important**: Always wait for explicit user approval regardless of tool return value
-- Implementation without approval is prohibited
-- Plan modification and adjustment possible
-- Start task management with TodoWrite only after approval
+- I'll show you the plan using `exit_plan_mode`
+- **Important**: I always wait for your explicit OK
+- I won't code without your approval
+- You can request changes anytime
+- TodoWrite tracking starts after you approve
 
 ### Detailed Examples
 
 ```bash
 # Complex system implementation
-"Create an implementation plan for online payment system. Include Stripe integration, security, and error handling"
+"Create an implementation plan for an online payment system, including Stripe integration, security, and error handling"
 
 # Frontend implementation
-"Create an implementation plan for React dashboard. Include state management, component design, and testing"
+"Create an implementation plan for a React dashboard, including state management, component design, and testing"
 
 # Backend implementation
-"Create an implementation plan for RESTful API. Include authentication, validation, and logging"
+"Create an implementation plan for a RESTful API, including authentication, validation, and logging"
 
 # DevOps implementation
-"Create an implementation plan for CI/CD pipeline. Include test automation, deployment, and monitoring"
+"Create an implementation plan for a CI/CD pipeline, including test automation, deployment, and monitoring"
 ```
 
 ### 3-Phase Workflow
 
 #### Phase 1: Requirements
 
-- **User Stories**: Clarify feature purpose and value
-- **Acceptance Criteria**: Define completion conditions and quality standards
-- **Constraints & Prerequisites**: Organize technical and time constraints
-- **Prioritization**: Must-have/Nice-to-have classification
+- **User Stories**: What are we building and why?
+- **Success Criteria**: How do we know it's done?
+- **Constraints**: What limits do we have?
+- **Priority**: What's must-have vs nice-to-have?
 
 #### Phase 2: Design
 
-- **Architecture Design**: System configuration and technology selection
-- **Data Design**: Schema, API specifications, data flow
-- **UI/UX Design**: Screen layout and operation flow
-- **Risk Analysis**: Potential problems and countermeasures
+- **Architecture**: How will the system work?
+- **Data Model**: Database schema and APIs
+- **UI/UX**: Screen layouts and user flow
+- **Risks**: What could go wrong and how to prevent it
 
 #### Phase 3: Implementation
 
-- **Task Breakdown**: Decomposition into implementable units
-- **Progress Tracking**: State management via TodoWrite
-- **Quality Assurance**: Test strategy and verification methods
-- **Approval Process**: Plan presentation via exit_plan_mode and explicit approval wait
+- **Task Breakdown**: Split into manageable chunks
+- **Progress Tracking**: TodoWrite manages status
+- **Quality Checks**: Testing and verification plan
+- **Your Approval**: Show plan and wait for your OK
 
-### Important Notes
+### Notes
 
-**Scope of Application**
+**When to Use This**
 
-- Plan Mode is optimal for complex implementation tasks
-- Use normal implementation format for simple fixes or small changes
-- Recommended for work with 3+ steps or new feature development
+- Best for complex projects
+- Skip for simple fixes
+- Great for 3+ step tasks or new features
 
-**Technical Constraints**
+**Technical Notes**
 
-- Do not trust `exit_plan_mode` tool return values
-- Judge approval process by explicit user intention
-- Different from CLI plan mode functionality
+- Don't rely on `exit_plan_mode` return values
+- Only your explicit approval counts
+- Works differently than CLI plan mode
 
-**Execution Precautions**
+**Important Rules**
 
-- Implementation before approval is strictly prohibited
-- Always wait for user response after plan presentation
-- Provide alternatives on error
+- Never start coding before you approve
+- Always wait for your response
+- Offer alternatives if something fails
 
 ### Execution Example
 
 ```bash
 # Usage example
-"Create an implementation plan for user management system"
+"Create an implementation plan for a user management system"
 
-# Expected behavior
-# 1. Plan Mode activates automatically
-# 2. Requirements analysis and technology selection
-# 3. Implementation step structuring
-# 4. Plan presentation via exit_plan_mode
-# 5. Implementation starts after approval
+# What happens:
+# 1. Plan Mode starts
+# 2. Analyze requirements and pick tech
+# 3. Structure the implementation
+# 4. Show you the plan
+# 5. Start coding after you approve
 ```
