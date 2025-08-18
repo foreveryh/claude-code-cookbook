@@ -7,6 +7,19 @@ Claude Code를 더욱 편리하게 사용하기 위한 설정 모음입니다.
 루틴한 작업을 자동화하여 정말 중요한 일에 집중할 수 있게 해줍니다.
 Claude Code는 코드 수정, 테스트 실행, 문서 업데이트와 같은 일반적인 작업을 지능적으로 처리합니다.
 
+## 🚀 빠른 설치
+
+```bash
+# 클론 및 설치
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang ko
+
+# Claude Desktop 설정: 사용자 정의 지시사항 경로를 ~/.claude로 설정
+```
+
+**전체 설치 지침은 [설치 가이드](docs/02-installation-guide.md)를 참조하세요**
+
 ## 📚 리소스
 
 - **[Claude Best Practices](https://cc.deeptoai.com)** - Claude Code Cookbook을 효과적으로 사용하고 사용자 정의하는 방법 학습

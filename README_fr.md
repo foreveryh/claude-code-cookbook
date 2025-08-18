@@ -7,6 +7,19 @@ Une collection de configurations pour rendre Claude Code plus pratique à utilis
 En automatisant les opérations routinières, vous pouvez vous concentrer sur ce qui compte vraiment.
 Claude Code gère intelligemment les tâches courantes comme les modifications de code, l'exécution de tests et les mises à jour de documentation.
 
+## 🚀 Installation Rapide
+
+```bash
+# Cloner et installer
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang fr
+
+# Configurer Claude Desktop : Définir le chemin des instructions personnalisées sur ~/.claude
+```
+
+**Pour les instructions d'installation complètes, voir [Guide d'Installation](docs/02-installation-guide.md)**
+
 ## 📚 Ressources
 
 - **[Claude Best Practices](https://cc.deeptoai.com)** - Apprenez à utiliser et personnaliser efficacement Claude Code Cookbook

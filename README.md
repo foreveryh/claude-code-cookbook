@@ -1,10 +1,23 @@
 # Claude Code Cookbook
 
-[English](README_en.md) | [中文](README_zh.md) | [한국어](README_ko.md) | [Português](README_pt.md) | [Español](README_es.md) | [日本語](README.md) | [locales/](locales/)
+**[English](README.md)** ✅ | [中文](README_zh.md) | [日本語](README_ja.md) | [Français](README_fr.md) | [한국어](README_ko.md)
 
 A collection of settings to make Claude Code more useful.
 
 It automatically proceeds with work without unnecessary confirmations, allowing you to focus on what you really want to do. Claude Code judges and executes common tasks like code fixes, test runs, and documentation updates.
+
+## 🚀 Quick Installation
+
+```bash
+# Clone and install
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang en
+
+# Configure Claude Desktop: Set Custom Instructions path to ~/.claude
+```
+
+**For complete installation instructions, see [Installation Guide](docs/02-installation-guide.md)**
 
 ## 📚 Documentation
 
@@ -171,29 +184,3 @@ flowchart TB
 
     %%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#e0f2fe', 'primaryTextColor':'#0c4a6e', 'primaryBorderColor':'#0369a1', 'lineColor':'#64748b', 'secondaryColor':'#f0f9ff', 'background':'#ffffff', 'mainBkg':'#ffffff', 'fontSize': '14px'}}}%%
 ```
-
----
-
-## Installation
-
-```bash
-# Clone repository
-git clone https://github.com/wasabeef/claude-code-cookbook.git
-cd claude-code-cookbook
-
-# Install with language specification
-./scripts/install.sh en    # English
-./scripts/install.sh ja    # Japanese (default)
-./scripts/install.sh ko    # Korean
-./scripts/install.sh pt    # Portuguese
-./scripts/install.sh zh    # Chinese
-./scripts/install.sh es    # Spanish
-```
-
-Set Custom Instructions path to `~/.claude` in Claude Desktop and you're done.
-
-### Customization
-
-- **Add commands**: Simply add `.md` files to `commands/`
-- **Add roles**: Simply add `.md` files to `agents/roles/`
-- **Edit hooks**: Edit `settings.json` to change automation processes

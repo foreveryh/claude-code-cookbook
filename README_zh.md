@@ -7,6 +7,19 @@
 通过自动化执行常规操作，让您专注于真正重要的工作。
 Claude Code 会智能判断并执行代码修改、测试运行、文档更新等常见任务。
 
+## 🚀 快速安装
+
+```bash
+# 克隆并安装
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang zh
+
+# 配置 Claude Desktop：设置自定义指令路径为 ~/.claude
+```
+
+**完整安装说明请查看 [安装指南](docs/02-installation-guide.md)**
+
 ## 📚 学习资源
 
 - **[Claude 最佳实践](https://cc.deeptoai.com)** - 学习如何高效使用和自定义 Claude Code Cookbook

@@ -1,11 +1,24 @@
 # Claude Code Cookbook
 
-[English](README_en.md) | [中文](README_zh.md) | [한국어](README_ko.md) | [Português](README_pt.md) | [Español](README_es.md) | [日本語](README.md) | [locales/](locales/)
+[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md) | [Français](README_fr.md) | [한국어](README_ko.md)
 
 Claude Code をもっと便利に使うための設定集です。
 
 細かい確認を省いて自動的に作業を進めてくれるので、本来やりたいことに集中できます。
 コードの修正やテストの実行、ドキュメントの更新など、よくある作業は Claude Code が判断して実行します。
+
+## 🚀 クイックインストール
+
+```bash
+# クローンしてインストール
+git clone https://github.com/foreveryh/claude-code-cookbook.git
+cd claude-code-cookbook
+./install.sh --lang ja
+
+# Claude Desktop の設定：カスタム指示のパスを ~/.claude に設定
+```
+
+**詳細なインストール手順は [インストールガイド](docs/02-installation-guide.md) をご覧ください**
 
 ## 主要機能
 
