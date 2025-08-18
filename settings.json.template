@@ -142,7 +142,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -lc 'nohup sh -c "osascript -e \''display notification \"{{NOTIFICATION_WAITING}}\" with title \"Claude Code\"\'' && afplay -v 0.3 ~/.claude/assets/confirm.mp3" >/dev/null 2>&1 &'"]
+            "command": "bash -lc 'nohup sh -c \"osascript -e \\\"display notification \\\"{{NOTIFICATION_WAITING}}\\\" with title \\\"Claude Code\\\"\\\" && afplay -v 0.3 ~/.claude/assets/confirm.mp3\" >/dev/null 2>&1 &'"
           }
         ]
       }
@@ -157,7 +157,7 @@
           },
           {
             "type": "command",
-            "command": "bash -lc 'nohup sh -c "osascript -e \''display notification \"{{NOTIFICATION_COMPLETED}}\" with title \"Claude Code\"\'' && afplay -v 0.3 ~/.claude/assets/perfect.mp3" >/dev/null 2>&1 &'"
+            "command": "bash -lc 'nohup sh -c \"osascript -e \\\"display notification \\\"{{NOTIFICATION_COMPLETED}}\\\" with title \\\"Claude Code\\\"\\\" && afplay -v 0.3 ~/.claude/assets/perfect.mp3\" >/dev/null 2>&1 &'"
           }
         ]
       }
