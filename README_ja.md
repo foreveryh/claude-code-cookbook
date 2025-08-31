@@ -55,6 +55,7 @@ cd claude-code-cookbook
 | `/pr-feedback` | Pull Request のレビューコメントを効率的に対応し、エラー分析 3 段階アプローチで根本解決を図る。 |
 | `/pr-issue` | 現在のリポジトリのオープン Issue 一覧を優先順位付きで表示する。 |
 | `/pr-list` | 現在のリポジトリのオープン PR 一覧を優先順位付きで表示する。 |
+| `/pr-merge` | 包括的な品質検証と承認後に Pull Request を自動的にマージする。 |
 | `/pr-review` | Pull Request の体系的レビューでコード品質とアーキテクチャの健全性を確保する。 |
 | `/refactor` | 安全で段階的なコードリファクタリングを実施し、SOLID 原則の遵守状況を評価する。 |
 | `/role-debate` | 複数の役割（Role）で、特定のテーマについて討論させる。 |

@@ -61,6 +61,7 @@ Les commandes sont stockées sous forme de fichiers Markdown dans le répertoire
 | `/pr-feedback` | Gérer efficacement les commentaires de révision des Pull Requests, résoudre les causes profondes grâce à une approche d'analyse d'erreur en trois phases. |
 | `/pr-issue` | Afficher les Issues ouvertes dans le dépôt actuel avec priorisation. |
 | `/pr-list` | Afficher les PR ouvertes dans le dépôt actuel avec priorisation. |
+| `/pr-merge` | Fusionner automatiquement les Pull Requests après vérification complète de la qualité et approbation. |
 | `/pr-review` | Révision systématique des Pull Requests pour assurer la qualité du code et la santé architecturale. |
 | `/refactor` | Effectuer un refactoring de code sûr et incrémental et évaluer la conformité aux principes SOLID. |
 | `/role-debate` | Faire débattre plusieurs rôles sur des sujets spécifiques. |

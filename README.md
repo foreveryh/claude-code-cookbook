@@ -66,6 +66,7 @@ Stored as Markdown files in the `/commands` directory. Execute by entering the f
 | `/pr-feedback` | Efficiently respond to Pull Request review comments and aim for root solutions with a 3-stage error analysis approach. |
 | `/pr-issue` | Display a prioritized list of open Issues in the current repository. |
 | `/pr-list` | Display a prioritized list of open PRs in the current repository. |
+| `/pr-merge` | Automatically merge Pull Requests after comprehensive quality verification and approval. |
 | `/pr-review` | Ensure code quality and architectural soundness through systematic review of Pull Requests. |
 | `/refactor` | Perform safe, step-by-step code refactoring and evaluate adherence to SOLID principles. |
 | `/role-debate` | Have multiple roles debate specific topics. |

@@ -71,6 +71,7 @@ cd claude-code-cookbook
 | `/deploy-check` | 部署前就绪与安全检查清单（意图定义）。 |
 | `/pr-issue` | 显示当前仓库的开放 Issue 列表（按优先级排序）。 |
 | `/pr-list` | 显示当前仓库的开放 PR 列表（按优先级排序）。 |
+| `/pr-merge` | 在综合质量验证和审批通过后自动合并 Pull Request。 |
 | `/pr-review` | 系统化审查 Pull Request，确保代码质量和架构健康。 |
 | `/refactor` | 执行安全的渐进式代码重构，评估 SOLID 原则的遵循情况。 |
 | `/role-debate` | 让多个角色就特定主题进行辩论。 |
